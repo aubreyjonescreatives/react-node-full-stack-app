@@ -8,27 +8,27 @@
 
 ## At least 3 endpoints to GET data from your server
 
-![GET Data from Server](3getendpoints.PNG)
+![GET Data from Server](images/3getendpoints.PNG)
 
 
 ## At least 1 endpoint allowing user to update an item via PUT or PATCH HTTP verbs
 
-![PUT endpoint](putrequest.PNG)
+![PUT endpoint](images/putrequest.PNG)
 
 
 ## At least 1 endpoint allowing user to create an item via POST
 
 
-![POST endpoint](putrequest.PNG)
+![POST endpoint](images/putrequest.PNG)
 
 ## At least 1 endpoint allowing user to delete an item via DELETE
 
-![DELETE endpoint](deleteendpoint.PNG)
+![DELETE endpoint](images/deleteendpoint.PNG)
 
 
 ## Your datastore will contain at least 25 items
 
-![DELETE endpoint](databaseImage.PNG)
+![DELETE endpoint](images/databaseImage.PNG)
 
 
 ## Your app will be deployed to production using some service like Heroku, Digital Ocean, etc.
