@@ -8,22 +8,22 @@
 
 # At least 3 endpoints to GET data from your server
 
-	![Get Data from Server](client/images/3getendpoints.PNG)
+![Get Data from Server](3getendpoints.PNG)
 
 
 # At least 1 endpoint allowing user to update an item via PUT or PATCH HTTP verbs
 
-![PUT endpoint](client/images/putrequest.PNG)
+![PUT endpoint](putrequest.PNG)
 
 
 # At least 1 endpoint allowing user to create an item via POST
 
 
-![PUT endpoint](client/images/putrequest.PNG)
+![POST endpoint](putrequest.PNG)
 
 # At least 1 endpoint allowing user to delete an item via DELETE
 
-![PUT endpoint](client/images/deleteendpoint.PNG)
+![DELETE endpoint](deleteendpoint.PNG)
 
 
 # Your datastore will contain at least 25 items
@@ -33,7 +33,7 @@
 
 # Your app will be deployed to production using some service like Heroku, Digital Ocean, etc.
 
-Run 
+1. Download both files from Github and run them separately as separate files. You can see this app via your localhost
 
 
 # Additional Notes: 
