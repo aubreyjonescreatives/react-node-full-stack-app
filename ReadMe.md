@@ -33,7 +33,7 @@
 
 # Your app will be deployed to production using some service like Heroku, Digital Ocean, etc.
 
-1. Download both files from Github and run them separately as separate files. You can see this app via your localhost
+1. Download this zipped file from Github and run them client and server files as separate files. You can see this app via your localhost
 
 
 # Additional Notes: 
