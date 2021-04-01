@@ -8,7 +8,7 @@
 
 ## At least 3 endpoints to GET data from your server
 
-![Get Data from Server](3getendpoints.PNG)
+![GET Data from Server](3getendpoints.PNG)
 
 
 ## At least 1 endpoint allowing user to update an item via PUT or PATCH HTTP verbs
