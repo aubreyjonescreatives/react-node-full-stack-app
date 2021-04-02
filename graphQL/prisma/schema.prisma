@@ -15,7 +15,7 @@ datasource db {
 model Gamer {
   id    Int     @id @default(autoincrement())
   email String  @unique
-  gamer  String
+  gamer  String?
   avatar String
   gamerlevel Int 
   games Game[]

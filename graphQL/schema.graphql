@@ -7,60 +7,25 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
-type Mutation {
-  createDraft(authorEmail: String!, data: PostCreateInput!): Post
-  deletePost(id: Int!): Post
-  incrementPostViewCount(id: Int!): Post
-  signupUser(data: UserCreateInput!): User!
-  togglePublishPost(id: Int!): Post
-}
-
-type Post {
-  author: User
-  content: String
+type Game {
   createdAt: DateTime!
+  defaultCredits: String
+  description: String
+  gamer: Gamer
   id: Int!
-  published: Boolean!
   title: String!
   updatedAt: DateTime!
-  viewCount: Int!
 }
 
-input PostCreateInput {
-  content: String
-  title: String!
-}
-
-input PostOrderByUpdatedAtInput {
-  updatedAt: SortOrder!
+type Gamer {
+  email: String!
+  gamer: String
+  games: [Game!]!
+  id: Int!
 }
 
 type Query {
-  allUsers: [User!]!
-  draftsByUser(userUniqueInput: UserUniqueInput!): [Post]
-  feed(orderBy: PostOrderByUpdatedAtInput, searchString: String, skip: Int, take: Int): [Post!]!
-  postById(id: Int): Post
-}
-
-enum SortOrder {
-  asc
-  desc
-}
-
-type User {
-  email: String!
-  id: Int!
-  name: String
-  posts: [Post!]!
-}
-
-input UserCreateInput {
-  email: String!
-  name: String
-  posts: [PostCreateInput!]
-}
-
-input UserUniqueInput {
-  email: String
-  id: Int
+  allGamers: [Gamer!]!
+  allGames: [Game!]!
+  gameById(id: Int): Game
 }

@@ -16,26 +16,33 @@ const {
   const Query = objectType({
     name: 'Query',
     definition(t) {
-      t.nonNull.list.nonNull.field('allUsers', {
-        type: 'User',
+      t.nonNull.list.nonNull.field('allGamers', {
+        type: 'Gamer',
         resolve: (_parent, _args, context) => {
-          return context.prisma.user.findMany()
+          return context.prisma.gamer.findMany()
+        },
+      })
+
+      t.nonNull.list.nonNull.field('allGames', {
+        type: 'Game',
+        resolve: (_parent, _args, context) => {
+          return context.prisma.game.findMany()
         },
       })
   
-      t.nullable.field('postById', {
-        type: 'Post',
+      t.nullable.field('gameById', {
+        type: 'Game',
         args: {
           id: intArg(),
         },
         resolve: (_parent, args, context) => {
-          return context.prisma.post.findUnique({
+          return context.prisma.game.findUnique({
             where: { id: args.id || undefined },
           })
         },
       })
   
-      t.nonNull.list.nonNull.field('feed', {
+/*       t.nonNull.list.nonNull.field('feed', {
         type: 'Post',
         args: {
           searchString: stringArg(),
@@ -65,9 +72,9 @@ const {
             orderBy: args.orderBy || undefined,
           })
         },
-      })
+      }) */
   
-      t.list.field('draftsByUser', {
+/*       t.list.field('draftsByUser', {
         type: 'Post',
         args: {
           userUniqueInput: nonNull(
@@ -90,10 +97,10 @@ const {
               },
             })
         },
-      })
+      }) */
     },
   })
-  
+  /* 
   const Mutation = objectType({
     name: 'Mutation',
     definition(t) {
@@ -203,49 +210,50 @@ const {
       })
     },
   })
-  
-  const User = objectType({
-    name: 'User',
+   */
+
+
+  const Gamer = objectType({
+    name: 'Gamer',
     definition(t) {
       t.nonNull.int('id')
-      t.string('name')
+      t.string('gamer')
       t.nonNull.string('email')
-      t.nonNull.list.nonNull.field('posts', {
-        type: 'Post',
+      t.nonNull.list.nonNull.field('games', {
+        type: 'Game',
         resolve: (parent, _, context) => {
-          return context.prisma.user
+          return context.prisma.gamer
             .findUnique({
               where: { id: parent.id || undefined },
             })
-            .posts()
+            .games()
         },
       })
     },
   })
   
-  const Post = objectType({
-    name: 'Post',
+  const Game = objectType({
+    name: 'Game',
     definition(t) {
       t.nonNull.int('id')
       t.nonNull.field('createdAt', { type: 'DateTime' })
       t.nonNull.field('updatedAt', { type: 'DateTime' })
       t.nonNull.string('title')
-      t.string('content')
-      t.nonNull.boolean('published')
-      t.nonNull.int('viewCount')
-      t.field('author', {
-        type: 'User',
+      t.string('description')
+      t.string('defaultCredits')
+      t.field('gamer', {
+        type: 'Gamer',
         resolve: (parent, _, context) => {
-          return context.prisma.post
+          return context.prisma.game
             .findUnique({
               where: { id: parent.id || undefined },
             })
-            .author()
+            .gamer()
         },
       })
     },
   })
-  
+  /* 
   const SortOrder = enumType({
     name: 'SortOrder',
     members: ['asc', 'desc'],
@@ -282,18 +290,20 @@ const {
       t.list.nonNull.field('posts', { type: 'PostCreateInput' })
     },
   })
-  
+  */
+
+
   const schema = makeSchema({
     types: [
       Query,
-      Mutation,
-      Post,
-      User,
-      UserUniqueInput,
+     // Mutation,
+      Game,
+      Gamer,
+     /*  UserUniqueInput,
       UserCreateInput,
       PostCreateInput,
       SortOrder,
-      PostOrderByUpdatedAtInput,
+      PostOrderByUpdatedAtInput, */
       DateTime,
     ],
     outputs: {
@@ -308,7 +318,7 @@ const {
         },
       ],
     },
-  })
+  }) 
   
   module.exports = {
     schema: schema,
