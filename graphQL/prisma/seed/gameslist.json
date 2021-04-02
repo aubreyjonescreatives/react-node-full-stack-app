@@ -1,0 +1,47 @@
+{
+
+"gameslist": {
+    "game": [
+        {
+        "id": 2345, 
+        "title": "Poker", 
+        "description": "A classic card game", 
+        "defaultCredits": "34" 
+       
+    }, 
+    {
+        "id": 2342, 
+        "title": "Poker", 
+        "description": "A classic card game", 
+        "defaultCredits": "34"
+       
+
+    },
+    {
+        "id": 2348, 
+        "title": "Poker", 
+        "description": "A classic card game", 
+        "defaultCredits": "34"
+       
+
+    },
+    {
+        "id": 2341, 
+        "title": "Poker", 
+        "description": "A classic card game", 
+        "defaultCredits": "34"
+      
+
+    }
+
+
+
+]
+
+
+
+}
+
+
+
+}
