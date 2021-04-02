@@ -1,7 +1,3 @@
-datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
-}
 
 generator client {
   provider = "prisma-client-js"
@@ -9,12 +5,20 @@ generator client {
 
 
 
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+
 model Gamer {
   id    Int     @id @default(autoincrement())
   email String  @unique
-  name  String
+  gamer  String
   avatar String
   gamerlevel Int 
+  games Game[]
   
 }
 
