@@ -14,7 +14,7 @@ import { Formik } from 'formik'
 import * as Yup from 'yup'
 
 
-const PORT = process.env.PORT || 3000
+//const PORT = process.env.PORT || 3000
 
 
 
@@ -76,7 +76,7 @@ const handleInput = (event) => {
     
 const handleUpdate = async (values) => {
     try {
-        const result = await axios.put(`http://localhost:${PORT}/card/update`, {
+        const result = await axios.put(`/card/update`, {
             data: {
                 cardId: values._id,
                 code: values.code, 
@@ -114,7 +114,7 @@ const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedCard._id)
     try {
-        await axios.delete(`http://localhost:${PORT}/card/delete`, { 
+        await axios.delete(`/card/delete`, { 
         data: {   
         cardId: selectedCard._id
         }
@@ -147,7 +147,7 @@ function hintButton() {
 
 const fetchCards = async () => {
     try {
-    const cards = await axios.get(`http://localhost:${PORT}/card`)
+    const cards = await axios.get(`/card`)
     setDeckData(cards.data)
     console.log(cards.data)
     } catch (err) {
