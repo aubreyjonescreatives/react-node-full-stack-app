@@ -2,48 +2,87 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
-const userData = [
+const gamerData = [
   {
-    name: 'Alice',
+    gamer: 'Alice',
     email: 'alice@prisma.io',
-    posts: {
+    gamerlevel: 21,
+    avatar: 'game.png', 
+    games: {
       create: [
         {
-          title: 'Join the Prisma Slack',
-          content: 'https://slack.prisma.io',
-          published: true,
+          title: 'BlackJack',
+          description: 'Beat the dealer by getting close to 21',
+          defaultCredits: '3',
+          
+        },
+        {
+          title: 'Hearts',
+          description: '4 player card game',
+          defaultCredits: '5',
+          
+        },
+        {
+          title: 'Solitaire',
+          description: 'Card sorting game',
+          defaultCredits: '4',
+          
         },
       ],
     },
   },
   {
-    name: 'Nilu',
-    email: 'nilu@prisma.io',
-    posts: {
+    gamer: 'Jordan',
+    email: 'jordan@prisma.io',
+    gamerlevel: 4,
+    avatar: 'game2.png', 
+    games: {
       create: [
         {
-          title: 'Follow Prisma on Twitter',
-          content: 'https://www.twitter.com/prisma',
-          published: true,
-          viewCount: 42,
+          title: 'Poker',
+          description: 'A classic poker game',
+          defaultCredits: '5',
+          
+        },
+        {
+          title: 'Freecell',
+          description: 'Card sorting game',
+          defaultCredits: '10',
+          
+        },
+        {
+          title: 'Spider Solitaire',
+          description: 'Card sorting game',
+          defaultCredits: '46',
+          
         },
       ],
     },
   },
   {
-    name: 'Mahmoud',
-    email: 'mahmoud@prisma.io',
-    posts: {
+    gamer: 'Taylor',
+    email: 'taylor@prisma.io',
+    gamerlevel: 105,
+    avatar: 'game6.png', 
+    games: {
       create: [
         {
-          title: 'Ask a question about Prisma on GitHub',
-          content: 'https://www.github.com/prisma/prisma/discussions',
-          published: true,
-          viewCount: 128,
+          title: 'Slots',
+          description: 'Get three of the same cards in a row to get the jackpot',
+          defaultCredits: '1',
+          
         },
         {
-          title: 'Prisma on YouTube',
-          content: 'https://pris.ly/youtube',
+          title: 'Hearts',
+          description: '4 player card game',
+          defaultCredits: '5',
+          
+        },
+        {
+          title: ' Spider Solitaire',
+          description: 'Card sorting game',
+          defaultCredits: '34',
+          
         },
       ],
     },
@@ -52,11 +91,11 @@ const userData = [
 
 async function main() {
   console.log(`Start seeding ...`)
-  for (const u of userData) {
-    const user = await prisma.user.create({
-      data: u,
+  for (const g of gamerData) {
+    const gamer = await prisma.gamer.create({
+      data: g,
     })
-    console.log(`Created user with id: ${user.id}`)
+    console.log(`Created gamer with id: ${gamer.id}`)
   }
   console.log(`Seeding finished.`)
 }
