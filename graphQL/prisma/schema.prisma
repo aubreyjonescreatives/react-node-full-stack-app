@@ -1,0 +1,32 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+
+model Gamer {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String
+  avatar String
+  gamerlevel Int 
+  
+}
+
+model Game {
+  id        Int     @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title String 
+  description String 
+  defaultCredits String 
+  gamer    Gamer?   @relation(fields: [gamerId], references: [id])
+  gamerId Int? 
+  
+}
+

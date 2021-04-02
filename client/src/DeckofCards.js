@@ -31,40 +31,17 @@ const Loading = () => (
 
 const DeckofCards = () => {
 
-
-const [deckData, setDeckData] = useState([])
-
-//const [restartdeckData, restartsetDeckData] = useState([])
-
-
-const [deleteOpen, setDeleteOpen] = useState(false)
 const [selectedCard, setSelectedCard] = useState(null)
-const [editOpen, setEditOpen] = useState(false)
+const [deckData, setDeckData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
+const [editOpen, setEditOpen] = useState(false)
+const [deleteOpen, setDeleteOpen] = useState(false)
 
 
+const handleInput = (event) => {
+    debounce(event.target.value)
+}
 
-const fetchCards = async () => {
-    try {
-    const cards = await axios.get(`http://localhost:${PORT}/card`)
-    setDeckData(cards.data)
-    console.log(cards.data)
-    } catch (err) {
-        console.log(err)
-    }
-    }
-    
-    
-    
-    useEffect(() => {
-        fetchCards()
-       
-    }, [])
-
-
-    const handleInput = (event) => {
-        debounce(event.target.value)
-    }
 
     const debounce = useCallback(
         _.debounce((searchVal) => {
@@ -72,6 +49,9 @@ const fetchCards = async () => {
         }, 1000), 
         [],
     )
+
+    
+
 
     const handleSearch = () => {
         if (debouncedName) {
@@ -98,7 +78,7 @@ const handleUpdate = async (values) => {
     try {
         const result = await axios.put(`http://localhost:${PORT}/card/update`, {
             data: {
-                id: values._id,
+                cardId: values._id,
                 code: values.code, 
                 image: values.image, 
                 value: values.value, 
@@ -113,24 +93,8 @@ const handleUpdate = async (values) => {
     }
     }
 
-    const handleAdd = async (values) => {
-        try {
-            const result = await axios.post(`http://localhost:${PORT}/card/add`, {
-                data: {
-                    id: values._id,
-                    code: values.code, 
-                    image: values.image, 
-                    value: values.value, 
-                    suit: values.suit
-                },
-            })
-            if (result.status === 200) {
-                fetchCards()
-            }
-        } catch (err) {
-            console.error(err)
-        }
-        }
+
+
     
 
 
@@ -162,6 +126,10 @@ const handleDelete = async () => {
 }
 
 
+
+
+
+
 function hintButton() {
     document.getElementById('gameHints').textContent = 'Hint: Add Cards or Press Restart'
     let hints = document.getElementById('gameHints') 
@@ -176,6 +144,23 @@ function hintButton() {
 
 
 
+
+const fetchCards = async () => {
+    try {
+    const cards = await axios.get(`http://localhost:${PORT}/card`)
+    setDeckData(cards.data)
+    console.log(cards.data)
+    } catch (err) {
+        console.log(err)
+    }
+    }
+    
+    
+    
+    useEffect(() => {
+        fetchCards()
+       
+    }, [])
 
 
 
@@ -194,7 +179,7 @@ return (
          <IconButton aria-label='search' onClick={handleSearch}>
              <SearchIcon />
              </IconButton>
-             <IconButton aria-label='add card' onClick={handleAdd}>
+             <IconButton aria-label='add card'>
                 <AddCircleIcon/>
              </IconButton>
      </form>
