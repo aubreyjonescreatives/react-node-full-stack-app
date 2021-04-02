@@ -19,7 +19,7 @@
 ## At least 1 endpoint allowing user to create an item via POST
 
 
-![POST endpoint](images/postrequest.PNG)
+![POST endpoint](images/postendpoint.PNG)
 
 ## At least 1 endpoint allowing user to delete an item via DELETE
 
