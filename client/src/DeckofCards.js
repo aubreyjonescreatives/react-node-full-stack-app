@@ -113,7 +113,25 @@ const handleUpdate = async (values) => {
     }
     }
 
-
+    const handleAdd = async (values) => {
+        try {
+            const result = await axios.post(`http://localhost:${PORT}/card/add`, {
+                data: {
+                    id: values._id,
+                    code: values.code, 
+                    image: values.image, 
+                    value: values.value, 
+                    suit: values.suit
+                },
+            })
+            if (result.status === 200) {
+                fetchCards()
+            }
+        } catch (err) {
+            console.error(err)
+        }
+        }
+    
 
 
 
@@ -156,24 +174,6 @@ function hintButton() {
 }
 
 
-//function restartButton() {
-
-
-// const fetchCardsRestart = async () => {
-//     try {
-//     const cards = await axios.get(`https://deckofcardsapi.com/api/deck/new/draw/?count=52`)
-//     restartsetDeckData(cards.data)
-//     console.log(cards.data)
-//     document.getElementById('restartGame').textContent = cards.data
-//     } catch (err) {
-//         console.log(err)
-//     }
-    
-//     }
-
-//     fetchCardsRestart()
-  
-// }
 
 
 
@@ -194,7 +194,7 @@ return (
          <IconButton aria-label='search' onClick={handleSearch}>
              <SearchIcon />
              </IconButton>
-             <IconButton aria-label='add card'>
+             <IconButton aria-label='add card' onClick={handleAdd}>
                 <AddCircleIcon/>
              </IconButton>
      </form>
