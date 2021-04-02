@@ -100,11 +100,11 @@ const {
       }) */
     },
   })
-  /* 
+   
   const Mutation = objectType({
     name: 'Mutation',
     definition(t) {
-      t.nonNull.field('signupUser', {
+     /*  t.nonNull.field('signupUser', {
         type: 'User',
         args: {
           data: nonNull(
@@ -129,24 +129,24 @@ const {
             },
           })
         },
-      })
+      }) */
   
-      t.field('createDraft', {
-        type: 'Post',
+      t.field('createGame', {
+        type: 'Game',
         args: {
           data: nonNull(
             arg({
-              type: 'PostCreateInput',
+              type: 'GameCreateInput',
             }),
           ),
-          authorEmail: nonNull(stringArg()),
+          gamerEmail: nonNull(stringArg()),
         },
         resolve: (_, args, context) => {
-          return context.prisma.post.create({
+          return context.prisma.game.create({
             data: {
               title: args.data.title,
-              content: args.data.content,
-              author: {
+              description: args.data.content,
+              gamer: {
                 connect: { email: args.authorEmail },
               },
             },
@@ -154,7 +154,7 @@ const {
         },
       })
   
-      t.field('togglePublishPost', {
+/*       t.field('togglePublishPost', {
         type: 'Post',
         args: {
           id: nonNull(intArg()),
@@ -178,9 +178,9 @@ const {
             data: { published: !post.published },
           })
         },
-      })
+      }) */
   
-      t.field('incrementPostViewCount', {
+     /*  t.field('incrementPostViewCount', {
         type: 'Post',
         args: {
           id: nonNull(intArg()),
@@ -196,8 +196,8 @@ const {
           })
         },
       })
-  
-      t.field('deletePost', {
+   */
+   /*   t.field('deletePost', {
         type: 'Post',
         args: {
           id: nonNull(intArg()),
@@ -207,10 +207,10 @@ const {
             where: { id: args.id },
           })
         },
-      })
+      })*/
     },
   })
-   */
+   
 
 
   const Gamer = objectType({
@@ -273,14 +273,18 @@ const {
       t.string('email')
     },
   })
+
+  */
   
-  const PostCreateInput = inputObjectType({
-    name: 'PostCreateInput',
+  const GameCreateInput = inputObjectType({
+    name: 'GameCreateInput',
     definition(t) {
       t.nonNull.string('title')
-      t.string('content')
+      t.string('description')
     },
   })
+
+  /*
   
   const UserCreateInput = inputObjectType({
     name: 'UserCreateInput',
@@ -296,12 +300,14 @@ const {
   const schema = makeSchema({
     types: [
       Query,
-     // Mutation,
+      Mutation,
       Game,
       Gamer,
      /*  UserUniqueInput,
       UserCreateInput,
-      PostCreateInput,
+      */
+      GameCreateInput,
+      /*
       SortOrder,
       PostOrderByUpdatedAtInput, */
       DateTime,

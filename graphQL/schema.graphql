@@ -17,11 +17,20 @@ type Game {
   updatedAt: DateTime!
 }
 
+input GameCreateInput {
+  description: String
+  title: String!
+}
+
 type Gamer {
   email: String!
   gamer: String
   games: [Game!]!
   id: Int!
+}
+
+type Mutation {
+  createGame(data: GameCreateInput!, gamerEmail: String!): Game
 }
 
 type Query {
