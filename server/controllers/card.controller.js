@@ -2,7 +2,7 @@ import { Card } from '../models/card.js'
 
 
 
-export const addCard = ((req, res) => {
+export const postaddCard = ((req, res) => {
 
 const cards = new Card({
     code: req.body.code, 
@@ -16,6 +16,9 @@ res.json(cards)
 
 
 })
+
+
+
 
 export const getAllCards = ((req, res) => {
     Card.find()

@@ -1,4 +1,4 @@
-import { Product } from '../models/product.js'
+import { Card } from '../models/card.js'
 
 
 

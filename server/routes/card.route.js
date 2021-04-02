@@ -2,10 +2,10 @@ import {Router} from 'express'
 
 export const cardRouter = Router()
 
-import { addCard, getAllCards, getCards, getCardById, putEditCard, deleteCard } from '../controllers/card.controller.js'
+import { postaddCard, getAllCards, getCards, getCardById, putEditCard, deleteCard } from '../controllers/card.controller.js'
 
 
-cardRouter.post('/', addCard)
+cardRouter.post('/', postaddCard)
 
 cardRouter.get('/', getAllCards)
 
