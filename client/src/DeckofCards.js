@@ -38,6 +38,33 @@ const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
 const url = `https://crud-node-backend-app.herokuapp.com/card`
 
+
+
+
+
+
+const fetchCards = async () => {
+    try {
+    const cards = await axios.get(`${url}`)
+    setDeckData(cards.data)
+    console.log(cards.data)
+    } catch (err) {
+        console.log(err)
+    }
+    }
+    
+    
+    
+    useEffect(() => {
+        fetchCards()
+       
+    }, [])
+
+
+
+
+
+
 const handleInput = (event) => {
     debounce(event.target.value)
 }
@@ -143,24 +170,6 @@ function hintButton() {
 
 
 
-
-
-const fetchCards = async () => {
-    try {
-    const cards = await axios.get(`${url}`)
-    setDeckData(cards.data)
-    console.log(cards.data)
-    } catch (err) {
-        console.log(err)
-    }
-    }
-    
-    
-    
-    useEffect(() => {
-        fetchCards()
-       
-    }, [])
 
 
 
