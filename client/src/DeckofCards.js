@@ -36,7 +36,7 @@ const [deckData, setDeckData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
-
+const url = `https://crud-node-backend-app.herokuapp.com/card`
 
 const handleInput = (event) => {
     debounce(event.target.value)
@@ -76,7 +76,7 @@ const handleInput = (event) => {
     
 const handleUpdate = async (values) => {
     try {
-        const result = await axios.put(`/card/update`, {
+        const result = await axios.put(`${url}/update`, {
             data: {
                 cardId: values._id,
                 code: values.code, 
@@ -114,7 +114,7 @@ const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedCard._id)
     try {
-        await axios.delete(`/card/delete`, { 
+        await axios.delete(`${url}/delete`, { 
         data: {   
         cardId: selectedCard._id
         }
@@ -147,7 +147,7 @@ function hintButton() {
 
 const fetchCards = async () => {
     try {
-    const cards = await axios.get(`/card`)
+    const cards = await axios.get(`${url}`)
     setDeckData(cards.data)
     console.log(cards.data)
     } catch (err) {
