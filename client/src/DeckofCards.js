@@ -31,12 +31,12 @@ const Loading = () => (
 
 const DeckofCards = () => {
 
-const [selectedCard, setSelectedCard] = useState(null)
+const [selectedCard, setSelectedCard] = useState( {_id: ''})
 const [deckData, setDeckData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
-const url = `https://crud-node-backend-app.herokuapp.com/card`
+//const url = `https://crud-node-backend-app.herokuapp.com/card`
 
 
 
@@ -45,7 +45,7 @@ const url = `https://crud-node-backend-app.herokuapp.com/card`
 
 const fetchCards = async () => {
     try {
-    const cards = await axios.get(`${url}`)
+    const cards = await axios.get(`/card`)
     setDeckData(cards.data)
     console.log(cards.data)
     } catch (err) {
@@ -103,7 +103,7 @@ const handleInput = (event) => {
     
 const handleUpdate = async (values) => {
     try {
-        const result = await axios.put(`${url}/update`, {
+        const result = await axios.put(`/card/update`, {
             data: {
                 cardId: values._id,
                 code: values.code, 
@@ -128,7 +128,7 @@ const handleUpdate = async (values) => {
 
 const handleClickDeleteOpen = (card) => {
     console.log('You clicked to delete')
-    console.log(card.card._id)
+    console.log(card._id)
     setSelectedCard(card.card)
     setDeleteOpen(true)
 }
@@ -141,7 +141,7 @@ const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedCard._id)
     try {
-        await axios.delete(`${url}/delete`, { 
+        await axios.delete(`/card/delete`, { 
         data: {   
         cardId: selectedCard._id
         }

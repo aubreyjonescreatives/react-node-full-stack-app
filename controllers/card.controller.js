@@ -30,6 +30,9 @@ export const getAllCards = ((req, res) => {
 
 export const getCards = async (req, res) => {
     const cards = await Card.find()
+    if (!cards) {
+        return res.status(400).json({Message: `No movies found`})
+    }
     res.json(cards)
 }
 
@@ -57,7 +60,7 @@ export const putEditCard = async (req, res) => {
     } 
     try {
     const card = await Card.findByIdAndUpdate(cardId, updatedObj, {new: true})
-        res.json(card)
+        res.status(200).json(card)
     } catch(err) {
         res.status(400).json({Message: `Could not update: ${err}`})
     }

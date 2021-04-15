@@ -1,5 +1,5 @@
 import React from 'react'
-//import { Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
 import DeckofCards from './DeckofCards'
 import TopNavigation from './TopNavigation'
@@ -11,14 +11,12 @@ import TopNavigation from './TopNavigation'
 function App() {
  
   return (
-    <div className="App">
-  <TopNavigation/>
-  <DeckofCards/>
- 
+   <Router>
+       <TopNavigation/>
+     <Route path='/' exact component={DeckofCards}/>
+   </Router>
 
-  </div>
-  );
-
+  )
 
 }
 

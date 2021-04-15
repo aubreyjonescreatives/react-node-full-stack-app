@@ -19,6 +19,8 @@
     "trailingComma": "all"
   },
   "scripts": {
+    "launchDocker": "docker run --name graphql-docker --e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v pgdata:/var/lib/postgresql/data postgres:latest",
+    "migrate": "npx prisma migrate dev  --name init",
     "dev": "nodemon src/server.js", 
     "seed": "npx prisma db seed --preview-feature",
     "seed:game": "node prisma/seed/gamesSeed.js"

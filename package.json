@@ -1,15 +1,15 @@
 {
   "name": "reactnodefullstackapp",
   "version": "0.0.1",
-  "description": "Welcome to a full stack app combining react and node",
+  "description": "Welcome to a full stack app of react and node",
   "main": "app.js",
   "type": "module",
   "scripts": {
     "postinstall": "cd client && npm install",
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "seed": "node seed/loadAPI.js",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "build": "npm install && cd client && npm isntall && npm run build"
+    "build": "npm install && cd client && npm install && npm run build"
   },
   "author": "Aubrey Jones",
   "license": "ISC",
@@ -29,7 +29,9 @@
     "express": "^4.17.1",
     "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
-    "mongoose": "^5.11.19"
+    "mongoose": "^5.11.19",
+    "path": "^0.12.7",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

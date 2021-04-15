@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 //import bodyParser from 'body-parser'
 import { apiRouter} from './routes/api.route.js'
 //import { productRouter} from './routes/product.route.js'
@@ -7,23 +8,28 @@ import mongoose from 'mongoose'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 
+
+
+//const __dirname = path.join(new URL(import.meta.url).pathname)
+
 mongoose.set('useFindAndModify', false)
 
 dotenv.config()
 
-
-
-const port = process.env.PORT || 5000 
+const port = process.env.PORT || 5050 
 
 const app = express()
 
 app.use(cors())
 
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: true}))
 
 app.use(express.json())
 
+
 app.use(express.static('public'))
+
+//app.use(express.static(path.join(__dirname, '/client/build')))
 
 app.use('/api', apiRouter)
 

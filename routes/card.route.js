@@ -5,9 +5,9 @@ export const cardRouter = Router()
 import { postaddCard, getAllCards, getCards, getCardById, putEditCard, deleteCard } from '../controllers/card.controller.js'
 
 
-cardRouter.post('/add', postaddCard)
+cardRouter.post('/card', postaddCard)
 
-cardRouter.get('/', getAllCards)
+cardRouter.get('/card', getAllCards)
 
 cardRouter.get('/async', getCards)
 
