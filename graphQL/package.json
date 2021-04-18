@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "@prisma/client": "2.20.0",
+    "@prisma/client": "^2.20.0",
     "apollo-server": "^2.22.2",
     "graphql": "^15.5.0",
     "graphql-iso-date": "^3.6.1",
     "nexus": "^1.0.0"
   },
   "devDependencies": {
-    "prisma": "2.20.0",
-    "nodemon": "2.0.7"
+    "nodemon": "2.0.7",
+    "prisma": "^2.20.0"
   },
   "prettier": {
     "singleQuote": true,
@@ -19,11 +19,12 @@
     "trailingComma": "all"
   },
   "scripts": {
-    "launchDocker": "docker run --name graphql-docker --e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v pgdata:/var/lib/postgresql/data postgres:latest",
+    "launchDocker": "docker run --name graphql-docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v pgdata:/var/lib/postgresql/data postgres:latest",
     "migrate": "npx prisma migrate dev  --name init",
-    "dev": "nodemon src/server.js", 
+    "dev": "nodemon src/server.js",
     "seed": "npx prisma db seed --preview-feature",
-    "seed:game": "node prisma/seed/gamesSeed.js"
+    "seed:game": "node prisma/seed/gamesSeed.js",
+    "seed:game2": "node prisma/seed/seed.js"
   },
   "engines": {
     "node": ">=10.0.0"
