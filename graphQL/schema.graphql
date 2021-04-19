@@ -7,6 +7,20 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `dat
 """
 scalar DateTime
 
+type FavoriteGame {
+  description: String
+  email: String!
+  gamer: String
+  title: String!
+}
+
+input FavoritesCreateInput {
+  description: String
+  email: String!
+  gamer: String
+  title: String!
+}
+
 type Game {
   createdAt: DateTime!
   defaultCredits: String
@@ -19,6 +33,7 @@ type Game {
 
 input GameCreateInput {
   description: String
+  email: String!
   title: String!
 }
 
@@ -30,11 +45,14 @@ type Gamer {
 }
 
 type Mutation {
-  createGame(data: GameCreateInput!, gamerEmail: String!): Game
+  addFavorite(data: FavoritesCreateInput!): FavoriteGame!
+  createGame(data: GameCreateInput!, email: String!): Game
+  deleteGame(id: Int!): Game
 }
 
 type Query {
   allGamers: [Gamer!]!
   allGames: [Game!]!
   gameById(id: Int): Game
+  gamerFavs: [FavoriteGame!]!
 }

@@ -1,0 +1,89 @@
+{
+    "favoriteinfo": {
+        "gamerinfo": [
+            {
+    "gamer": "Alice",
+    "email": "alice@prisma.io",
+    "gamerlevel": 21,
+    "avatar": "game.png", 
+    "games": [
+        {
+          "title": "BlackJack",
+          "description": "Beat the dealer by getting close to 21",
+          "defaultCredits": 3
+          
+        },
+        {
+          "title": "Hearts",
+          "description": "4 player card game",
+          "defaultCredits": 5
+          
+        },
+        {
+          "title": "Solitaire",
+          "description": "Card sorting game",
+          "defaultCredits": 4
+          
+        }
+    ]
+  },
+  {
+    "gamer": "Jordan",
+    "email": "jordan@prisma.io",
+    "gamerlevel": 4,
+    "avatar": "game2.png", 
+    "games": [
+        {
+          "title": "Poker",
+          "description": "A classic poker game",
+          "defaultCredits": 5
+          
+        },
+        {
+          "title": "Freecell",
+          "description": "Card sorting game",
+          "efaultCredits": 10
+          
+        },
+        {
+          "title": "Spider Solitaire",
+          "description": "Card sorting game",
+          "defaultCredits": 46
+          
+        }
+      ]
+    },
+  {
+    "gamer": "Taylor",
+    "email": "taylor@prisma.io",
+    "gamerlevel": 105,
+    "avatar": "game6.png", 
+    "games": [
+        {
+          "title": "Slots",
+          "description": "Get three of the same cards in a row to get the jackpot",
+          "defaultCredits": 1
+          
+        },
+        {
+          "title": "Hearts",
+          "description": "4 player card game",
+          "defaultCredits": 5
+          
+        },
+        {
+          "title": "Spider Solitaire",
+          "description": "Card sorting game",
+          "defaultCredits": 34
+          
+        }
+      ]
+    }
+]
+  }
+
+            }
+        
+        
+    
+    

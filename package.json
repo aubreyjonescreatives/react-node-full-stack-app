@@ -4,12 +4,21 @@
   "description": "Welcome to a full stack app of react and node",
   "main": "app.js",
   "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "postinstall": "cd client && npm install",
-    "start": "node app.js",
+    "postinstall": "cd client && npm install && cd ../graphQL && npm install",
+    "launch": "cd graphQL && npm run launchDocker",
+    "migrate": "cd graphQL && npm run migrate",
     "seed": "node seed/loadAPI.js",
+    "seed:game": "cd graphQL && npm run seed:game",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "build": "npm install && cd client && npm install && npm run build"
+    "build": "npm install && cd client && npm install && npm run build",
+    "buildDocker": "docker build .",
+    "start": "node app.js",
+    "start-dev": "nodemon app.js & cd graphQL && npm run dev"
+    
   },
   "author": "Aubrey Jones",
   "license": "ISC",

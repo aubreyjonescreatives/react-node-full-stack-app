@@ -22,8 +22,19 @@ CREATE TABLE "Game" (
     PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "FavoriteGame" (
+    "gamer" TEXT,
+    "email" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Gamer.email_unique" ON "Gamer"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "FavoriteGame.email_unique" ON "FavoriteGame"("email");
 
 -- AddForeignKey
 ALTER TABLE "Game" ADD FOREIGN KEY ("gamerId") REFERENCES "Gamer"("id") ON DELETE SET NULL ON UPDATE CASCADE;

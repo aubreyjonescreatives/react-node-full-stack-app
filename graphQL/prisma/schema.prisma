@@ -39,3 +39,14 @@ model Game {
   
 }
 
+
+model FavoriteGame {
+gamer  String?
+   email String  @unique
+  title String 
+  description String 
+ 
+  
+  
+}
+

@@ -29,6 +29,12 @@ const {
           return context.prisma.game.findMany()
         },
       })
+      t.nonNull.list.nonNull.field('gamerFavs', {
+        type: 'FavoriteGame',
+        resolve: (_parent, _args, context) => {
+          return context.prisma.favoritegame.findMany()
+        },
+      })
   
       t.nullable.field('gameById', {
         type: 'Game',
@@ -104,32 +110,24 @@ const {
   const Mutation = objectType({
     name: 'Mutation',
     definition(t) {
-     /*  t.nonNull.field('signupUser', {
-        type: 'User',
+       t.nonNull.field('addFavorite', {
+        type: 'FavoriteGame',
         args: {
           data: nonNull(
             arg({
-              type: 'UserCreateInput',
+              type: 'FavoritesCreateInput',
             }),
           ),
         },
         resolve: (_, args, context) => {
-          const postData = args.data.posts
-            ? args.data.posts.map((post) => {
-                return { title: post.title, content: post.content || undefined }
-              })
-            : []
-          return context.prisma.user.create({
+          return context.prisma.favoritegame.create({
             data: {
-              name: args.data.name,
+              gamer: args.data.gamer,
               email: args.data.email,
-              posts: {
-                create: postData,
-              },
             },
           })
         },
-      }) */
+      }) 
   
       t.field('createGame', {
         type: 'Game',
@@ -139,7 +137,7 @@ const {
               type: 'GameCreateInput',
             }),
           ),
-          gamerEmail: nonNull(stringArg()),
+          email: nonNull(stringArg()),
         },
         resolve: (_, args, context) => {
           return context.prisma.game.create({
@@ -197,17 +195,17 @@ const {
         },
       })
    */
-   /*   t.field('deletePost', {
-        type: 'Post',
+      t.field('deleteGame', {
+        type: 'Game',
         args: {
           id: nonNull(intArg()),
         },
         resolve: (_, args, context) => {
-          return context.prisma.post.delete({
+          return context.prisma.game.delete({
             where: { id: args.id },
           })
         },
-      })*/
+      })
     },
   })
    
@@ -253,6 +251,17 @@ const {
       })
     },
   })
+
+  
+  const FavoriteGame = objectType({
+    name: 'FavoriteGame',
+    definition(t) {
+      t.string('gamer')
+      t.nonNull.string('email')
+      t.nonNull.string('title')
+      t.string('description')
+    },
+  })
   /* 
   const SortOrder = enumType({
     name: 'SortOrder',
@@ -280,6 +289,18 @@ const {
     name: 'GameCreateInput',
     definition(t) {
       t.nonNull.string('title')
+      t.nonNull.string('email')
+      t.string('description')
+    },
+  })
+
+  
+  const FavoritesCreateInput = inputObjectType({
+    name: 'FavoritesCreateInput',
+    definition(t) {
+      t.string('gamer')
+      t.nonNull.string('email')
+      t.nonNull.string('title')
       t.string('description')
     },
   })
@@ -303,9 +324,11 @@ const {
       Mutation,
       Game,
       Gamer,
+      FavoriteGame,
      /*  UserUniqueInput,
       UserCreateInput,
       */
+      FavoritesCreateInput,
       GameCreateInput,
       /*
       SortOrder,
