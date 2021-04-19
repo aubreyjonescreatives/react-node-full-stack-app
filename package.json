@@ -18,7 +18,6 @@
     "buildDocker": "docker build .",
     "start": "node app.js",
     "start-dev": "nodemon app.js & cd graphQL && npm run dev"
-    
   },
   "author": "Aubrey Jones",
   "license": "ISC",
@@ -33,6 +32,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -40,6 +40,7 @@
     "lodash.debounce": "^4.0.8",
     "mongoose": "^5.11.19",
     "path": "^0.12.7",
+    "react-bootstrap": "^1.5.2",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {

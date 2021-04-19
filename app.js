@@ -10,7 +10,7 @@ import cors from 'cors'
 
 
 
-//const __dirname = path.join(new URL(import.meta.url).pathname)
+const __dirname = path.join(new URL(import.meta.url).pathname)
 
 mongoose.set('useFindAndModify', false)
 
@@ -27,13 +27,21 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 
-app.use(express.static('public'))
+//app.use(express.static('public'))
 
-//app.use(express.static(path.join(__dirname, '/client/build')))
+app.use(express.static(path.resolve(__dirname, 'client/build')))
 
 app.use('/api', apiRouter)
 
 //app.use('/product', productRouter)
+
+app.get("/", (req, res) => {
+    res.json({ message: "Hello from Server!"})
+})
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client/build', 'index.html'))
+})
 
 app.use('/card', cardRouter)
 

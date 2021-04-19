@@ -51,12 +51,26 @@ header {
 
 .nav-container {
     width: 100%; 
+    background-color: $primaryColor; 
+    height: 50px; 
 }
 
 .menuLogo {
     width: 50%; 
     height: 100px; 
 }
+
+.navLink {
+    padding: 20px; 
+    margin: 50px 20px;
+    color: $secondaryColor; 
+    font-size: 24px; 
+    text-decoration: none; 
+    
+  
+}
+
+
 
 /* ------------------------MAIN----------------------------- */
 

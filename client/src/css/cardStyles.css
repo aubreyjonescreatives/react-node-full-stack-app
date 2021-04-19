@@ -101,11 +101,20 @@ body {
 /* ------------------------END HEADER----------------------------- */
 /* ------------------------TOPNAV----------------------------- */
 .nav-container {
-  width: 100%; }
+  width: 100%;
+  background-color: #0B6E4F;
+  height: 50px; }
 
 .menuLogo {
   width: 50%;
   height: 100px; }
+
+.navLink {
+  padding: 20px;
+  margin: 50px 20px;
+  color: #BFD7EA;
+  font-size: 24px;
+  text-decoration: none; }
 
 /* ------------------------MAIN----------------------------- */
 .main-1 {
@@ -113,7 +122,7 @@ body {
   .main-1 h1 {
     clear: both;
     margin: 50px 20px 50px 30px;
-    color: #000000;
+    color: #0B6E4F;
     text-align: left;
     font-size: 30px; }
   .main-1 h2 {

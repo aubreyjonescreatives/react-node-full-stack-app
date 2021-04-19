@@ -103,7 +103,7 @@ const handleInput = (event) => {
     
 const handleUpdate = async (values) => {
     try {
-        const result = await axios.put(`/card/update`, {
+        const result = await axios.put(`http://localhost:5050/card/update`, {
             data: {
                 cardId: values._id,
                 code: values.code, 
@@ -141,7 +141,7 @@ const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedCard._id)
     try {
-        await axios.delete(`/card/delete`, { 
+        await axios.delete(`http://localhost:5050/card/delete`, { 
         data: {   
         cardId: selectedCard._id
         }
