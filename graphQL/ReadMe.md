@@ -4,7 +4,7 @@
 
 https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=dockerhomepage&utm_content=namer&utm_term=dockerhomepage&utm_budget=growth&gclid=CjwKCAjwmv-DBhAMEiwA7xYrd1H7zUwr-zsEQ9r73h_0Ns7YHBVoOHUk4bPPRptIS56f8R7v2IEiHxoCYeIQAvD_BwE  
 
-## After you have downloaded docker and the graphql folder, you will need to follow my scripts tag accessed by my package.json file in this order using NPM: 
+## After you have downloaded docker and the graphql folder, you will need to follow my scripts tag accessed by my package.json file in this order using NPM in your terminal: 
 
 1. npm run launchDocker (to create the docker datastore) 
 2. npm run migrate (to migrate prisma)
