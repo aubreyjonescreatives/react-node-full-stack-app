@@ -33,7 +33,7 @@ datasource db {
 
 ## Docker-based PostgreSQL or MySQL as your data store
 
-![docker](../images/docer.PNG)
+![docker](../images/docker.PNG)
 
 
 ## At least 3 Query resolvers allowing users to get data from your server
@@ -198,7 +198,11 @@ const Mutation = objectType({
 
 ## Your datastore will contain at least 25 items
 
-### Utilizing the NPM run seed:game script command in your terminal from above will add at least 25 items to your datastore via gameslist.json and gamesSeed.js
+### Utilizing the NPM run seed:game script command in your terminal from above instructions will add at least 25 items to your datastore via gameslist.json and gamesSeed.js. You can visualize this in your localhost:4000 by entering the allGames get query data. 
+
+
+![docker](../images/queryallgames.PNG)
+
 
 
 ## Your app will be deployable locally using Docker and will have seed data entered into the datastore.
