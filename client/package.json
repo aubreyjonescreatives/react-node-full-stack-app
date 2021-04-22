@@ -27,6 +27,9 @@
     "react-lazyload": "^3.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-service-worker": "^0.1.1",
+    "service-worker": "0.0.0",
+    "serviceworker": "^0.1.7",
     "web-vitals": "^0.2.4",
     "yup": "^0.32.9"
   },

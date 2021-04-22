@@ -41,15 +41,16 @@ query {
     }
 }
 `
+console.log(ALL_GAMES)
 
 const UPDATE_GAME = gql`
-mutation updateGame ($id: Int!, $title: String!, $description: String, $defaultCredits: String, $gameCode: String) {
+mutation updateGame ($id: Int!, $title: String!, $description: String, $defaultCredits: String) {
     updateGame (id: $id, 
         data: {
             title: $title, 
             description: $description,
             defaultCredits: $defaultCredits, 
-            gameCode: $gameCode,
+           
         }
         ) {
             id
@@ -80,9 +81,26 @@ const handleInput = (event) => {
 }
 
 
-    const { data} = useQuery(ALL_GAMES)
+    const { loading, error, data} = useQuery(ALL_GAMES)
     const [updateGame] = useMutation(UPDATE_GAME)
     const [deleteGame] = useMutation(DELETE_GAME)
+
+
+    if (loading) {
+        return (
+            <Container>
+                <Typography>Loading...</Typography>
+            </Container>
+        )
+    }
+    if (error) {
+        return (
+            <Typography>{`${error.message}`}</Typography>
+        )
+    }
+
+
+
 
 
     const gameList = data.allGames 
@@ -122,7 +140,6 @@ const handleInput = (event) => {
                 id: selectedGame.id, 
                 title: values.title, 
                 defaultCredits: values.defaultCredits, 
-                gameCode: values.gameCode, 
                 description: values.description
             }
         })
@@ -180,20 +197,20 @@ return (
     aria-labelledby='edit-dial'>
     <Formik
     initialValues={{
-        title: selectedGame?.title, 
-        defaultCredits: selectedGame?.defaultCredits, 
+        title: selectedGame?.title,  
         description: selectedGame?.description, 
-        gameCode: selectedGame?.gameCode,
+        defaultCredits: selectedGame?.defaultCredits,
+       
     }}
     validationSchema={Yup.object().shape({
         id: Yup.string('Enter Game ID').required(
             'Game ID is required', 
         ),
+        
         defaultCredits: Yup.string('Enter Game Default Credits').required(
             'Default Credits code is required',
         ),
         description: Yup.string('Description'), 
-        gameCode: Yup.string('Game Code'), 
          
     })}
     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
@@ -253,21 +270,6 @@ return (
             error={Boolean(touched.defaultCredits && errors.defaultCredits)} 
             helperText={touched.defaultCredits && errors.defaultCredits} 
             />
-            <Box>
-                <TextField 
-            autoFocus 
-            id="gameCode"
-            name="gameCode"
-            label="Code"
-            type="text"
-            fullWidth
-            value={values.gameCode}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.gameCode && errors.gameCode)} 
-            helperText={touched.gameCode && errors.gameCode} 
-                />
-            </Box>
             <Box>
                 <TextField 
             autoFocus 
