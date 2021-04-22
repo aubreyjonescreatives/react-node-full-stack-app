@@ -198,7 +198,7 @@ const Mutation = objectType({
 
 ## Your datastore will contain at least 25 items
 
-### Utilizing NPM run seed:game will add at least 25 items to your datastore via gameslist.json and gamesSeed.js
+### Utilizing the NPM run seed:game script command in your terminal from above will add at least 25 items to your datastore via gameslist.json and gamesSeed.js
 
 
 ## Your app will be deployable locally using Docker and will have seed data entered into the datastore.
