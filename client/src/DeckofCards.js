@@ -31,7 +31,7 @@ const Loading = () => (
 
 const DeckofCards = () => {
 
-const [selectedCard, setSelectedCard] = useState( {_id: ''})
+const [selectedCard, setSelectedCard] = useState( { code: ''})
 const [deckData, setDeckData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
 const [editOpen, setEditOpen] = useState(false)
@@ -82,7 +82,7 @@ const handleInput = (event) => {
 
     const handleSearch = () => {
         if (debouncedName) {
-            setDeckData(deckData.filter(deck => deck._id.includes(debouncedName)))
+            setDeckData(deckData.filter(deck => deck.code.includes(debouncedName)))
         } else {
             fetchCards()
         }

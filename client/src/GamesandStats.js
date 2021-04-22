@@ -176,11 +176,11 @@ return (
 
     {gameList.map((game) => {
      return (
-    <Card className="card-container" key={game.id}>
+    <Card className="game-container" key={game.id}>
     <LazyLoad placeholder={<Loading></Loading>}> 
-     <Typography>{game.title}</Typography>
-     <Typography>{game.description}</Typography>
-     <Typography>{game.defaultCredits}</Typography>
+     <Typography className="gameInfoTitle">{game.title}</Typography>
+     <Typography className="gameInfo">{game.description}</Typography>
+     <Typography className="gameInfo">{game.defaultCredits}</Typography>
      <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
      <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({game})}><DeleteIcon/></IconButton>
      </LazyLoad>
@@ -203,8 +203,8 @@ return (
        
     }}
     validationSchema={Yup.object().shape({
-        id: Yup.string('Enter Game ID').required(
-            'Game ID is required', 
+        id: Yup.string('Enter Game Title').required(
+            'Game Title is required', 
         ),
         
         defaultCredits: Yup.string('Enter Game Default Credits').required(
@@ -248,7 +248,7 @@ return (
             autoFocus 
             id="title"
             name="title"
-            label="Game ID"
+            label="Game Title"
             type="text"
             fullWidth
             value={values.title}
@@ -257,6 +257,21 @@ return (
             error={Boolean(touched.title && errors.title)} 
             helperText={touched.title && errors.title} 
             />
+               <Box>
+                <TextField 
+            autoFocus 
+            id="description"
+            name="description"
+            label="Game Description"
+            type="text"
+            fullWidth
+            value={values.description}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.description && errors.description)} 
+            helperText={touched.description && errors.description} 
+                />
+            </Box>
             <TextField 
             autoFocus 
             id="defaultCredits"
@@ -270,23 +285,6 @@ return (
             error={Boolean(touched.defaultCredits && errors.defaultCredits)} 
             helperText={touched.defaultCredits && errors.defaultCredits} 
             />
-            <Box>
-                <TextField 
-            autoFocus 
-            id="description"
-            name="description"
-            label="Game Description"
-            type="text"
-            fullWidth
-            value={values.description}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.description && errors.description)} 
-            helperText={touched.description && errors.description} 
-
-
-                />
-            </Box>
          </DialogContent>
          <DialogActions>
              <Button onClick={handleCloseEdit}>Cancel</Button>

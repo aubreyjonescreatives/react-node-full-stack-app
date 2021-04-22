@@ -31,7 +31,7 @@ export const getAllCards = ((req, res) => {
 export const getCards = async (req, res) => {
     const cards = await Card.find()
     if (!cards) {
-        return res.status(400).json({Message: `No movies found`})
+        return res.status(400).json({Message: `No cards found`})
     }
     res.json(cards)
 }

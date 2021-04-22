@@ -136,6 +136,20 @@ body {
   .main-1 .gamestatsSearch {
     display: flex;
     justify-content: center; }
+  .main-1 .game-container {
+    display: inline-flex;
+    width: 200px;
+    height: 200px;
+    margin: 30px;
+    box-shadow: 10px; }
+  .main-1 .game-container:hover {
+    transform: translate3D(0, -1px, 0) scale(1.05); }
+  .main-1 .gameInfoTitle {
+    padding: 10px;
+    font-size: 24px;
+    color: #0B6E4F; }
+  .main-1 .gameInfo {
+    padding: 10px; }
   .main-1 .card-container {
     clear: both;
     display: inline-block;
