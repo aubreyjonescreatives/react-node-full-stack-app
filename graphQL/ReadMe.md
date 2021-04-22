@@ -17,7 +17,7 @@ https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=dockerhome
 ## Here are key points to this graphql server: 
 
 
-* Prisma as your data modeling tool
+## Prisma as your data modeling tool
 
 ```
 generator client {
