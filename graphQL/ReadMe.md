@@ -14,7 +14,7 @@ https://www.docker.com/?utm_source=google&utm_medium=cpc&utm_campaign=dockerhome
 
 ## By now, you should have access to your localhost:4000 to view the graphql server via localhost
 
-## Here are key points to this graphql server: 
+# Here are key points to this graphql server: 
 
 
 ## Prisma as your data modeling tool
