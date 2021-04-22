@@ -21,32 +21,30 @@ model Gamer {
   id    Int     @id @default(autoincrement())
   email String  @unique
   gamer  String?
-  avatar String
-  gamerlevel Int 
+  avatar String?
+  gamerlevel Int? 
+  title String? 
+  description String? 
+  defaultCredits Int?
   games Game[]
   
 }
+
 
 model Game {
   id        Int     @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title String 
-  description String 
-  defaultCredits String 
+  gamerlevel Int? 
+  title String? 
+  description String? 
+  defaultCredits String? 
   gamer    Gamer?   @relation(fields: [gamerId], references: [id])
   gamerId Int? 
+  email String?
+  avatar String?
   
 }
 
 
-model FavoriteGame {
-gamer  String?
-   email String  @unique
-  title String 
-  description String 
- 
-  
-  
-}
 

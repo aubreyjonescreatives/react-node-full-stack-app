@@ -45,7 +45,7 @@ const [deleteOpen, setDeleteOpen] = useState(false)
 
 const fetchCards = async () => {
     try {
-    const cards = await axios.get(`/card`)
+    const cards = await axios.get(`http://localhost:5050/card`)
     setDeckData(cards.data)
     console.log(cards.data)
     } catch (err) {

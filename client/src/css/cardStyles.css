@@ -119,6 +119,8 @@ body {
 /* ------------------------MAIN----------------------------- */
 .main-1 {
   /* ------------------------TOPNAV----------------------------- */ }
+  .main-1 .gamesHeader {
+    text-align: center; }
   .main-1 h1 {
     clear: both;
     margin: 50px 20px 50px 30px;
@@ -131,6 +133,9 @@ body {
   .main-1 .buttonHint {
     font-size: 20px;
     margin: 20px 0px; }
+  .main-1 .gamestatsSearch {
+    display: flex;
+    justify-content: center; }
   .main-1 .card-container {
     clear: both;
     display: inline-block;

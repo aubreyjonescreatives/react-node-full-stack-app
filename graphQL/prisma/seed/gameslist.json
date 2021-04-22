@@ -1,47 +1,264 @@
 {
 
-"gameslist": {
-    "game": [
-        {
-        "id": 2345, 
-        "title": "Poker", 
-        "description": "A classic card game", 
-        "defaultCredits": "34" 
-       
-    }, 
-    {
-        "id": 2342, 
-        "title": "Poker", 
-        "description": "A classic card game", 
-        "defaultCredits": "34"
-       
+  "gameslist": {
+      "game": [
+          {
+          "id": 2345, 
+          "title": "Poker", 
+          "description": "A classic card game", 
+          "defaultCredits": "34" 
+         
+      }, 
+      {
+          "id": 2342, 
+          "title": "Slots", 
+          "description": "Spin the wheel!", 
+          "defaultCredits": "21"
+         
+  
+      },
+      {
+          "id": 2348, 
+          "title": "Texas Holdem", 
+          "description": "A classic poker card game", 
+          "defaultCredits": "90"
+         
+  
+      },
+      {
+          "id": 2341, 
+          "title": "Spider Solitaire", 
+          "description": "A classic card game", 
+          "defaultCredits": "31"
+        
+  
+      },
 
-    },
-    {
-        "id": 2348, 
-        "title": "Poker", 
+      {
+        "id": 231, 
+        "title": "Solitaire", 
         "description": "A classic card game", 
-        "defaultCredits": "34"
-       
-
-    },
-    {
-        "id": 2341, 
-        "title": "Poker", 
-        "description": "A classic card game", 
-        "defaultCredits": "34"
+        "defaultCredits": "28"
       
 
-    }
+    },
+
+    {
+      "id": 211, 
+      "title": "21", 
+      "description": "A classic card game", 
+      "defaultCredits": "31"
+    
+
+  },
+
+  {
+    "id": 267, 
+    "title": "Freecell", 
+    "description": "A classic card game", 
+    "defaultCredits": "33"
+  
+
+},
+
+{
+  "id": 213, 
+  "title": "Scum", 
+  "description": "A classic card game", 
+  "defaultCredits": "35"
+
+
+},
+
+
+{
+  "id": 231, 
+  "title": "Card Matching Game", 
+  "description": "A classic card game", 
+  "defaultCredits": "33"
+
+
+},
+
+{
+"id": 225, 
+"title": "Go Fish", 
+"description": "A classic card game", 
+"defaultCredits": "31"
+
+
+},
+
+{
+"id": 240, 
+"title": "Hearts", 
+"description": "A classic card game", 
+"defaultCredits": "31"
+
+
+},
+
+
+{
+  "id": 2521, 
+  "title": "Solitaire", 
+  "description": "A classic card game", 
+  "defaultCredits": "31"
+
+
+},
+
+{
+"id": 2312, 
+"title": "Blackjack", 
+"description": "A classic card game", 
+"defaultCredits": "38"
+
+
+},
+
+{
+"id": 2341, 
+"title": "Phase 10", 
+"description": "A classic card game", 
+"defaultCredits": "31"
+
+
+},
+
+
+{
+  "id": 2309, 
+  "title": "Uno", 
+  "description": "A classic card game", 
+  "defaultCredits": "301"
+
+
+},
+
+{
+"id": 2320, 
+"title": "Go Fish", 
+"description": "A classic card game", 
+"defaultCredits": "31"
+
+
+},
+
+{
+"id": 2149, 
+"title": "War", 
+"description": "A classic card game", 
+"defaultCredits": "32"
+
+
+},
+
+
+{
+  "id": 2315, 
+  "title": "Freecell", 
+  "description": "A classic card game", 
+  "defaultCredits": "38"
+
+
+},
+
+{
+"id": 212, 
+"title": "Texas Holdem", 
+"description": "A classic card game", 
+"defaultCredits": "31"
+
+
+},
+
+{
+"id": 2389, 
+"title": "Scum", 
+"description": "A classic card game", 
+"defaultCredits": "31"
+
+
+},
 
 
 
-]
+{
+  "id": 2161, 
+  "title": "Unstable Unicorns", 
+  "description": "A classic card game", 
+  "defaultCredits": "38"
 
+
+},
+
+{
+"id": 2123, 
+"title": "Skipbo", 
+"description": "A classic card game", 
+"defaultCredits": "39"
+
+
+},
+
+{
+"id": 2091, 
+"title": "Cards Against Humanity", 
+"description": "A classic card game", 
+"defaultCredits": "338"
+
+
+},
+
+
+
+{
+  "id": 2291, 
+  "title": "What do you Meme?", 
+  "description": "A classic card game", 
+  "defaultCredits": "31"
+
+
+},
+
+{
+"id": 2388, 
+"title": "True Colors", 
+"description": "A classic card game", 
+"defaultCredits": "34"
+
+
+},
+
+{
+"id": 2761, 
+"title": "Capital Punishment", 
+"description": "A classic card game", 
+"defaultCredits": "65"
 
 
 }
 
 
 
-}
+
+
+
+
+
+
+
+
+  
+  
+  
+  ]
+  
+  
+  
+  }
+  
+  
+  
+  }

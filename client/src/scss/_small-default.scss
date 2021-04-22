@@ -76,6 +76,15 @@ header {
 
 .main-1 {
 
+
+
+    .gamesHeader {
+        text-align: center; 
+    
+    
+    }
+
+
 h1 {
 clear: both; 
 margin: 50px 20px 50px 30px; 
@@ -104,7 +113,10 @@ h2 {
     //grid-row-gap: 10px;  
     
    
-
+.gamestatsSearch {
+    display: flex; 
+    justify-content: center; 
+}
 
 
     .card-container {

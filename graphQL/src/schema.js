@@ -29,12 +29,6 @@ const {
           return context.prisma.game.findMany()
         },
       })
-      t.nonNull.list.nonNull.field('gamerFavs', {
-        type: 'FavoriteGame',
-        resolve: (_parent, _args, context) => {
-          return context.prisma.favoritegame.findMany()
-        },
-      })
   
       t.nullable.field('gameById', {
         type: 'Game',
@@ -110,17 +104,17 @@ const {
   const Mutation = objectType({
     name: 'Mutation',
     definition(t) {
-       t.nonNull.field('addFavorite', {
-        type: 'FavoriteGame',
+       t.nonNull.field('CreateGamer', {
+        type: 'Gamer',
         args: {
           data: nonNull(
             arg({
-              type: 'FavoritesCreateInput',
+              type: 'GamerCreateInput',
             }),
           ),
         },
         resolve: (_, args, context) => {
-          return context.prisma.favoritegame.create({
+          return context.prisma.gamer.create({
             data: {
               gamer: args.data.gamer,
               email: args.data.email,
@@ -178,23 +172,29 @@ const {
         },
       }) */
   
-     /*  t.field('incrementPostViewCount', {
-        type: 'Post',
+       t.field('updateGame', {
+        type: 'Game',
         args: {
           id: nonNull(intArg()),
+          data: nonNull(
+            arg({
+              type: 'GameCreateInput',
+            }),
+          ),
         },
         resolve: (_, args, context) => {
-          return context.prisma.post.update({
+          return context.prisma.game.update({
             where: { id: args.id || undefined },
             data: {
-              viewCount: {
-                increment: 1,
-              },
+             title: args.data.title, 
+             description: args.data.description, 
+             defaultCredits: args.data.defaultCredits, 
+            
             },
           })
         },
       })
-   */
+   
       t.field('deleteGame', {
         type: 'Game',
         args: {
@@ -252,16 +252,6 @@ const {
     },
   })
 
-  
-  const FavoriteGame = objectType({
-    name: 'FavoriteGame',
-    definition(t) {
-      t.string('gamer')
-      t.nonNull.string('email')
-      t.nonNull.string('title')
-      t.string('description')
-    },
-  })
   /* 
   const SortOrder = enumType({
     name: 'SortOrder',
@@ -289,19 +279,18 @@ const {
     name: 'GameCreateInput',
     definition(t) {
       t.nonNull.string('title')
-      t.nonNull.string('email')
       t.string('description')
+      t.string('defaultCredits')
     },
   })
 
   
-  const FavoritesCreateInput = inputObjectType({
-    name: 'FavoritesCreateInput',
+  const GamerCreateInput = inputObjectType({
+    name: 'GamerCreateInput',
     definition(t) {
       t.string('gamer')
       t.nonNull.string('email')
-      t.nonNull.string('title')
-      t.string('description')
+  
     },
   })
 
@@ -324,11 +313,10 @@ const {
       Mutation,
       Game,
       Gamer,
-      FavoriteGame,
      /*  UserUniqueInput,
       UserCreateInput,
       */
-      FavoritesCreateInput,
+      GamerCreateInput,
       GameCreateInput,
       /*
       SortOrder,
