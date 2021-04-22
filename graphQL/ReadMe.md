@@ -1,4 +1,4 @@
-## This Github folder contains a graphql server. Developers can download this specific folder to operate it on a localhost:4000 window. 
+# This Github folder contains a graphql server. Developers can download this specific folder to operate it on a localhost:4000 window. 
 
 ## To run this locally on your machine, you will first have to download docker found by this link as I have a Docker-based PostgreSQL as my datastore: 
 
