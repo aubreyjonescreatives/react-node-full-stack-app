@@ -4,23 +4,23 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema 
 
 
-const cardSchema = new Schema({
-    code: {
+const populargameSchema = new Schema({
+    name: {
         type: String, 
         required: true
     }, 
-    image: {
+    image_url: {
         type: String, 
         required: true
     }, 
-    value: {
+    description: {
         type: String, 
-        required: true 
+        required: false 
     }, 
-    suit: {
+    price: {
         type: String, 
         required: true 
     }
 })
 
-export const Card = mongoose.model('Card', cardSchema)
+export const PopularGame = mongoose.model('Popular Game', populargameSchema)

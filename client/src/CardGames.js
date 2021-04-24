@@ -68,7 +68,7 @@ mutation deleteGame ($id: Int!) {
 
 
 
-const GamesandStats = () => {
+const CardGames = () => {
 
 const [selectedGame, setSelectedGame] = useState( {title: ''})
 //const [debouncedTitle, setDebouncedTitle] = useState('')
@@ -162,7 +162,7 @@ const handleInput = (event) => {
 
 return (
     <div className="main-1">
-     <h1 className="gamesHeader">Games</h1>
+     <h1 className="gamesHeader">Card Games</h1>
      <div></div>
      <form className="gamestatsSearch">
          <TextField placeholder='Search' onChange={handleInput} />
@@ -338,4 +338,4 @@ return (
 
 
   
-export default GamesandStats 
+export default CardGames 

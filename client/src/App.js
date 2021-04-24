@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
-import DeckofCards from './DeckofCards'
-import GamesandStats from './GamesandStats'
+import PopularGames from './PopularGames'
+import CardGames from './CardGames'
 import TopNavigation from './TopNavigation'
 //import { CSSTransition } from 'react-transition-group'
 
@@ -14,8 +14,8 @@ function App() {
   return (
    <Router>
        <TopNavigation/>
-       <Route path='/' exact component={GamesandStats}/>
-     <Route path='/card' exact component={DeckofCards}/>
+       <Route path='/' exact component={CardGames}/>
+     <Route path='/populargame' exact component={PopularGames}/>
    </Router>
 
   )

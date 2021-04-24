@@ -150,9 +150,11 @@ body {
     color: #0B6E4F; }
   .main-1 .gameInfo {
     padding: 10px; }
+  .main-1 .cardInfo {
+    display: 'flex';
+    justify-content: 'center';
+    flex-wrap: 'wrap'; }
   .main-1 .card-container {
-    clear: both;
-    display: inline-block;
     margin: 10px;
     width: 150px; }
     .main-1 .card-container .CardMedia {

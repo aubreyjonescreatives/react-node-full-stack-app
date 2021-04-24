@@ -3,7 +3,7 @@ import axios from 'axios'
 import _ from 'lodash'
 import {Card, IconButton, CardMedia, Typography, Container, 
     Dialog, Button, DialogTitle, DialogContent, DialogContentText, 
-    DialogActions, TextField, Box} from '@material-ui/core'
+    DialogActions, TextField, Box, CardContent} from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
@@ -29,9 +29,9 @@ const Loading = () => (
 
 
 
-const DeckofCards = () => {
+const PopularGames = () => {
 
-const [selectedCard, setSelectedCard] = useState( { code: ''})
+const [selectedCard, setSelectedCard] = useState( { name: ''})
 const [deckData, setDeckData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
 const [editOpen, setEditOpen] = useState(false)
@@ -45,9 +45,9 @@ const [deleteOpen, setDeleteOpen] = useState(false)
 
 const fetchCards = async () => {
     try {
-    const cards = await axios.get(`http://localhost:5050/card`)
-    setDeckData(cards.data)
-    console.log(cards.data)
+    const populargames = await axios.get(`http://localhost:5050/populargame`)
+    setDeckData(populargames.data)
+    console.log(populargames.data)
     } catch (err) {
         console.log(err)
     }
@@ -82,7 +82,7 @@ const handleInput = (event) => {
 
     const handleSearch = () => {
         if (debouncedName) {
-            setDeckData(deckData.filter(deck => deck.code.includes(debouncedName)))
+            setDeckData(deckData.filter(game => game.name.includes(debouncedName)))
         } else {
             fetchCards()
         }
@@ -92,8 +92,8 @@ const handleInput = (event) => {
 
 
 
-    const handleClickEditOpen = (card) => {
-        setSelectedCard(card.card) 
+    const handleClickEditOpen = (game) => {
+        setSelectedCard(game.game) 
         setEditOpen(true)
     }
 
@@ -103,13 +103,13 @@ const handleInput = (event) => {
     
 const handleUpdate = async (values) => {
     try {
-        const result = await axios.put(`http://localhost:5050/card/update`, {
+        const result = await axios.put(`http://localhost:5050/populargame/update`, {
             data: {
                 cardId: values._id,
-                code: values.code, 
-                image: values.image, 
-                value: values.value, 
-                suit: values.suit
+                name: values.name, 
+                image_url: values.image_url, 
+                description: values.description, 
+                price: values.price
             },
         })
         if (result.status === 200) {
@@ -126,10 +126,10 @@ const handleUpdate = async (values) => {
 
 
 
-const handleClickDeleteOpen = (card) => {
+const handleClickDeleteOpen = (game) => {
     console.log('You clicked to delete')
-    console.log(card._id)
-    setSelectedCard(card.card)
+    console.log(game._id)
+    setSelectedCard(game.game)
     setDeleteOpen(true)
 }
 
@@ -141,7 +141,7 @@ const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedCard._id)
     try {
-        await axios.delete(`http://localhost:5050/card/delete`, { 
+        await axios.delete(`http://localhost:5050/populargame/delete`, { 
         data: {   
         cardId: selectedCard._id
         }
@@ -157,31 +157,11 @@ const handleDelete = async () => {
 
 
 
-function hintButton() {
-    document.getElementById('gameHints').textContent = 'Hint: Add Cards or Press Restart'
-    let hints = document.getElementById('gameHints') 
-    if (hints.style.display === 'none') {
-        hints.style.display = 'block'; 
-    } else {
-        hints.style.display = 'none'
-    }
-    
-}
-
-
-
-
-
-
 
 return (
+    <>
     <div className="main-1">
-     <h1>Card Sorting</h1>
-     <h2>How Fast Can You Make a Full Suit?</h2>
-    
-    <button className="buttonHint" onClick={hintButton}>Show Hint</button>
-  
-     <div id="gameHints"></div>
+     <h1>Popular Games</h1>
      <div></div>
      <form>
          <TextField placeholder='Search' onChange={handleInput} />
@@ -195,23 +175,26 @@ return (
 
 
 
-
-    {deckData.map((card) => {
+    <Container className="cardInfo">
+    {deckData.map((game) => {
      return (
-    <Card className="card-container" key={card._id}>
-    <LazyLoad placeholder={<Loading></Loading>}> 
+    <Card className="card-container" key={game._id}>
+    <LazyLoad placeholder={Loading}> 
      <CardMedia className="CardMedia"
      component="img"
-     alt={'Card'}
-     image={card.image}
+     alt={'Board Game'}
+     image={game.image_url}
+     height= '300'
+     card={game.game}
      >
  
      </CardMedia>
-     <Typography>{card.value}</Typography>
-     <Typography>OF</Typography>
-     <Typography>{card.suit}</Typography>
-     <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ card })}> <EditIcon/></IconButton>
-     <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({card})}><DeleteIcon/></IconButton>
+     <CardContent>
+     <Typography>{game.description}</Typography>
+     <Typography>{game.price}</Typography>
+     <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
+     <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({ game })}><DeleteIcon/></IconButton>
+     </CardContent>
      </LazyLoad>
      </Card>
     
@@ -219,8 +202,8 @@ return (
     
      })
      }
-    <div id="restartGame"></div>
-     
+     </Container>
+
      <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
@@ -228,21 +211,21 @@ return (
     <Formik
     initialValues={{
         id: selectedCard?._id, 
-        code: selectedCard?.code, 
-        image: selectedCard?.image, 
-        value: selectedCard?.value, 
-        suit: selectedCard?.suit 
+        name: selectedCard?.name, 
+        image_url: selectedCard?.image_url, 
+        description: selectedCard?.description, 
+        price: selectedCard?.price 
     }}
     validationSchema={Yup.object().shape({
-        id: Yup.string('Enter Card ID').required(
-            'Card ID is required', 
+        id: Yup.string('Enter Game ID').required(
+            'Game ID is required', 
         ),
-        code: Yup.string('Enter card code').required(
-            'Card code is required',
+        name: Yup.string('Enter game name').required(
+            'Game name is required',
         ),
-        image: Yup.string('Image URL'), 
-        value: Yup.string('Value'), 
-        suit: Yup.string('Suit'), 
+        image_url: Yup.string('Image URL'), 
+        description: Yup.string('Game Description'), 
+        price: Yup.string('Game Price'), 
     })}
     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
         try {
@@ -270,16 +253,16 @@ return (
         autoComplete='off' 
         onSubmit={handleSubmit}
         >
-         <DialogTitle id="edit-dial">Edit Card</DialogTitle>   
+         <DialogTitle id="edit-dial">Edit Game Info</DialogTitle>   
          <DialogContent>
              <DialogContentText>
-                 Edit Information for this Card: 
+                 Edit Information for this Game: 
              </DialogContentText>
              <TextField 
             autoFocus 
             id="id"
             name="id"
-            label="Card ID"
+            label="Game ID"
             type="text"
             fullWidth
             value={values._id}
@@ -290,45 +273,45 @@ return (
             />
             <TextField 
             autoFocus 
-            id="code"
-            name="code"
-            label="Card Code"
+            id="Game Name"
+            name="Game Name"
+            label="Game Name"
             type="text"
             fullWidth
-            value={values.code}
+            value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={Boolean(touched.code && errors.code)} 
-            helperText={touched.code && errors.code} 
+            error={Boolean(touched.name && errors.name)} 
+            helperText={touched.name && errors.name} 
             />
             <Box>
                 <TextField 
             autoFocus 
-            id="image"
-            name="image"
-            label="Card Image"
+            id="image_url"
+            name="image_url"
+            label="Image URL"
             type="text"
             fullWidth
-            value={values.image}
+            value={values.image_url}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={Boolean(touched.image && errors.image)} 
-            helperText={touched.image && errors.image} 
+            error={Boolean(touched.image_url && errors.image_url)} 
+            helperText={touched.image_url && errors.image_url} 
                 />
             </Box>
             <Box>
                 <TextField 
             autoFocus 
-            id="value"
-            name="value"
-            label="Card Value"
+            id="description"
+            name="Description"
+            label="Game Description"
             type="text"
             fullWidth
-            value={values.value}
+            value={values.description}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={Boolean(touched.value && errors.value)} 
-            helperText={touched.value && errors.value} 
+            error={Boolean(touched.description && errors.description)} 
+            helperText={touched.description && errors.description} 
 
 
                 />
@@ -338,16 +321,16 @@ return (
             <Box>
                 <TextField 
             autoFocus 
-            id="suit"
-            name="suit"
-            label="Card Suit"
+            id="price"
+            name="price"
+            label="Game Price"
             type="text"
             fullWidth
-            value={values.suit}
+            value={values.price}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={Boolean(touched.suit && errors.suit)} 
-            helperText={touched.suit && errors.suit} 
+            error={Boolean(touched.price && errors.price)} 
+            helperText={touched.price && errors.price} 
                 />
             </Box>
          </DialogContent>
@@ -371,10 +354,10 @@ return (
     <form>
      <Container>
         <Dialog open={deleteOpen} onClose={handleCloseDelete}>
-        <DialogTitle>Delete Card</DialogTitle>
+        <DialogTitle>Delete Game</DialogTitle>
         <DialogContent>
             <DialogContentText>
-                Are you sure you want to delete this card?
+                Are you sure you want to delete this game?
             </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -397,6 +380,8 @@ return (
    
    </div>
 
+   </>
+
 )}
   
-export default DeckofCards 
+export default PopularGames 

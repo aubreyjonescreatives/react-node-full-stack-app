@@ -21,7 +21,7 @@ return (
    <Container className="nav-container">
   <Navbar expand="lg" variant="light" bg="light">
   <NavLink activeClassName="activeLink" to ='/' className="navLink">Chaotic Neutral Games</NavLink>
-      <NavLink activeClassName="activeLink" to="/card" className="navLink">Deck of Cards</NavLink>
+      <NavLink activeClassName="activeLink" to="/populargame" className="navLink">Popular Games</NavLink>
   </Navbar>
 </Container>
    

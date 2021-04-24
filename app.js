@@ -3,14 +3,14 @@ import path from 'path'
 //import bodyParser from 'body-parser'
 import { apiRouter} from './routes/api.route.js'
 //import { productRouter} from './routes/product.route.js'
-import { cardRouter } from './routes/card.route.js'
+import { populargameRouter } from './routes/populargame.route.js'
 import mongoose from 'mongoose'
 import * as dotenv from 'dotenv'
 import cors from 'cors'
 
 
 
-const __dirname = path.join(new URL(import.meta.url).pathname)
+//const __dirname = path.join(new URL(import.meta.url).pathname)
 
 mongoose.set('useFindAndModify', false)
 
@@ -27,7 +27,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 
-//app.use(express.static('public'))
+app.use(express.static('public'))
 
 
 
@@ -35,7 +35,7 @@ app.use(express.json())
 
 app.use('/api', apiRouter)
 
-app.use('/card', cardRouter)
+app.use('/populargame', populargameRouter)
 
 app.use((req, res, next) => {
     res.status(404).send('<h1>Page Not Found</h1>')
