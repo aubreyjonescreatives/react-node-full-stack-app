@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
+import Welcome from './Welcome'
 import PopularGames from './PopularGames'
 import CardGames from './CardGames'
 import TopNavigation from './TopNavigation'
@@ -14,8 +15,9 @@ function App() {
   return (
    <Router>
        <TopNavigation/>
-       <Route path='/' exact component={CardGames}/>
-     <Route path='/populargame' exact component={PopularGames}/>
+       <Route path='/' exact component={Welcome}/>
+     <Route path='/populargames' exact component={PopularGames}/>
+     <Route path='/cardgames' exact component={CardGames}/>
    </Router>
 
   )

@@ -8,7 +8,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
 import AddCircleIcon from '@material-ui/icons/Add';
-import LazyLoad from 'react-lazyload'
+//import LazyLoad from 'react-lazyload'
 import './css/cardStyles.css'
 import { Formik } from 'formik' 
 import * as Yup from 'yup'
@@ -17,7 +17,7 @@ import * as Yup from 'yup'
 //const PORT = process.env.PORT || 3000
 
 
-
+/* 
 const Loading = () => (
 <div>
 <h4>Loading...</h4>
@@ -27,7 +27,7 @@ const Loading = () => (
 
 )
 
-
+ */
 
 const PopularGames = () => {
 
@@ -45,7 +45,7 @@ const [deleteOpen, setDeleteOpen] = useState(false)
 
 const fetchCards = async () => {
     try {
-    const populargames = await axios.get(`http://localhost:5050/populargame`)
+    const populargames = await axios.get(`http://localhost:5050/populargames`)
     setDeckData(populargames.data)
     console.log(populargames.data)
     } catch (err) {
@@ -103,7 +103,7 @@ const handleInput = (event) => {
     
 const handleUpdate = async (values) => {
     try {
-        const result = await axios.put(`http://localhost:5050/populargame/update`, {
+        const result = await axios.put(`http://localhost:5050/populargames/update`, {
             data: {
                 cardId: values._id,
                 name: values.name, 
@@ -141,7 +141,7 @@ const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedCard._id)
     try {
-        await axios.delete(`http://localhost:5050/populargame/delete`, { 
+        await axios.delete(`http://localhost:5050/populargames/delete`, { 
         data: {   
         cardId: selectedCard._id
         }
@@ -179,35 +179,32 @@ return (
     {deckData.map((game) => {
      return (
     <Card className="card-container" key={game._id}>
-    <LazyLoad placeholder={Loading}> 
-     <CardMedia className="CardMedia"
+     <CardMedia 
+     className="CardMedia"
      component="img"
      alt={'Board Game'}
      image={game.image_url}
      height= '300'
      card={game.game}
-     >
- 
-     </CardMedia>
+     />
      <CardContent>
      <Typography>{game.description}</Typography>
      <Typography>{game.price}</Typography>
      <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
      <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({ game })}><DeleteIcon/></IconButton>
      </CardContent>
-     </LazyLoad>
      </Card>
     
     )
     
-     })
-     }
+     })}
      </Container>
 
      <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
-    aria-labelledby='edit-dial'>
+    aria-labelledby='edit-dial'
+    >
     <Formik
     initialValues={{
         id: selectedCard?._id, 

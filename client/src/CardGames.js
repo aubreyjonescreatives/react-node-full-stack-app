@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 //import axios from 'axios'
-import _, { debounce } from 'lodash'
+//import _ from 'lodash'
 import {useQuery, useMutation, gql} from '@apollo/client'
 import {Card, IconButton, Typography, Container, 
     Dialog, Button, DialogTitle, DialogContent, DialogContentText, 
@@ -75,11 +75,11 @@ const [selectedGame, setSelectedGame] = useState( {title: ''})
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
 
-
+/*
 const handleInput = (event) => {
     debounce(event.target.value)
 }
-
+*/
 
     const { loading, error, data} = useQuery(ALL_GAMES)
     const [updateGame] = useMutation(UPDATE_GAME)
@@ -165,7 +165,7 @@ return (
      <h1 className="gamesHeader">Card Games</h1>
      <div></div>
      <form className="gamestatsSearch">
-         <TextField placeholder='Search' onChange={handleInput} />
+         <TextField placeholder='Search' />
          <IconButton aria-label='search'>
              <SearchIcon />
              </IconButton>
