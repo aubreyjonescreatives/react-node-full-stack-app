@@ -129,5 +129,4 @@ const handleDelete = async () => {
 
 ## Additional Notes: 
 1. This API does not require an API Key 
-2. In your client folder, create an .env file to store a PORT variable
-3. In your server folder, create an .env file to add your database string variable 
+
