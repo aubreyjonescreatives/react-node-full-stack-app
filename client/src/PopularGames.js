@@ -41,30 +41,6 @@ const [deleteOpen, setDeleteOpen] = useState(false)
 
 
 
-
-
-const fetchCards = async () => {
-    try {
-    const populargames = await axios.get(`http://localhost:5050/populargames`)
-    setDeckData(populargames.data)
-    console.log(populargames.data)
-    } catch (err) {
-        console.log(err)
-    }
-    }
-    
-    
-    
-    useEffect(() => {
-        fetchCards()
-       
-    }, [])
-
-
-
-
-
-
 const handleInput = (event) => {
     debounce(event.target.value)
 }
@@ -155,15 +131,30 @@ const handleDelete = async () => {
 
 
 
+const fetchCards = async () => {
+    try {
+    const populargames = await axios.get(`http://localhost:5050/populargames`)
+    setDeckData(populargames.data)
+    console.log(populargames.data)
+    } catch (err) {
+        console.log(err)
+    }
+    }
+    
+    
+    useEffect(() => {
+        fetchCards()
+       
+    }, [])
 
 
 
 return (
     <>
     <div className="main-1">
-     <h1>Popular Games</h1>
+     <h1 className="gamesHeader"> Popular Games</h1>
      <div></div>
-     <form>
+     <form className="gamestatsSearch">
          <TextField placeholder='Search' onChange={handleInput} />
          <IconButton aria-label='search' onClick={handleSearch}>
              <SearchIcon />
