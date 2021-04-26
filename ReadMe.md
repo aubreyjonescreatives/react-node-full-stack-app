@@ -109,7 +109,7 @@ const handleDelete = async () => {
 
 ## Your app will be deployed to production using some service like Heroku, Digital Ocean, etc.
 
-* Here are instructions to view this project in your local browser:
+### Here are instructions to view this project in your local browser:
 
 1. Download this project folder from Github. 
 2. Install Docker for the graphql database. 
