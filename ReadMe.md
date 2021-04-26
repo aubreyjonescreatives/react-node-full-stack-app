@@ -119,12 +119,12 @@ const handleDelete = async () => {
 5. Add your mongodb connection string to the .env file using DB_CONN_STRING as the string variable.
 6. Add PORT=5050 to your .env file as my PopularGames.js uses this
 7. Run these scripts from the main package.json file in this order: 
-    a. npm run launch (to create docker container (ignore this step once created))
-    b. npm run migrate (to create graphql migration) 
-    c. npm run seed (to load seed into your mongoDB database)
-    d. npm run seed:game (to load seed into your graphql database)
-    e. npm run build (to create a build file for the project)
-    f. npm run start-dev (to see this project in the browser via localhost)
+    * npm run launch (to create docker container (ignore this step once created))
+    * npm run migrate (to create graphql migration) 
+    * npm run seed (to load seed into your mongoDB database)
+    * npm run seed:game (to load seed into your graphql database)
+    * npm run build (to create a build file for the project)
+    * npm run start-dev (to see this project in the browser via localhost)
 
 
 ## Additional Notes: 
