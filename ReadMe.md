@@ -5,7 +5,7 @@
 
 ## Cloud-based MongoDB as your data store
 
-![GET Data from Server](images/mongodb.PNG)
+![MongoDB datastore](images/mongodbpopulargames.PNG)
 
 
 ## At least 3 endpoints to GET data from your server
@@ -104,7 +104,7 @@ const handleDelete = async () => {
 
 ## Your datastore will contain at least 25 items
 
-![DELETE endpoint](images/mongodb.PNG)
+![Datastore](images/mongodbpopulargames.PNG)
 
 
 ## Your app will be deployed to production using some service like Heroku, Digital Ocean, etc.
@@ -117,7 +117,7 @@ const handleDelete = async () => {
 4. Create a .env file in the main project folder. 
 5. Make sure your .gitignore file ignores all .env files with *.env* 
 5. Add your mongodb connection string to the .env file using DB_CONN_STRING as the string variable.
-6. Add PORT=5050 to your .env file as my PopularGames.js uses this port
+6. Add PORT=5050 to your .env file as my PopularGames.js uses this
 7. Run these scripts from the main package.json file in this order: 
     a. npm run launch (to create docker container (ignore this step once created))
     b. npm run migrate (to create graphql migration) 
