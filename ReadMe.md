@@ -128,5 +128,5 @@ const handleDelete = async () => {
 
 
 ## Additional Notes: 
-1. This API does not require an API Key 
+1. The Game API does not require an API Key 
 
