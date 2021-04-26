@@ -2,19 +2,19 @@ import {Router} from 'express'
 
 export const populargameRouter = Router()
 
-import { postaddCard, getAllCards, getCards, getCardById, putEditCard, deleteCard } from '../controllers/populargame.controller.js'
+import { postaddGame, getAllGames, getGames, getGameById, putEditGame, deleteGame } from '../controllers/populargame.controller.js'
 
 
-populargameRouter.post('/populargames', postaddCard)
+populargameRouter.post('/populargames', postaddGame)
 
-populargameRouter.get('/populargames', getAllCards)
+populargameRouter.get('/populargames', getAllGames)
 
-populargameRouter.get('/async', getCards)
+populargameRouter.get('/async', getGames)
 
-populargameRouter.get('/populargames/id', getCardById)
-
-
-populargameRouter.put('/populargames/update', putEditCard)
+populargameRouter.get('/populargames/id', getGameById)
 
 
-populargameRouter.delete('/populargames/delete', deleteCard)
+populargameRouter.put('/populargames/update', putEditGame)
+
+
+populargameRouter.delete('/populargames/delete', deleteGame)

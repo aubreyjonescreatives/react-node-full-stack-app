@@ -31,8 +31,8 @@ const Loading = () => (
 
 const PopularGames = () => {
 
-const [selectedCard, setSelectedCard] = useState( { name: ''})
-const [deckData, setDeckData] = useState([])
+const [selectedGame, setSelectedGame] = useState( { name: ''})
+const [gameData, setGameData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
@@ -58,9 +58,9 @@ const handleInput = (event) => {
 
     const handleSearch = () => {
         if (debouncedName) {
-            setDeckData(deckData.filter(game => game.name.includes(debouncedName)))
+            setGameData(gameData.filter(game => game.name.includes(debouncedName)))
         } else {
-            fetchCards()
+            fetchGames()
         }
     }
 
@@ -69,7 +69,7 @@ const handleInput = (event) => {
 
 
     const handleClickEditOpen = (game) => {
-        setSelectedCard(game.game) 
+        setSelectedGame(game.game) 
         setEditOpen(true)
     }
 
@@ -81,7 +81,7 @@ const handleUpdate = async (values) => {
     try {
         const result = await axios.put(`http://localhost:5050/populargames/update`, {
             data: {
-                cardId: values._id,
+                gameId: values._id,
                 name: values.name, 
                 image_url: values.image_url, 
                 description: values.description, 
@@ -89,7 +89,7 @@ const handleUpdate = async (values) => {
             },
         })
         if (result.status === 200) {
-            fetchCards()
+            fetchGames()
         }
     } catch (err) {
         console.error(err)
@@ -105,7 +105,7 @@ const handleUpdate = async (values) => {
 const handleClickDeleteOpen = (game) => {
     console.log('You clicked to delete')
     console.log(game._id)
-    setSelectedCard(game.game)
+    setSelectedGame(game.game)
     setDeleteOpen(true)
 }
 
@@ -115,14 +115,14 @@ const handleCloseDelete = () => {
 
 const handleDelete = async () => {
     setDeleteOpen(false)
-    console.log(selectedCard._id)
+    console.log(selectedGame._id)
     try {
         await axios.delete(`http://localhost:5050/populargames/delete`, { 
         data: {   
-        cardId: selectedCard._id
+        gameId: selectedGame._id
         }
     })
-    fetchCards()
+    fetchGames()
     } catch (err) {
         console.error(err)
     }
@@ -131,10 +131,10 @@ const handleDelete = async () => {
 
 
 
-const fetchCards = async () => {
+const fetchGames = async () => {
     try {
     const populargames = await axios.get(`http://localhost:5050/populargames`)
-    setDeckData(populargames.data)
+    setGameData(populargames.data)
     console.log(populargames.data)
     } catch (err) {
         console.log(err)
@@ -143,7 +143,7 @@ const fetchCards = async () => {
     
     
     useEffect(() => {
-        fetchCards()
+        fetchGames()
        
     }, [])
 
@@ -167,7 +167,7 @@ return (
 
 
     <Container className="cardInfo">
-    {deckData.map((game) => {
+    {gameData.map((game) => {
      return (
     <Card className="card-container" key={game._id}>
      <CardMedia 
@@ -198,11 +198,11 @@ return (
     >
     <Formik
     initialValues={{
-        id: selectedCard?._id, 
-        name: selectedCard?.name, 
-        image_url: selectedCard?.image_url, 
-        description: selectedCard?.description, 
-        price: selectedCard?.price 
+        id: selectedGame?._id, 
+        name: selectedGame?.name, 
+        image_url: selectedGame?.image_url, 
+        description: selectedGame?.description, 
+        price: selectedGame?.price 
     }}
     validationSchema={Yup.object().shape({
         id: Yup.string('Enter Game ID').required(

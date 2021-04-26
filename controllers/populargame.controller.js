@@ -2,17 +2,17 @@ import { PopularGame } from '../models/populargame.js'
 
 
 
-export const postaddCard = ((req, res) => {
+export const postaddGame = ((req, res) => {
 
-const cards = new PopularGame({
+const games = new PopularGame({
     name: req.body.name, 
     image_url: req.body.image_url, 
     description: req.body.description, 
     price: req.body.price 
 })
-console.log(cards)
-cards.save() //save method is provided by Mongoose
-res.json(cards)
+console.log(games)
+games.save() //save method is provided by Mongoose
+res.json(games)
 
 
 })
@@ -20,38 +20,38 @@ res.json(cards)
 
 
 
-export const getAllCards = ((req, res) => {
+export const getAllGames = ((req, res) => {
     PopularGame.find()
-    .then(thecards => {
-        res.json(thecards)
+    .then(thegames => {
+        res.json(thegames)
     })
     .catch(err => console.log(err))
 })
 
-export const getCards = async (req, res) => {
-    const cards = await PopularGame.find()
-    if (!cards) {
+export const getGames = async (req, res) => {
+    const games = await PopularGame.find()
+    if (!games) {
         return res.status(400).json({Message: `No games found`})
     }
-    res.json(cards)
+    res.json(games)
 }
 
-export const getCardById = async (req, res) => {
-    const cardId = req.body._id
-    console.log(cardId)
+export const getGameById = async (req, res) => {
+    const gameId = req.body._id
+    console.log(gameId)
     try{
-    const card = await PopularGame.findById(cardId)
-    if (!card) {
+    const game = await PopularGame.findById(gameId)
+    if (!game) {
         return res.status(404).json({Message: 'Game Not Found'})
     }
-    res.json(card)
+    res.json(game)
 } catch(err) {
     res.status(400).json({Message: `Invalid ID: ${err}`})
 }
 }
 
-export const putEditCard = async (req, res) => {
-    const cardId = req.body.data._id
+export const putEditGame = async (req, res) => {
+    const gameId = req.body.data._id
     const updatedObj = {
         name: req.body.data.name,
         image_url: req.body.data.image_url, 
@@ -59,8 +59,8 @@ export const putEditCard = async (req, res) => {
         price: req.body.data.price 
     } 
     try {
-    const card = await PopularGame.findByIdAndUpdate(cardId, updatedObj, {new: true})
-        res.status(200).json(card)
+    const game = await PopularGame.findByIdAndUpdate(gameId, updatedObj, {new: true})
+        res.status(200).json(game)
     } catch(err) {
         res.status(400).json({Message: `Could not update: ${err}`})
     }
@@ -68,15 +68,15 @@ export const putEditCard = async (req, res) => {
 
 }
 
-export const deleteCard = async (req, res) => {
-    const cardId = req.body.cardId
-    console.log(cardId)
+export const deleteGame = async (req, res) => {
+    const gameId = req.body.gameId
+    console.log(gameId)
     try {
-        const deletedCard = await PopularGame.findByIdAndRemove(cardId)
-            if (!deletedCard) {
-               return res.status(400).json({Message: `Card to Delete Not Found.`})
+        const deletedGame = await PopularGame.findByIdAndRemove(gameId)
+            if (!deletedGame) {
+               return res.status(400).json({Message: `Game to Delete Not Found.`})
             }
-            console.log(`Deleted the product ${deletedCard}`)
+            console.log(`Deleted the product ${deletedGame}`)
             res.sendStatus(200)
         } catch (err) {
             res.status(400).json({Message: `Invalid ID: ${err}`})

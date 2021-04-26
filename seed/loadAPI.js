@@ -22,7 +22,7 @@ const seedMongo = async () => {
         const response = await axios.request(options)
         console.log(response.data.games[0])
       // await addCard(response.data.cards[0])
-       await addCards(response.data.games)
+       await addGames(response.data.games)
         await mongoose.connection.close() 
     } catch (error) {
         console.error(error)
@@ -33,24 +33,24 @@ const seedMongo = async () => {
 
 
 
-const addCard = async (oneCard) => {
+const addGame = async (oneGame) => {
 
-    const cards = new PopularGame({
-        name: oneCard.name, 
-        image_url: oneCard.image_url, 
-        description: oneCard.description, 
-        price: oneCard.price
+    const games = new PopularGame({
+        name: oneGame.name, 
+        image_url: oneGame.image_url, 
+        description: oneGame.description, 
+        price: oneGame.price
     })
-   await cards.save() //save method is provided by Mongoose
+   await games.save() //save method is provided by Mongoose
    console.log('Added successfully')
     
     
     }
 
-    const addCards = async (cardList) => {
-        for (let card of cardList) {
-            console.log(card)
-            await addCard(card)
+    const addGames = async (gameList) => {
+        for (let game of gameList) {
+            console.log(game)
+            await addGame(game)
         }
     }
 
