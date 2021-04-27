@@ -117,8 +117,8 @@ const handleDelete = async () => {
 * Server Side: 
 1. npm run launch (to create docker container)
 2. npm run migrate (to create graphql migration) 
-3. npm run seed (to load seed into your mongoDB database)
-4. npm run seed:game (to load seed into your graphql database)
+3. npm run seed (to load seed into my mongoDB database)
+4. npm run seed:game (to load seed into my graphql database)
 5. npm run build (to create a build file for the project)
 6. npm run start-dev (to see this project in the browser via localhost)
 
