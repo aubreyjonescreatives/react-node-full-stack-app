@@ -113,7 +113,7 @@ const handleDelete = async () => {
 
 
 ### Run these package.json scripts in your terminal in this order: 
-1. npm run launch (to create docker container (ignore this step once created))
+1. npm run launch (to create docker container)
 2. npm run migrate (to create graphql migration) 
 3. npm run seed (to load seed into your mongoDB database)
 4. npm run seed:game (to load seed into your graphql database)
