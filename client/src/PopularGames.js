@@ -79,7 +79,7 @@ const handleInput = (event) => {
     
 const handleUpdate = async (values) => {
     try {
-        const result = await axios.put(`http://localhost:5050/populargames/update`, {
+        const result = await axios.put(`http://localhost:5050/populargame/update`, {
             data: {
                 gameId: values._id,
                 name: values.name, 
@@ -117,7 +117,7 @@ const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedGame._id)
     try {
-        await axios.delete(`http://localhost:5050/populargames/delete`, { 
+        await axios.delete(`http://localhost:5050/populargame/delete`, { 
         data: {   
         gameId: selectedGame._id
         }
@@ -133,9 +133,9 @@ const handleDelete = async () => {
 
 const fetchGames = async () => {
     try {
-    const populargames = await axios.get(`http://localhost:5050/populargames`)
-    setGameData(populargames.data)
-    console.log(populargames.data)
+    const populargamesInfo = await axios.get(`http://localhost:5050/populargame`)
+    setGameData(populargamesInfo.data)
+    console.log(populargamesInfo.data)
     } catch (err) {
         console.log(err)
     }
@@ -146,7 +146,6 @@ const fetchGames = async () => {
         fetchGames()
        
     }, [])
-
 
 
 return (

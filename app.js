@@ -35,7 +35,7 @@ app.use(express.static('public'))
 
 app.use('/api', apiRouter)
 
-app.use('/populargames', populargameRouter)
+app.use('/populargame', populargameRouter)
 
 app.use((req, res, next) => {
     res.status(404).send('<h1>Page Not Found</h1>')

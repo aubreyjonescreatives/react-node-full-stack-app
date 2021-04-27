@@ -9,14 +9,13 @@ import TopNavigation from './TopNavigation'
 
 
 
-
 function App() {
  
   return (
    <Router>
        <TopNavigation/>
        <Route path='/' exact component={Welcome}/>
-     <Route path='/populargames' exact component={PopularGames}/>
+     <Route path='/populargame' exact component={PopularGames}/>
      <Route path='/cardgames' exact component={CardGames}/>
    </Router>
 
