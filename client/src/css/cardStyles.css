@@ -160,6 +160,13 @@ body {
     .main-1 .card-container .CardMedia {
       width: 100%;
       height: 100%; }
+  .main-1 .popular-game-container {
+    display: inline-flex; }
+    .main-1 .popular-game-container .popular-game-card {
+      width: 400px; }
+      .main-1 .popular-game-container .popular-game-card .PopularGameMedia {
+        width: 200px;
+        height: 200px; }
 
 /* ------------------------FOOTER----------------------------- */
 div#wrapperFooter {

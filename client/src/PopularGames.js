@@ -165,16 +165,15 @@ return (
 
 
 
-    <Container className="cardInfo">
+    <Container className="popular-game-container">
     {gameData.map((game) => {
      return (
-    <Card className="card-container" key={game._id}>
+    <Card className="popular-game-card" key={game._id}>
      <CardMedia 
-     className="CardMedia"
+     className="PopularGameMedia"
      component="img"
      alt={'Board Game'}
      image={game.image_url}
-     height= '300'
      card={game.game}
      />
      <CardContent>

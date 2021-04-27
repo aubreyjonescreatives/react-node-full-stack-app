@@ -109,22 +109,16 @@ const handleDelete = async () => {
 
 ## Your app will be deployed to production using some service like Heroku, Digital Ocean, etc.
 
-### Here are instructions to view this project in your local browser:
+## Here are instructions to view this project in your local browser once you download it from GitHub:
 
-1. Download this project folder from Github. 
-2. Install Docker for the graphql database. 
-3. Create a MongoDB account. 
-4. Create a .env file in the main project folder. 
-5. The .gitignore file already ignores all of the .env files
-5. Add your mongodb connection string to the .env file using DB_CONN_STRING as the string variable.
-6. Add PORT=5050 to your .env file as my PopularGames.js uses this
-7. Run these scripts from the main package.json file in this order: 
-    * npm run launch (to create docker container (ignore this step once created))
-    * npm run migrate (to create graphql migration) 
-    * npm run seed (to load seed into your mongoDB database)
-    * npm run seed:game (to load seed into your graphql database)
-    * npm run build (to create a build file for the project)
-    * npm run start-dev (to see this project in the browser via localhost)
+
+### Run these package.json scripts in your terminal in this order: 
+1. npm run launch (to create docker container (ignore this step once created))
+2. npm run migrate (to create graphql migration) 
+3. npm run seed (to load seed into your mongoDB database)
+4. npm run seed:game (to load seed into your graphql database)
+5. npm run build (to create a build file for the project)
+6. npm run start-dev (to see this project in the browser via localhost)
 
 
 ## Additional Notes: 
