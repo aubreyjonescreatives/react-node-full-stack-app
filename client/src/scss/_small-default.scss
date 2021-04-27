@@ -145,9 +145,9 @@ h2 {
 
 
 .cardInfo {
-    display: 'flex'; 
-    justify-content: 'center'; 
-    flex-wrap: 'wrap';
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap;
 }
 
 
@@ -164,27 +164,39 @@ h2 {
         }
         }
         
+
+
+
 .popular-game-container {
-        display: inline-flex; 
+        display: flex; 
+        flex-wrap: wrap; 
 
 
-    .popular-game-card {
-        width: 400px; 
+.popular-game-card {
+    width: 300px;
+    margin: 20px; 
+   
     
 
-    .PopularGameMedia {
-        width: 200px; 
-        height: 200px; 
+    .GameMedia {
+        width: 100%; 
     }
 
 
+    .gameType {
+        color: green; 
     }
-    
+
+    .gamePrice {
+        text-align: center; 
+        padding: 20px; 
+        font-size: 24px; 
+    }
 
 
 }
 
-
+}
 
 
 

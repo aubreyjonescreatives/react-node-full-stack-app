@@ -151,9 +151,9 @@ body {
   .main-1 .gameInfo {
     padding: 10px; }
   .main-1 .cardInfo {
-    display: 'flex';
-    justify-content: 'center';
-    flex-wrap: 'wrap'; }
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; }
   .main-1 .card-container {
     margin: 10px;
     width: 150px; }
@@ -161,12 +161,19 @@ body {
       width: 100%;
       height: 100%; }
   .main-1 .popular-game-container {
-    display: inline-flex; }
+    display: flex;
+    flex-wrap: wrap; }
     .main-1 .popular-game-container .popular-game-card {
-      width: 400px; }
-      .main-1 .popular-game-container .popular-game-card .PopularGameMedia {
-        width: 200px;
-        height: 200px; }
+      width: 300px;
+      margin: 20px; }
+      .main-1 .popular-game-container .popular-game-card .GameMedia {
+        width: 100%; }
+      .main-1 .popular-game-container .popular-game-card .gameType {
+        color: green; }
+      .main-1 .popular-game-container .popular-game-card .gamePrice {
+        text-align: center;
+        padding: 20px;
+        font-size: 24px; }
 
 /* ------------------------FOOTER----------------------------- */
 div#wrapperFooter {

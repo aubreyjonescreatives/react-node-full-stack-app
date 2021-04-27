@@ -170,15 +170,15 @@ return (
      return (
     <Card className="popular-game-card" key={game._id}>
      <CardMedia 
-     className="PopularGameMedia"
+     className="GameMedia"
      component="img"
      alt={'Board Game'}
      image={game.image_url}
      card={game.game}
      />
      <CardContent>
-     <Typography>{game.description}</Typography>
-     <Typography>{game.price}</Typography>
+     <Typography className="gameType">{game.description}</Typography>
+     <Typography className="gamePrice">${game.price}</Typography>
      <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
      <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({ game })}><DeleteIcon/></IconButton>
      </CardContent>
