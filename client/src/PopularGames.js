@@ -159,9 +159,6 @@ return (
          <IconButton aria-label='search' onClick={handleSearch}>
              <SearchIcon />
              </IconButton>
-             <IconButton aria-label='add card'>
-                <AddCircleIcon/>
-             </IconButton>
      </form>
 
 
