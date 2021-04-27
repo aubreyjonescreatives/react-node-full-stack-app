@@ -11,10 +11,10 @@ populargameRouter.get('/', getAllGames)
 
 populargameRouter.get('/async', getGames)
 
-populargameRouter.get('/populargames/id', getGameById)
+populargameRouter.get('/id', getGameById)
 
 
-populargameRouter.put('/populargames/update', putEditGame)
+populargameRouter.put('/update', putEditGame)
 
 
-populargameRouter.delete('/populargames/delete', deleteGame)
+populargameRouter.delete('/delete', deleteGame)

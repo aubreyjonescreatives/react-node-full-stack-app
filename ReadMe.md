@@ -113,12 +113,23 @@ const handleDelete = async () => {
 
 
 ### Run these package.json scripts in your terminal in this order: 
+
+* Server Side: 
 1. npm run launch (to create docker container)
 2. npm run migrate (to create graphql migration) 
 3. npm run seed (to load seed into your mongoDB database)
 4. npm run seed:game (to load seed into your graphql database)
 5. npm run build (to create a build file for the project)
 6. npm run start-dev (to see this project in the browser via localhost)
+
+* Client Side: 
+
+7. After you start the server, cd into the client folder 
+8. npm run build (for good measure)
+9. npm run start (to start your client) 
+10. When it says you are already running port 5050, select yes to run the client on another port
+10. When in the client localhost, click on the Popular Games topnav link to see 25+ items of my MongoDB datastore
+11. When in the client localhost, click on the Card Games topnav link to see 25+ items of my graphql datastore
 
 
 ## Additional Notes: 

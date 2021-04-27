@@ -39,7 +39,8 @@ const addGame = async (oneGame) => {
         name: oneGame.name, 
         image_url: oneGame.image_url, 
         description: oneGame.description, 
-        price: oneGame.price
+        price: oneGame.price, 
+        id: oneGame.id
     })
    await games.save() //save method is provided by Mongoose
    console.log('Added successfully')

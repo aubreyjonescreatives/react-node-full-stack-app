@@ -173,7 +173,7 @@ h2 {
 
 
 .popular-game-card {
-    width: 300px;
+    width: 200px;
     margin: 20px; 
    
     
@@ -183,8 +183,9 @@ h2 {
     }
 
 
-    .gameType {
-        color: green; 
+    .gameName {
+        color: green;
+        text-align: center;  
     }
 
     .gamePrice {
@@ -193,6 +194,10 @@ h2 {
         font-size: 24px; 
     }
 
+
+    .icons {
+        text-align: center; 
+    }
 
 }
 

@@ -5,6 +5,7 @@ import { PopularGame } from '../models/populargame.js'
 export const postaddGame = ((req, res) => {
 
 const games = new PopularGame({
+    id: req.body.id,
     name: req.body.name, 
     image_url: req.body.image_url, 
     description: req.body.description, 
@@ -37,7 +38,7 @@ export const getGames = async (req, res) => {
 }
 
 export const getGameById = async (req, res) => {
-    const gameId = req.body._id
+    const gameId = req.body.gameId
     console.log(gameId)
     try{
     const game = await PopularGame.findById(gameId)
@@ -51,7 +52,7 @@ export const getGameById = async (req, res) => {
 }
 
 export const putEditGame = async (req, res) => {
-    const gameId = req.body.data._id
+    const gameId = req.body.data.gameId
     const updatedObj = {
         name: req.body.data.name,
         image_url: req.body.data.image_url, 

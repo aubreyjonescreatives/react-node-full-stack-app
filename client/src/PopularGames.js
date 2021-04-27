@@ -3,11 +3,12 @@ import axios from 'axios'
 import _ from 'lodash'
 import {Card, IconButton, CardMedia, Typography, Container, 
     Dialog, Button, DialogTitle, DialogContent, DialogContentText, 
-    DialogActions, TextField, Box, CardContent} from '@material-ui/core'
+    DialogActions, TextField, Box, CardContent, Link} from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
 import AddCircleIcon from '@material-ui/icons/Add';
+import LinkIcon from '@material-ui/icons/Link';
 //import LazyLoad from 'react-lazyload'
 import './css/cardStyles.css'
 import { Formik } from 'formik' 
@@ -81,7 +82,7 @@ const handleUpdate = async (values) => {
     try {
         const result = await axios.put(`http://localhost:5050/populargame/update`, {
             data: {
-                gameId: values._id,
+                gameId: values.id,
                 name: values.name, 
                 image_url: values.image_url, 
                 description: values.description, 
@@ -177,10 +178,13 @@ return (
      card={game.game}
      />
      <CardContent>
-     <Typography className="gameType">{game.description}</Typography>
+     <Typography className="gameName">{game.name}</Typography>
      <Typography className="gamePrice">${game.price}</Typography>
-     <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
-     <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({ game })}><DeleteIcon/></IconButton>
+    <div className="icons">
+     <Link href={game.url} className="gameIcon"><LinkIcon></LinkIcon></Link>
+     <IconButton className="gameIcon" aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
+     <IconButton className="gameIcon" aria-label='delete' onClick={() => handleClickDeleteOpen({ game })}><DeleteIcon/></IconButton>
+     </div>
      </CardContent>
      </Card>
     
@@ -192,20 +196,16 @@ return (
      <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
-    aria-labelledby='edit-dial'
+    aria-labelledby='edit-dialog-name'
     >
     <Formik
-    initialValues={{
-        id: selectedGame?._id, 
+    initialValues={{ 
         name: selectedGame?.name, 
         image_url: selectedGame?.image_url, 
         description: selectedGame?.description, 
         price: selectedGame?.price 
     }}
     validationSchema={Yup.object().shape({
-        id: Yup.string('Enter Game ID').required(
-            'Game ID is required', 
-        ),
         name: Yup.string('Enter game name').required(
             'Game name is required',
         ),
@@ -239,29 +239,16 @@ return (
         autoComplete='off' 
         onSubmit={handleSubmit}
         >
-         <DialogTitle id="edit-dial">Edit Game Info</DialogTitle>   
+         <DialogTitle id="edit-dialog-name">Edit Game Info</DialogTitle>   
          <DialogContent>
              <DialogContentText>
                  Edit Information for this Game: 
              </DialogContentText>
-             <TextField 
-            autoFocus 
-            id="id"
-            name="id"
-            label="Game ID"
-            type="text"
-            fullWidth
-            value={values._id}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched._id && errors._id)} 
-            helperText={touched._id && errors._id} 
-            />
             <TextField 
             autoFocus 
-            id="Game Name"
-            name="Game Name"
-            label="Game Name"
+            id="Name"
+            name="Name"
+            label="Name"
             type="text"
             fullWidth
             value={values.name}
@@ -289,8 +276,8 @@ return (
                 <TextField 
             autoFocus 
             id="description"
-            name="Description"
-            label="Game Description"
+            name="description"
+            label="Description"
             type="text"
             fullWidth
             value={values.description}
@@ -309,8 +296,8 @@ return (
             autoFocus 
             id="price"
             name="price"
-            label="Game Price"
-            type="text"
+            label="Price"
+            type="number"
             fullWidth
             value={values.price}
             onChange={handleChange}

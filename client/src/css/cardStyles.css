@@ -164,16 +164,19 @@ body {
     display: flex;
     flex-wrap: wrap; }
     .main-1 .popular-game-container .popular-game-card {
-      width: 300px;
+      width: 200px;
       margin: 20px; }
       .main-1 .popular-game-container .popular-game-card .GameMedia {
         width: 100%; }
-      .main-1 .popular-game-container .popular-game-card .gameType {
-        color: green; }
+      .main-1 .popular-game-container .popular-game-card .gameName {
+        color: green;
+        text-align: center; }
       .main-1 .popular-game-container .popular-game-card .gamePrice {
         text-align: center;
         padding: 20px;
         font-size: 24px; }
+      .main-1 .popular-game-container .popular-game-card .icons {
+        text-align: center; }
 
 /* ------------------------FOOTER----------------------------- */
 div#wrapperFooter {
