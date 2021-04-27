@@ -162,11 +162,11 @@ return (
      </form>
 
 
-
     <Container className="popular-game-container">
     {gameData.map((game) => {
      return (
     <Card className="popular-game-card" key={game._id}>
+    <Link href={game.url} className="gameLink">
      <CardMedia 
      className="GameMedia"
      component="img"
@@ -178,18 +178,17 @@ return (
      <Typography className="gameName">{game.name}</Typography>
      <Typography className="gamePrice">${game.price}</Typography>
     <div className="icons">
-     <Link href={game.url} className="gameIcon"><LinkIcon></LinkIcon></Link>
      <IconButton className="gameIcon" aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
      <IconButton className="gameIcon" aria-label='delete' onClick={() => handleClickDeleteOpen({ game })}><DeleteIcon/></IconButton>
      </div>
      </CardContent>
+     </Link>
      </Card>
     
     )
     
      })}
      </Container>
-
      <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
