@@ -7,8 +7,8 @@ import {Card, IconButton, CardMedia, Typography, Container,
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
-import AddCircleIcon from '@material-ui/icons/Add';
-import LinkIcon from '@material-ui/icons/Link';
+//import AddCircleIcon from '@material-ui/icons/Add';
+//import LinkIcon from '@material-ui/icons/Link';
 //import LazyLoad from 'react-lazyload'
 import './css/cardStyles.css'
 import { Formik } from 'formik' 

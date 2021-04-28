@@ -24,7 +24,7 @@
     "seed": "npx prisma db seed --preview-feature",
     "seed:game": "node prisma/seed/gamesSeed.js",
     "seed:game2": "node prisma/seed/favoredGames.js",
-    "dev": "src/server.js"
+    "dev": "nodemon src/server.js"
   },
   "engines": {
     "node": ">=10.0.0"
