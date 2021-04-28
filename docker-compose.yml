@@ -1,47 +1,46 @@
 version: "3.8"
-services: 
-    postgres: 
-        image: 'postgres'
-        volumes: 
-            - pgdata:/var/lib/postgresql/data
-        env_file: 
-            - ./graphql-server/prisma/ .env 
-            
-    graphql: 
-        build: ./graphql-server
-        ports: 
-            - '4000:4000'
+services:
+  postgres:
+    image: 'postgres'
     volumes: 
-        - /graphql/node_modules
-        - ./graphql-server/src:/graphq;/src 
-        - ./graphq;-server/prisma:/graphql/prisma 
-    stdin_open: true 
-    tty: true
-    depends_on:
-        - postgres 
+      - pgdata:/var/lib/postgresql/data
+    env_file: 
+      - ./graphql-server/prisma/.env
 
-    backend: 
-        build: ./
-        ports: 
-            - '8080:8080'
-        volumes: 
-            - /app/node_modules
-        env_file: 
-            - ./.env 
-        depends_on: 
-            - postgres
-    
-    client: 
-        build: ./client 
-        ports: 
-            - '3000:3000'
-        volumes: 
-            - ./client/src:/client/src
-        stdin_open: true 
-        tty: true
-        depends_on: 
-            - backend 
-    
+  graphql:
+    build: ./graphql-server
+    ports:
+      - '4000:4000'
+    volumes:
+      - /graphql/node_modules
+      - ./graphql-server/src:/graphql/src
+      - ./graphql-server/prisma:/graphql/prisma
+    stdin_open: true
+    tty: true
+    depends_on: 
+      - postgres
+
+  backend:
+    build: ./
+    ports:
+      - '5050:5050'
     volumes: 
-        pgdata: 
-        
+      - /app/node_modules
+    env_file: 
+      - ./.env
+    depends_on:
+      - postgres
+
+  client:
+    build: ./client
+    ports: 
+      - '3000:3000'
+    volumes: 
+      - ./client/src:/client/src
+    stdin_open: true
+    tty: true
+    depends_on: 
+      - backend
+
+volumes: 
+  pgdata:
