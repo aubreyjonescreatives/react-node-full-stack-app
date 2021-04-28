@@ -1,5 +1,21 @@
 # Welcome to my Github Repo for a Full Stack React-Node App!
 
+
+## Here are instructions to view this project in your local browser once you download it from GitHub:
+
+1. Clone the repo
+
+
+### Run these package.json scripts in your terminal in this order: 
+
+2. npm install 
+3. npm run launch 
+4. npm run migrate 
+5. npm run seed
+6. npm run seed:game 
+7. npm run start-dev
+
+
 ## Mongoose as your data modeling tool
 
 
@@ -111,26 +127,17 @@ const handleDelete = async () => {
 
 ## Here are instructions to view this project in your local browser once you download it from GitHub:
 
+1. Clone the repo
+
 
 ### Run these package.json scripts in your terminal in this order: 
 
-* Server Side: 
-1. npm run launch (to create docker container)
-2. npm run migrate (to create graphql migration) 
-3. npm run seed (to load seed into my mongoDB database)
-4. npm run seed:game (to load seed into my graphql database)
-5. npm run build (to create a build file for the project)
-6. npm run start-dev (to see this project in the browser via localhost)
-
-* Client Side: 
-
-7. After you start the server, cd into the client folder 
-8. npm run build (for good measure)
-9. npm run start (to start your client) 
-10. When it says you are already running port 5050, select yes to run the client on another port
-10. When in the client localhost, click on the Popular Games topnav link to see 25+ items of my MongoDB datastore
-11. When in the client localhost, click on the Card Games topnav link to see 25+ items of my graphql datastore
-
+2. npm install 
+3. npm run launch 
+4. npm run migrate 
+5. npm run seed
+6. npm run seed:game 
+7. npm run start-dev
 
 ## Additional Notes: 
 1. The Game API does not require an API Key 
