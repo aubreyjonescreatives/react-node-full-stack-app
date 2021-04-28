@@ -10,7 +10,7 @@ import cors from 'cors'
 
 
 
-//const __dirname = path.join(new URL(import.meta.url).pathname)
+const __dirname = path.join(new URL(import.meta.url).pathname)
 
 mongoose.set('useFindAndModify', false)
 
@@ -31,7 +31,7 @@ app.use(express.static('public'))
 
 
 
-//app.use(express.static(path.resolve(__dirname, 'client/build')))
+app.use(express.static(path.resolve(__dirname, '/client/build')))
 
 app.use('/api', apiRouter)
 
