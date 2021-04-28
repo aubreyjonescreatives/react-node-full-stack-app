@@ -5,6 +5,9 @@ CREATE TABLE "Gamer" (
     "gamer" TEXT,
     "avatar" TEXT,
     "gamerlevel" INTEGER,
+    "title" TEXT,
+    "description" TEXT,
+    "defaultCredits" INTEGER,
 
     PRIMARY KEY ("id")
 );
@@ -14,10 +17,13 @@ CREATE TABLE "Game" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "gamerlevel" INTEGER,
     "title" TEXT,
     "description" TEXT,
     "defaultCredits" TEXT,
     "gamerId" INTEGER,
+    "email" TEXT,
+    "avatar" TEXT,
 
     PRIMARY KEY ("id")
 );

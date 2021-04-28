@@ -5,16 +5,16 @@ services:
     volumes: 
       - pgdata:/var/lib/postgresql/data
     env_file: 
-      - ./graphQL/prisma/.env
+      - ./graphql/prisma/.env
 
   graphql:
-    build: ./graphQL
+    build: ./graphql
     ports:
       - '4000:4000'
     volumes:
-      - /graphQL/node_modules
-      - ./graphQL/src:/graphQL/src
-      - ./graphQL/prisma:/graphQL/prisma
+      - /graphql/node_modules
+      - ./graphql/src:/graphql/src
+      - ./graphql/prisma:/graphql/prisma
     stdin_open: true
     tty: true
     depends_on: 

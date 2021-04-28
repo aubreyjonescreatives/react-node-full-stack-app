@@ -8,14 +8,14 @@
     "node": "14.x"
   },
   "scripts": {
-    "postinstall": "cd client && npm install && cd ../graphQL && npm install",
-    "launch": "cd graphQL && npm run launchDocker",
-    "migrate": "cd graphQL && npm run migrate",
+    "postinstall": "cd client && npm install && cd ../graphql && npm install",
+    "launch": "cd graphql && npm run launchDocker",
+    "migrate": "cd graphql && npm run migrate",
     "seed": "node seed/loadAPI.js",
-    "seed:game": "cd graphQL && npm run seed:game",
+    "seed:game": "cd graphql && npm run seed:game",
     "heroku-postbuild": "cd client && npm install && npm run build",
     "build": "npm install && cd client && npm install && npm run build",
-    "start-dev": "concurrently --kill-others \"nodemon app.js\" \"cd graphQL && npm run dev\" \"cd client && npm run start\"",
+    "start-dev": "concurrently --kill-others \"nodemon app.js\" \"cd graphql && npm run dev\" \"cd client && npm run start\"",
     "buildDocker": "docker build .",
     "start": "node app.js"
   },
