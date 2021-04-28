@@ -39,7 +39,6 @@ const [gameData, setGameData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
-//const url = `https://crud-node-backend-app.herokuapp.com/card`
 
 
 
