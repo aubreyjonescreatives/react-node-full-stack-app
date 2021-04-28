@@ -4,16 +4,16 @@ import { PopularGame } from '../models/populargame.js'
 
 export const postaddGame = ((req, res) => {
 
-const games = new PopularGame({
+const game = new PopularGame({
     id: req.body.id,
     name: req.body.name, 
     image_url: req.body.image_url, 
     description: req.body.description, 
     price: req.body.price 
 })
-console.log(games)
-games.save() //save method is provided by Mongoose
-res.json(games)
+console.log(game)
+game.save() //save method is provided by Mongoose
+res.json(game)
 
 
 })
@@ -23,8 +23,8 @@ res.json(games)
 
 export const getAllGames = ((req, res) => {
     PopularGame.find()
-    .then(thegames => {
-        res.json(thegames)
+    .then(games => {
+        res.json(games)
     })
     .catch(err => console.log(err))
 })
@@ -52,7 +52,7 @@ export const getGameById = async (req, res) => {
 }
 
 export const putEditGame = async (req, res) => {
-    const gameId = req.body.data.gameId
+    const gameId = req.body.gameId
     const updatedObj = {
         name: req.body.data.name,
         image_url: req.body.data.image_url, 
@@ -60,8 +60,9 @@ export const putEditGame = async (req, res) => {
         price: req.body.data.price 
     } 
     try {
-    const game = await PopularGame.findByIdAndUpdate(gameId, updatedObj, {new: true})
-        res.status(200).json(game)
+    const updateGame = await PopularGame.findByIdAndUpdate(gameId, updatedObj, {new: true})
+    console.log(`Updated the product ${updateGame}`)   
+    res.status(200).json(updateGame)
     } catch(err) {
         res.status(400).json({Message: `Could not update: ${err}`})
     }

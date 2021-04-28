@@ -87,7 +87,7 @@ const handleUpdate = async (values) => {
                 name: values.name, 
                 image_url: values.image_url, 
                 description: values.description, 
-                price: values.price
+                price: values.price,
             },
         })
         if (result.status === 200) {
@@ -200,7 +200,8 @@ return (
         name: selectedGame?.name, 
         image_url: selectedGame?.image_url, 
         description: selectedGame?.description, 
-        price: selectedGame?.price 
+        price: selectedGame?.price, 
+        id: selectedGame?._id,
     }}
     validationSchema={Yup.object().shape({
         name: Yup.string('Enter game name').required(
@@ -209,6 +210,7 @@ return (
         image_url: Yup.string('Image URL'), 
         description: Yup.string('Game Description'), 
         price: Yup.string('Game Price'), 
+        id: Yup.string('ID').required('ID required.'), 
     })}
     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
         try {
@@ -241,10 +243,11 @@ return (
              <DialogContentText>
                  Edit Information for this Game: 
              </DialogContentText>
+             <Box>
             <TextField 
             autoFocus 
-            id="Name"
-            name="Name"
+            id="name"
+            name="name"
             label="Name"
             type="text"
             fullWidth
@@ -254,6 +257,7 @@ return (
             error={Boolean(touched.name && errors.name)} 
             helperText={touched.name && errors.name} 
             />
+            </Box>
             <Box>
                 <TextField 
             autoFocus 
@@ -294,7 +298,7 @@ return (
             id="price"
             name="price"
             label="Price"
-            type="number"
+            type="text"
             fullWidth
             value={values.price}
             onChange={handleChange}
