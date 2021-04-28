@@ -137,7 +137,7 @@ const handleDelete = async () => {
 4. npm run migrate 
 5. npm run seed
 6. npm run seed:game 
-7. npm run start-dev
+7. npm run start-dev -> Will deploy react front end to localhost:5050, server to localhost:8080, and graphql playground to localhost:4000
 
 ## Additional Notes: 
 1. The Game API does not require an API Key 
