@@ -10,7 +10,7 @@ import cors from 'cors'
 
 
 
-const __dirname = path.join(new URL(import.meta.url).pathname)
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 mongoose.set('useFindAndModify', false)
 
