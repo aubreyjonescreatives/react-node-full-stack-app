@@ -16,6 +16,7 @@
     "heroku-postbuild": "cd client && npm install && npm run build",
     "build": "npm install && cd client && npm install && npm run build",
     "start-dev": "concurrently --kill-others \"nodemon app.js\" \"cd graphQL && npm run dev\" \"cd client && npm run start\"",
+    "buildDocker": "docker build .",
     "start": "node app.js"
   },
   "author": "Aubrey Jones",
