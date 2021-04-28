@@ -12,7 +12,7 @@ services:
     ports:
       - '4000:4000'
     volumes:
-      - /graphql/node_modules
+      - /graphQL/node_modules
       - ./graphQL/src:/graphQL/src
       - ./graphQL/prisma:/graphQL/prisma
     stdin_open: true
@@ -34,7 +34,7 @@ services:
   client:
     build: ./client
     ports: 
-      - '3000:3000'
+      - '5050:5050'
     volumes: 
       - ./client/src:/client/src
     stdin_open: true
