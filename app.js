@@ -16,7 +16,7 @@ mongoose.set('useFindAndModify', false)
 
 dotenv.config()
 
-const port = process.env.PORT || 5050
+const port = process.env.PORT || 8080
 
 const app = express()
 
