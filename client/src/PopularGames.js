@@ -17,7 +17,7 @@ import * as dotenv from 'dotenv'
 
 
 dotenv.config()
-const PORT = process.env.PORT || 5050
+const port = process.env.PORT || 5050
 
 
 /* 
@@ -82,7 +82,7 @@ const handleInput = (event) => {
     
 const handleUpdate = async (values) => {
     try {
-        const result = await axios.put(`http://localhost:${PORT}/populargame/update`, {
+        const result = await axios.put(`http://localhost:${port}/populargame/update`, {
             data: {
                 gameId: values.id,
                 name: values.name, 
@@ -120,7 +120,7 @@ const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedGame._id)
     try {
-        await axios.delete(`http://localhost:${PORT}/populargame/delete`, { 
+        await axios.delete(`http://localhost:${port}/populargame/delete`, { 
         data: {   
         gameId: selectedGame._id
         }
@@ -136,7 +136,7 @@ const handleDelete = async () => {
 
 const fetchGames = async () => {
     try {
-    const populargamesInfo = await axios.get(`http://localhost:${PORT}/populargame`)
+    const populargamesInfo = await axios.get(`http://localhost:${port}/populargame`)
     setGameData(populargamesInfo.data)
     console.log(populargamesInfo.data)
     } catch (err) {
