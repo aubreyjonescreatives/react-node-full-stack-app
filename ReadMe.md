@@ -16,6 +16,14 @@
 7. npm run start-dev
 
 
+
+## Additional Notes: 
+1. The Game API does not require an API Key 
+2. Popular Games page serves my mongodb datastore 
+3. Card Games page serves my graphql datastore
+
+
+
 ## Mongoose as your data modeling tool
 
 
