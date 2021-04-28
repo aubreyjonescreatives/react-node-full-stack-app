@@ -6,6 +6,7 @@ services:
             - pgdata:/var/lib/postgresql/data
         env_file: 
             - ./graphql-server/prisma/ .env 
+            
     graphql: 
         build: ./graphql-server
         ports: 
