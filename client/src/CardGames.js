@@ -90,6 +90,8 @@ const [debouncedTitle, setDebouncedTitle] = useState('')
 const [createOpen, setCreateOpen] = useState(false)
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
+const [searchFilter, setSearchFilter] = useState('')
+
 
 
 const handleInput = (event) => {
@@ -211,7 +213,7 @@ return (
              Create Game <AddCircleIcon />
              </IconButton>
      <form className="gamestatsSearch">
-         <TextField placeholder='Search' onChange={handleInput}/>
+         <TextField placeholder='Search Game' onChange={(e) => setSearchFilter(e.target.value)}/>
          <IconButton aria-label='search'>
              <SearchIcon />
              </IconButton>
@@ -219,9 +221,9 @@ return (
      </div>
 <div></div>
 
-    {gameList.map((game) => {
+    {gameList.map((game, index) => {
      return (
-    <Card className="game-container" key={game.id}>
+    <Card className="game-container" key={game.id} index={index}>
     <LazyLoad placeholder={<Loading></Loading>}> 
      <Typography className="gameInfoTitle">{game.title}</Typography>
      <Typography className="gameInfo">{game.description}</Typography>

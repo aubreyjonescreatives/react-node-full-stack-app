@@ -104,10 +104,16 @@ header {
 
 
 .actions {
-    display: grid;  
+    display: inline-flex;  
     margin: 0 auto; 
+
 }
 
+
+.MuiIconButton-root {
+    margin: 0 auto;  
+    border-radius: 0%; 
+}
 
 .addButton {
     justify-content: center; 
@@ -116,13 +122,15 @@ header {
     padding: 10px; 
     border-radius: none; 
     width: 200px; 
-    height: 30px; 
+    height: 40px; 
+    margin-left: 350px;  
 }
+
 
  
 .gamestatsSearch {
-    display: flex; 
-    justify-content: center; 
+   margin: 0 auto; 
+   margin-left: 20px; 
 }
 
 .game-container {

@@ -131,8 +131,11 @@ body {
     padding: 10px 0px;
     font-size: 28px; }
   .main-1 .actions {
-    display: grid;
+    display: inline-flex;
     margin: 0 auto; }
+  .main-1 .MuiIconButton-root {
+    margin: 0 auto;
+    border-radius: 0%; }
   .main-1 .addButton {
     justify-content: center;
     background-color: #0B6E4F;
@@ -140,10 +143,11 @@ body {
     padding: 10px;
     border-radius: none;
     width: 200px;
-    height: 30px; }
+    height: 40px;
+    margin-left: 350px; }
   .main-1 .gamestatsSearch {
-    display: flex;
-    justify-content: center; }
+    margin: 0 auto;
+    margin-left: 20px; }
   .main-1 .game-container {
     display: inline-flex;
     width: 200px;
