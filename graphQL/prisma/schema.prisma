@@ -37,6 +37,8 @@ model Game {
   updatedAt DateTime @updatedAt
   gamerlevel Int? 
   title String? 
+  image String?
+  price String?
   description String? 
   defaultCredits String? 
   gamer    Gamer?   @relation(fields: [gamerId], references: [id])

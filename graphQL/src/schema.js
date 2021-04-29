@@ -137,6 +137,8 @@ const {
             data: {
               title: args.data.title,
               description: args.data.description,
+              image: args.data.image,
+              price: args.data.price,
             },
           })
         },
@@ -185,6 +187,8 @@ const {
              title: args.data.title, 
              description: args.data.description, 
              defaultCredits: args.data.defaultCredits, 
+             image: args.data.image, 
+             price: args.data.price, 
             
             },
           })
@@ -235,6 +239,8 @@ const {
       t.nonNull.string('title')
       t.string('description')
       t.string('defaultCredits')
+      t.string('image')
+      t.string('price')
       t.field('gamer', {
         type: 'Gamer',
         resolve: (parent, _, context) => {
@@ -277,6 +283,8 @@ const {
       t.nonNull.string('title')
       t.string('description')
       t.string('defaultCredits')
+      t.string('image')
+      t.string('price')
     },
   })
 

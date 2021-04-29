@@ -19,6 +19,8 @@ CREATE TABLE "Game" (
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "gamerlevel" INTEGER,
     "title" TEXT,
+    "image" TEXT,
+    "price" TEXT,
     "description" TEXT,
     "defaultCredits" TEXT,
     "gamerId" INTEGER,

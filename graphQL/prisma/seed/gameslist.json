@@ -4,14 +4,18 @@
       "game": [
           {
           "id": 2345, 
+          "image": "images/aces.png",
           "title": "Poker", 
-          "description": "A classic card game", 
+          "price": "21.99", 
+          "description": "A classic card game",
           "defaultCredits": "34" 
          
       }, 
       {
           "id": 2342, 
+          "image": "images/slots.png",
           "title": "Slots", 
+          "price": "10.45", 
           "description": "Spin the wheel!", 
           "defaultCredits": "21"
          
@@ -19,7 +23,9 @@
       },
       {
           "id": 2348, 
+          "image": "images/royalflush.png",
           "title": "Texas Holdem", 
+          "price": "16.24", 
           "description": "A classic poker card game", 
           "defaultCredits": "90"
          
@@ -27,7 +33,9 @@
       },
       {
           "id": 2341, 
-          "title": "Spider Solitaire", 
+          "image": "images/deckofcards.png",
+          "title": "Spider Solitaire",
+          "price": "15.00",  
           "description": "A classic card game", 
           "defaultCredits": "31"
         
@@ -36,7 +44,9 @@
 
       {
         "id": 231, 
+        "image": "images/deckofcards.png",
         "title": "Solitaire", 
+        "price": "150.00", 
         "description": "A classic card game", 
         "defaultCredits": "28"
       
@@ -45,8 +55,10 @@
 
     {
       "id": 211, 
+      "image": "images/deckofcards.png",
       "title": "21", 
       "description": "A classic card game", 
+      "price": "21.00", 
       "defaultCredits": "31"
     
 
@@ -54,8 +66,10 @@
 
   {
     "id": 267, 
+    "image": "images/deckofcards.png",
     "title": "Freecell", 
     "description": "A classic card game", 
+    "price": "0.00", 
     "defaultCredits": "33"
   
 
@@ -63,8 +77,10 @@
 
 {
   "id": 213, 
+  "image": "images/deckofcards.png",
   "title": "Scum", 
   "description": "A classic card game", 
+  "price": "120.00", 
   "defaultCredits": "35"
 
 
@@ -73,8 +89,10 @@
 
 {
   "id": 231, 
+  "image": "images/deckofcards.png",
   "title": "Card Matching Game", 
   "description": "A classic card game", 
+  "price": "56.75", 
   "defaultCredits": "33"
 
 
@@ -82,8 +100,10 @@
 
 {
 "id": 225, 
+"image": "images/deckofcards.png",
 "title": "Go Fish", 
 "description": "A classic card game", 
+"price": "74.00", 
 "defaultCredits": "31"
 
 
@@ -91,8 +111,10 @@
 
 {
 "id": 240, 
+"image": "images/deckofcards.png",
 "title": "Hearts", 
 "description": "A classic card game", 
+"price": "15,000", 
 "defaultCredits": "31"
 
 
@@ -101,8 +123,10 @@
 
 {
   "id": 2521, 
+  "image": "images/deckofcards.png",
   "title": "Solitaire", 
-  "description": "A classic card game", 
+  "description": "A classic card game",
+  "price": "79.00",  
   "defaultCredits": "31"
 
 
@@ -110,8 +134,10 @@
 
 {
 "id": 2312, 
+"image": "images/deckofcards.png",
 "title": "Blackjack", 
 "description": "A classic card game", 
+"price": "180.00", 
 "defaultCredits": "38"
 
 
@@ -119,8 +145,10 @@
 
 {
 "id": 2341, 
+"image": "images/deckofcards.png",
 "title": "Phase 10", 
 "description": "A classic card game", 
+"price": "550.00", 
 "defaultCredits": "31"
 
 
@@ -129,8 +157,10 @@
 
 {
   "id": 2309, 
+  "image": "images/deckofcards.png",
   "title": "Uno", 
   "description": "A classic card game", 
+  "price": "88.00", 
   "defaultCredits": "301"
 
 
@@ -138,8 +168,10 @@
 
 {
 "id": 2320, 
+"image": "images/deckofcards.png",
 "title": "Go Fish", 
 "description": "A classic card game", 
+"price": "99.95", 
 "defaultCredits": "31"
 
 
@@ -147,8 +179,10 @@
 
 {
 "id": 2149, 
+"image": "images/deckofcards.png",
 "title": "War", 
 "description": "A classic card game", 
+"price": "150,000,000.00", 
 "defaultCredits": "32"
 
 
@@ -157,8 +191,10 @@
 
 {
   "id": 2315, 
+  "image": "images/deckofcards.png",
   "title": "Freecell", 
   "description": "A classic card game", 
+  "price": "0.00", 
   "defaultCredits": "38"
 
 
@@ -166,8 +202,10 @@
 
 {
 "id": 212, 
+"image": "images/deckofcards.png",
 "title": "Texas Holdem", 
 "description": "A classic card game", 
+"price": "175.00", 
 "defaultCredits": "31"
 
 
@@ -175,8 +213,10 @@
 
 {
 "id": 2389, 
+"image": "images/deckofcards.png",
 "title": "Scum", 
 "description": "A classic card game", 
+"price": "22.00", 
 "defaultCredits": "31"
 
 
@@ -186,8 +226,10 @@
 
 {
   "id": 2161, 
+  "image": "images/deckofcards.png",
   "title": "Unstable Unicorns", 
   "description": "A classic card game", 
+  "price": "73.00", 
   "defaultCredits": "38"
 
 
@@ -195,8 +237,10 @@
 
 {
 "id": 2123, 
+"image": "images/deckofcards.png",
 "title": "Skipbo", 
 "description": "A classic card game", 
+"price": "85.00", 
 "defaultCredits": "39"
 
 
@@ -204,8 +248,10 @@
 
 {
 "id": 2091, 
+"image": "images/deckofcards.png",
 "title": "Cards Against Humanity", 
 "description": "A classic card game", 
+"price": "199.00", 
 "defaultCredits": "338"
 
 
@@ -214,9 +260,11 @@
 
 
 {
-  "id": 2291, 
+  "id": 2291,
+  "image": "images/deckofcards.png", 
   "title": "What do you Meme?", 
   "description": "A classic card game", 
+  "price": "79.00", 
   "defaultCredits": "31"
 
 
@@ -224,8 +272,10 @@
 
 {
 "id": 2388, 
+"image": "images/deckofcards.png",
 "title": "True Colors", 
 "description": "A classic card game", 
+"price": "11,550.00", 
 "defaultCredits": "34"
 
 
@@ -233,8 +283,10 @@
 
 {
 "id": 2761, 
+"image": "images/deckofcards.png",
 "title": "Capital Punishment", 
-"description": "A classic card game", 
+"description": "A classic card game",
+"price": "950.00",  
 "defaultCredits": "65"
 
 

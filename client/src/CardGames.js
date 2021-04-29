@@ -4,7 +4,7 @@ import _ from 'lodash'
 import {useQuery, useMutation, gql} from '@apollo/client'
 import {Card, IconButton, Typography, Container, 
     Dialog, Button, DialogTitle, DialogContent, DialogContentText, 
-    DialogActions, TextField, Box} from '@material-ui/core'
+    DialogActions, TextField, Box, CardMedia} from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
@@ -37,6 +37,8 @@ query {
         id 
         title
         description 
+        image
+        price
       
     }
 }
@@ -45,11 +47,13 @@ console.log(ALL_GAMES)
 
 
 const CREATE_GAME = gql `
-    mutation createGame ( $title: String!, $description: String) {
+    mutation createGame ( $title: String!, $description: String, $image: String!, $price: String!) {
         createGame (
             data: {
                 title: $title, 
                 description: $description
+                image: $image
+                price: $price
             }
         ) {
             id
@@ -60,11 +64,13 @@ const CREATE_GAME = gql `
 console.log(CREATE_GAME)
 
 const UPDATE_GAME = gql`
-mutation updateGame ($id: Int!, $title: String!, $description: String) {
+mutation updateGame ($id: Int!, $title: String!, $description: String, $image: String!, $price: String!) {
     updateGame (id: $id, 
         data: {
             title: $title, 
             description: $description
+            image: $image 
+            price: $price
             
         }) {
             id
@@ -176,8 +182,10 @@ const debounce = useCallback (
         updateGame({
             variables: {
                 id: selectedGame.id, 
+                image: values.image,
                 title: values.title, 
-                description: values.description
+                description: values.description,
+                price: values.price
             }
         })
         }
@@ -196,8 +204,10 @@ const debounce = useCallback (
           const handleCreate = async (values) => {
             createGame({
                 variables: {
+                    image: values.image,
                     title: values.title,  
-                    description: values.description
+                    description: values.description, 
+                    price: values.price
                 }
             })
             }
@@ -213,7 +223,7 @@ return (
              Create Game <AddCircleIcon />
              </IconButton>
      <form className="gamestatsSearch">
-         <TextField placeholder='Search Game' onChange={(e) => setSearchFilter(e.target.value)}/>
+         <TextField placeholder='Search Card Game' onChange={(e) => setSearchFilter(e.target.value)}/>
          <IconButton aria-label='search'>
              <SearchIcon />
              </IconButton>
@@ -225,11 +235,20 @@ return (
      return (
     <Card className="game-container" key={game.id} index={index}>
     <LazyLoad placeholder={<Loading></Loading>}> 
+    <CardMedia 
+     className="CardMedia"
+     component="img"
+     alt={'Card Game'}
+     image={game.image}
+     card={game.game}
+     />
      <Typography className="gameInfoTitle">{game.title}</Typography>
      <Typography className="gameInfo">{game.description}</Typography>
-     <Typography className="gameInfo">{game.defaultCredits}</Typography>
+     <Typography className="gameInfoJP">Current Jackpot: ${game.price}</Typography>
+    <div className="iconButtons">
      <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
      <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({game})}><DeleteIcon/></IconButton>
+     </div>
      </LazyLoad>
      </Card>
     
@@ -246,6 +265,8 @@ return (
     initialValues={{
         title: selectedGame?.title,  
         description: selectedGame?.description, 
+        image: selectedGame?.image,
+        price: selectedGame?.price
 
     }}
     validationSchema={Yup.object().shape({
@@ -253,7 +274,9 @@ return (
             'Game Title is required', 
         ),
         description: Yup.string('Description'), 
-         
+        image: Yup.string('Image'), 
+        price: Yup.string('Price'),
+        
     })}
     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
         try {
@@ -314,6 +337,36 @@ return (
             helperText={touched.description && errors.description} 
                 />
             </Box>
+            <Box>
+                <TextField 
+            autoFocus 
+            id="image"
+            name="image"
+            label="Game Image"
+            type="text"
+            fullWidth
+            value={values.image}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.image && errors.image)} 
+            helperText={touched.image && errors.image} 
+                />
+            </Box>
+            <Box>
+                <TextField 
+            autoFocus 
+            id="price"
+            name="price"
+            label="Current Game Jackpot"
+            type="int"
+            fullWidth
+            value={values.price}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.price && errors.price)} 
+            helperText={touched.price && errors.price} 
+                />
+            </Box>
          </DialogContent>
          <DialogActions>
              <Button onClick={handleCloseEdit}>Cancel</Button>
@@ -366,7 +419,9 @@ return (
     <Formik
     initialValues={{
         title: selectedGame?.title,  
-        description: selectedGame?.description, 
+        description: selectedGame?.description,
+        image: selectedGame?.image,
+        price: selectedGame?.price  
        
     }}
     validationSchema={Yup.object().shape({
@@ -375,6 +430,8 @@ return (
         ),
         
         description: Yup.string('Description'), 
+        image: Yup.string('image'),
+        price: Yup.string('price')
          
     })}
     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
@@ -434,6 +491,36 @@ return (
             onBlur={handleBlur}
             error={Boolean(touched.description && errors.description)} 
             helperText={touched.description && errors.description} 
+                />
+            </Box>
+            <Box>
+                <TextField 
+            autoFocus 
+            id="image"
+            name="image"
+            label="Game Image"
+            type="text"
+            fullWidth
+            value={values.image}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.image && errors.image)} 
+            helperText={touched.image && errors.image} 
+                />
+            </Box>
+            <Box>
+                <TextField 
+            autoFocus 
+            id="price"
+            name="price"
+            label="Current Game Jackpot"
+            type="int"
+            fullWidth
+            value={values.price}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.price && errors.price)} 
+            helperText={touched.price && errors.price} 
                 />
             </Box>
          </DialogContent>

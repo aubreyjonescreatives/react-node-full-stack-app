@@ -11,9 +11,11 @@ const allGames = game_seed['gameslist'].game
 return allGames.map((gm) => {
 return {
     data: {
+        image: gm.image,
         title: gm.title,
         description: gm.description, 
-        defaultCredits: gm.defaultCredits, 
+        defaultCredits: gm.defaultCredits,
+        price: gm.price, 
 
     }
 }
