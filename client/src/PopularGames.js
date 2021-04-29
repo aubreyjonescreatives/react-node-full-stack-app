@@ -156,13 +156,14 @@ return (
     <>
     <div className="main-1">
      <h1 className="gamesHeader"> Popular Games</h1>
-     <div></div>
+     <div className="gameparentSearch">
      <form className="gamestatsSearch">
          <TextField placeholder='Search' onChange={handleInput} />
          <IconButton aria-label='search' onClick={handleSearch}>
              <SearchIcon />
              </IconButton>
      </form>
+     </div>
 
 
     <Container className="popular-game-container">

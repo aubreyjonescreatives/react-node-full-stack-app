@@ -155,7 +155,12 @@ body {
     background-color: white;
     border: 1px solid #0B6E4F;
     color: #0B6E4F; }
+  .main-1 .gameparentSearch {
+    display: grid;
+    margin-bottom: 50px; }
   .main-1 .gamestatsSearch {
+    margin: 0 auto; }
+  .main-1 .cardstatsSearch {
     margin: 0 auto;
     margin-left: 20px; }
   .main-1 .game-container {

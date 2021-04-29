@@ -222,7 +222,7 @@ return (
      <IconButton aria-label='add' onClick={() => handleClickCreateOpen()} className="addButton">
              Create Game <AddCircleIcon />
              </IconButton>
-     <form className="gamestatsSearch">
+     <form className="cardstatsSearch">
          <TextField placeholder='Search Card Game' onChange={(e) => setSearchFilter(e.target.value)}/>
          <IconButton aria-label='search'>
              <SearchIcon />

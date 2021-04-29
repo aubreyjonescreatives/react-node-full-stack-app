@@ -139,13 +139,26 @@ header {
     color: $primaryColor; 
 }
 
+.gameparentSearch {
+    display: grid; 
+    margin-bottom: 50px; 
+   
+}
 
- 
+
 .gamestatsSearch {
    margin: 0 auto; 
-   margin-left: 20px; 
+   
+ }
+
+
+.cardstatsSearch {
+    margin: 0 auto; 
+    margin-left: 20px; 
+   
+ }
   
-}
+
 
 .game-container {
     display: inline-grid;  
