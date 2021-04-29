@@ -239,7 +239,7 @@ return (
      className="CardMedia"
      component="img"
      alt={'Card Game'}
-     image={game.image}
+     image={`../graphql/prisma/seed/${game.image}`}
      card={game.game}
      />
      <Typography className="gameInfoTitle">{game.title}</Typography>
@@ -513,7 +513,7 @@ return (
             autoFocus 
             id="price"
             name="price"
-            label="Current Game Jackpot"
+            label="Game Jackpot"
             type="int"
             fullWidth
             value={values.price}

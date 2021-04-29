@@ -109,10 +109,13 @@ body {
   width: 50%;
   height: 100px; }
 
+.navBar {
+  padding-top: 10px; }
+
 .navLink {
   padding: 20px;
   margin: 50px 20px;
-  margin-top: 50px;
+  padding-top: 50px;
   color: white;
   font-size: 24px;
   text-decoration: none; }
@@ -158,7 +161,7 @@ body {
   .main-1 .game-container {
     display: inline-grid;
     width: 300px;
-    height: 275px;
+    height: 500px;
     margin: 30px;
     box-shadow: 10px; }
   .main-1 .game-container:hover {
@@ -180,12 +183,9 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; }
-  .main-1 .card-container {
-    margin: 10px;
-    width: 150px; }
-    .main-1 .card-container .CardMedia {
-      width: 100%;
-      height: 100%; }
+  .main-1 .CardMedia {
+    width: 100%;
+    height: 200px; }
   .main-1 .gameLink:hover {
     text-decoration: none; }
   .main-1 .popular-game-container {
