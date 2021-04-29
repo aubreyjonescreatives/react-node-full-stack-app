@@ -132,7 +132,8 @@ body {
     font-size: 28px; }
   .main-1 .actions {
     display: inline-flex;
-    margin: 0 auto; }
+    margin: 0 auto;
+    margin-bottom: 50px; }
   .main-1 .MuiIconButton-root {
     margin: 0 auto;
     border-radius: 0%; }
@@ -144,7 +145,7 @@ body {
     border-radius: none;
     width: 200px;
     height: 40px;
-    margin-left: 350px; }
+    margin-left: 550px; }
   .main-1 .gamestatsSearch {
     margin: 0 auto;
     margin-left: 20px; }
