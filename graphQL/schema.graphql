@@ -37,7 +37,7 @@ input GamerCreateInput {
 
 type Mutation {
   CreateGamer(data: GamerCreateInput!): Gamer!
-  createGame(data: GameCreateInput!, email: String!): Game
+  createGame(data: GameCreateInput!): Game
   deleteGame(id: Int!): Game
   updateGame(data: GameCreateInput!, id: Int!): Game
 }

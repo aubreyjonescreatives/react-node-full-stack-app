@@ -131,16 +131,12 @@ const {
               type: 'GameCreateInput',
             }),
           ),
-          email: nonNull(stringArg()),
         },
         resolve: (_, args, context) => {
           return context.prisma.game.create({
             data: {
               title: args.data.title,
-              description: args.data.content,
-              gamer: {
-                connect: { email: args.authorEmail },
-              },
+              description: args.data.description,
             },
           })
         },

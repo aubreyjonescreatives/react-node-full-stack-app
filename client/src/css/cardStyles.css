@@ -130,9 +130,17 @@ body {
   .main-1 h2 {
     padding: 10px 0px;
     font-size: 28px; }
-  .main-1 .buttonHint {
-    font-size: 20px;
-    margin: 20px 0px; }
+  .main-1 .actions {
+    display: grid;
+    margin: 0 auto; }
+  .main-1 .addButton {
+    justify-content: center;
+    background-color: #0B6E4F;
+    color: white;
+    padding: 10px;
+    border-radius: none;
+    width: 200px;
+    height: 30px; }
   .main-1 .gamestatsSearch {
     display: flex;
     justify-content: center; }

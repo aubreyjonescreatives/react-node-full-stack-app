@@ -75,7 +75,7 @@ header {
 /* ------------------------MAIN----------------------------- */
 
 .main-1 {
-
+    
 
 
     .gamesHeader {
@@ -85,34 +85,41 @@ header {
     }
 
 
-h1 {
-clear: both; 
-margin: 50px 20px 50px 30px; 
-color: $primaryColor; 
-text-align: left; 
-font-size: 30px; 
 
+    h1 {
+        clear: both; 
+        margin: 50px 20px 50px 30px; 
+        color: $primaryColor; 
+        text-align: left; 
+        font-size: 30px; 
+        
+        }
+        
+        h2 {
+            padding: 10px 0px; 
+            font-size: 28px; 
+        }
+        
+
+
+
+.actions {
+    display: grid;  
+    margin: 0 auto; 
 }
 
-h2 {
-    padding: 10px 0px; 
-    font-size: 28px; 
+
+.addButton {
+    justify-content: center; 
+    background-color: $primaryColor; 
+    color: white; 
+    padding: 10px; 
+    border-radius: none; 
+    width: 200px; 
+    height: 30px; 
 }
 
-.buttonHint {
-    font-size: 20px; 
-    margin: 20px 0px; 
-}
-
-
-    //min-height: 20rem;
-    //padding: 1rem 2%;
-    //display: grid; 
-    //grid-template-columns: 1fr;
-    //grid-column-gap: 10px;
-    //grid-row-gap: 10px;  
-    
-   
+ 
 .gamestatsSearch {
     display: flex; 
     justify-content: center; 

@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState, useCallback} from 'react';
 //import axios from 'axios'
-//import _ from 'lodash'
+import _ from 'lodash'
 import {useQuery, useMutation, gql} from '@apollo/client'
 import {Card, IconButton, Typography, Container, 
     Dialog, Button, DialogTitle, DialogContent, DialogContentText, 
@@ -8,7 +8,7 @@ import {Card, IconButton, Typography, Container,
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
-//import AddCircleIcon from '@material-ui/icons/Add';
+import AddCircleIcon from '@material-ui/icons/Add';
 import LazyLoad from 'react-lazyload'
 import './css/cardStyles.css'
 import { Formik } from 'formik' 
@@ -43,17 +43,32 @@ query {
 `
 console.log(ALL_GAMES)
 
+
+const CREATE_GAME = gql `
+    mutation createGame ($id: Int!, $title: String!, $description: String) {
+        createGame (
+            data: {
+                title: $title, 
+                description: $description
+            }
+        ) {
+            id
+        }
+    }
+
+`
+console.log(CREATE_GAME)
+
 const UPDATE_GAME = gql`
-mutation updateGame ($id: Int!, $title: String!, $description: String, $defaultCredits: String) {
+mutation updateGame ($id: Int!, $title: String!, $description: String) {
     updateGame (id: $id, 
         data: {
             title: $title, 
-            description: $description,
-            defaultCredits: $defaultCredits, 
-           
-        }
-        ) {
+            description: $description
+            
+        }) {
             id
+           
         }
 }
 `
@@ -71,20 +86,28 @@ mutation deleteGame ($id: Int!) {
 const CardGames = () => {
 
 const [selectedGame, setSelectedGame] = useState( {title: ''})
-//const [debouncedTitle, setDebouncedTitle] = useState('')
+const [debouncedTitle, setDebouncedTitle] = useState('')
+const [createOpen, setCreateOpen] = useState(false)
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
 
-/*
+
 const handleInput = (event) => {
     debounce(event.target.value)
 }
-*/
+
+const debounce = useCallback (
+    _.debounce((searchVal) => {
+        setDebouncedTitle(searchVal)
+    }, 1000),
+    []
+)
+
 
     const { loading, error, data} = useQuery(ALL_GAMES)
     const [updateGame] = useMutation(UPDATE_GAME)
     const [deleteGame] = useMutation(DELETE_GAME)
-
+    const [createGame] = useMutation(CREATE_GAME)
 
     if (loading) {
         return (
@@ -119,6 +142,19 @@ const handleInput = (event) => {
     }
 
 
+
+    const handleClickDeleteOpen = (game) => {
+        setSelectedGame(game.game)
+        setDeleteOpen(true)
+      }
+      
+      const handleCloseDelete = () => {
+          setDeleteOpen(false)
+      }
+
+
+
+
     const handleClickEditOpen = (game) => {
         setSelectedGame(game.game) 
         setEditOpen(true)
@@ -139,23 +175,38 @@ const handleInput = (event) => {
             variables: {
                 id: selectedGame.id, 
                 title: values.title, 
-                defaultCredits: values.defaultCredits, 
                 description: values.description
             }
         })
         }
     
 
-
-
-        const handleClickDeleteOpen = (game) => {
-          setSelectedGame(game.game)
-          setDeleteOpen(true)
-        }
         
-        const handleCloseDelete = () => {
-            setDeleteOpen(false)
-        }
+        const handleClickCreateOpen = async (values) => {
+            console.log('create game button clicked')
+            setCreateOpen(false)
+            createGame({
+                variables: {
+                id: selectedGame.id,  
+                title: values.title, 
+                description: values.description
+                },
+            })
+          }
+          
+          const handleCloseCreate = () => {
+              setCreateOpen(false)
+          }
+
+          const handleCreate = async (values) => {
+            createGame({
+                variables: {
+                    id: selectedGame.id, 
+                    title: values.title,  
+                    description: values.description
+                }
+            })
+            }
 
 
 
@@ -163,16 +214,18 @@ const handleInput = (event) => {
 return (
     <div className="main-1">
      <h1 className="gamesHeader">Card Games</h1>
-     <div></div>
+     <div className="actions">
+     <IconButton aria-label='add' onClick={() => handleClickCreateOpen()} className="addButton">
+             Create Game <AddCircleIcon />
+             </IconButton>
      <form className="gamestatsSearch">
-         <TextField placeholder='Search' />
+         <TextField placeholder='Search' onChange={handleInput}/>
          <IconButton aria-label='search'>
              <SearchIcon />
              </IconButton>
      </form>
-
-
-
+     </div>
+<div></div>
 
     {gameList.map((game) => {
      return (
@@ -194,21 +247,16 @@ return (
      <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
-    aria-labelledby='edit-dial'>
+    aria-labelledby='edit-dialog-title'>
     <Formik
     initialValues={{
         title: selectedGame?.title,  
         description: selectedGame?.description, 
-        defaultCredits: selectedGame?.defaultCredits,
-       
+
     }}
     validationSchema={Yup.object().shape({
-        id: Yup.string('Enter Game Title').required(
+        title: Yup.string('Enter Game Title').required(
             'Game Title is required', 
-        ),
-        
-        defaultCredits: Yup.string('Enter Game Default Credits').required(
-            'Default Credits code is required',
         ),
         description: Yup.string('Description'), 
          
@@ -239,7 +287,7 @@ return (
         autoComplete='off' 
         onSubmit={handleSubmit}
         >
-         <DialogTitle id="edit-dial">Edit Game</DialogTitle>   
+         <DialogTitle id="edit-dialog-title">Edit Game</DialogTitle>   
          <DialogContent>
              <DialogContentText>
                  Edit Information for this Game: 
@@ -272,19 +320,6 @@ return (
             helperText={touched.description && errors.description} 
                 />
             </Box>
-            <TextField 
-            autoFocus 
-            id="defaultCredits"
-            name="defaultCredits"
-            label="Credits"
-            type="text"
-            fullWidth
-            value={values.defaultCredits}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.defaultCredits && errors.defaultCredits)} 
-            helperText={touched.defaultCredits && errors.defaultCredits} 
-            />
          </DialogContent>
          <DialogActions>
              <Button onClick={handleCloseEdit}>Cancel</Button>
@@ -321,6 +356,125 @@ return (
 
 
      </form>
+
+
+
+
+
+
+
+
+
+     <Dialog 
+    open={createOpen}
+    onClose={handleCloseCreate}
+    aria-labelledby='create-dial'>
+    <Formik
+    initialValues={{
+        title: selectedGame?.title,  
+        description: selectedGame?.description, 
+       
+    }}
+    validationSchema={Yup.object().shape({
+        id: Yup.string('Enter Game Title').required(
+            'Game Title is required', 
+        ),
+        
+        description: Yup.string('Description'), 
+         
+    })}
+    onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
+        try {
+            await handleCreate(values) 
+            handleCloseCreate()
+        }   catch (err) {
+            console.error(err)
+            setStatus({ success: false })
+            setErrors({ submit: err.message })
+            setSubmitting(false)
+        }
+    }}
+    >
+    {({
+        values,
+        errors, 
+        touched, 
+        handleChange, 
+        handleBlur, 
+        handleSubmit, 
+        isSubmitting,
+    }) => (
+        <form 
+        noValidate 
+        autoComplete='off' 
+        onSubmit={handleSubmit}
+        >
+         <DialogTitle id="create-dial">Create Game</DialogTitle>   
+         <DialogContent>
+             <DialogContentText>
+                 Create Information for this Game: 
+             </DialogContentText>
+             <TextField 
+            autoFocus 
+            id="title"
+            name="title"
+            label="Game Title"
+            type="text"
+            value={values.title}
+            fullWidth
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.title && errors.title)} 
+            helperText={touched.title && errors.title} 
+            />
+               <Box>
+                <TextField 
+            autoFocus 
+            id="description"
+            name="description"
+            label="Game Description"
+            value={values.description}
+            type="text"
+            fullWidth
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.description && errors.description)} 
+            helperText={touched.description && errors.description} 
+                />
+            </Box>
+         </DialogContent>
+         <DialogActions>
+             <Button onClick={handleCloseCreate}>Cancel</Button>
+             <Button type='submit'>Create Game</Button>
+         </DialogActions>
+       
+        </form>
+    )}
+
+
+
+    </Formik>
+
+    </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
