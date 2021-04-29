@@ -45,7 +45,7 @@ console.log(ALL_GAMES)
 
 
 const CREATE_GAME = gql `
-    mutation createGame ($id: Int!, $title: String!, $description: String) {
+    mutation createGame ( $title: String!, $description: String) {
         createGame (
             data: {
                 title: $title, 
@@ -182,16 +182,9 @@ const debounce = useCallback (
     
 
         
-        const handleClickCreateOpen = async (values) => {
+        const handleClickCreateOpen = () => {
             console.log('create game button clicked')
-            setCreateOpen(false)
-            createGame({
-                variables: {
-                id: selectedGame.id,  
-                title: values.title, 
-                description: values.description
-                },
-            })
+            setCreateOpen(true)
           }
           
           const handleCloseCreate = () => {
@@ -201,7 +194,6 @@ const debounce = useCallback (
           const handleCreate = async (values) => {
             createGame({
                 variables: {
-                    id: selectedGame.id, 
                     title: values.title,  
                     description: values.description
                 }
@@ -376,7 +368,7 @@ return (
        
     }}
     validationSchema={Yup.object().shape({
-        id: Yup.string('Enter Game Title').required(
+        title: Yup.string('Enter Game Title').required(
             'Game Title is required', 
         ),
         
