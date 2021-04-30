@@ -21,6 +21,8 @@ CREATE TABLE "Game" (
     "title" TEXT,
     "image" TEXT,
     "price" TEXT,
+    "link" TEXT,
+    "gameformat" TEXT,
     "description" TEXT,
     "defaultCredits" TEXT,
     "gamerId" INTEGER,

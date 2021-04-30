@@ -4,11 +4,13 @@
       "game": [
           {
           "id": 2345, 
-          "image": "images/aces.png",
+          "image": "images/poker.jpg",
           "title": "Poker", 
           "price": "21.99", 
           "description": "A classic card game",
-          "defaultCredits": "34" 
+          "defaultCredits": "34", 
+          "gameformat": "physical poker chips and cards",
+          "link": "https://www.amazon.com/Brybelly-Poker-Wooden-Carousel-11-5gm/dp/B005LEDZV6/ref=sxin_10?asc_contentid=amzn1.osa.58477242-92d5-49e8-a607-4898ae76dd6a.ATVPDKIKX0DER.en_US&asc_contenttype=article&ascsubtag=amzn1.osa.58477242-92d5-49e8-a607-4898ae76dd6a.ATVPDKIKX0DER.en_US&creativeASIN=B005LEDZV6&cv_ct_cx=poker+game&cv_ct_id=amzn1.osa.58477242-92d5-49e8-a607-4898ae76dd6a.ATVPDKIKX0DER.en_US&cv_ct_pg=search&cv_ct_we=asin&cv_ct_wn=osp-single-source-earns-comm&dchild=1&keywords=poker+game&linkCode=oas&pd_rd_i=B005LEDZV6&pd_rd_r=a152865d-93e1-433e-8ce3-39cc3e268340&pd_rd_w=MFuxm&pd_rd_wg=MM08a&pf_rd_p=c5aa77b7-f0ac-4b95-b207-5ef230c60c9b&pf_rd_r=Z5EKT5C64249WF07NEKP&qid=1619763579&sr=1-2-64f3a41a-73ca-403a-923c-8152c45485fe&tag=spyonsite-20"
          
       }, 
       {
@@ -17,71 +19,85 @@
           "title": "Slots", 
           "price": "10.45", 
           "description": "Spin the wheel!", 
-          "defaultCredits": "21"
+          "defaultCredits": "21", 
+          "gameformat": "app", 
+          "link": "https://www.amazon.com/Slotomania-Free-Slots-Casino-Games/dp/B007TBAQCK/ref=sr_1_3?dchild=1&keywords=slots+app&qid=1619763872&sr=8-3"
          
   
       },
       {
           "id": 2348, 
-          "image": "images/royalflush.png",
+          "image": "images/texasholdem.png",
           "title": "Texas Holdem", 
           "price": "16.24", 
           "description": "A classic poker card game", 
-          "defaultCredits": "90"
+          "defaultCredits": "90", 
+          "gameformat": "app", 
+          "link": "https://www.amazon.com/TX-Poker-Texas-Holdem/dp/B00JRA10U8/ref=sr_1_1?dchild=1&keywords=texas+holdem+app&qid=1619764010&sr=8-1"
          
   
       },
       {
           "id": 2341, 
-          "image": "images/deckofcards.png",
+          "image": "images/spidersolitaire.png",
           "title": "Spider Solitaire",
           "price": "15.00",  
           "description": "A classic card game", 
-          "defaultCredits": "31"
+          "defaultCredits": "31", 
+          "gameformat": "app",
+          "link": "https://www.amazon.com/MobilityWare-Spider/dp/B0063GORYU/ref=sr_1_1?dchild=1&keywords=Spider+solitaire&qid=1619763782&sr=8-1"
         
   
       },
 
       {
         "id": 231, 
-        "image": "images/deckofcards.png",
+        "image": "images/solitaire.png",
         "title": "Solitaire", 
         "price": "150.00", 
         "description": "A classic card game", 
-        "defaultCredits": "28"
+        "defaultCredits": "28", 
+        "gameformat": "app", 
+        "link": "https://www.amazon.com/jqdroid-com-Solitaire-Klondike/dp/B017EESK0G/ref=sr_1_10?dchild=1&keywords=solitaire&qid=1619764077&sr=8-10"
       
 
     },
 
     {
       "id": 211, 
-      "image": "images/deckofcards.png",
+      "image": "images/21.png",
       "title": "21", 
       "description": "A classic card game", 
       "price": "21.00", 
-      "defaultCredits": "31"
+      "defaultCredits": "31", 
+      "gameformat": "app", 
+      "link": "https://www.amazon.com/Blackjack-Free-Casino-Cards-Games/dp/B00SSUMT7G/ref=sr_1_9?dchild=1&keywords=21+card+game+app&qid=1619764231&sr=8-9"
     
 
   },
 
   {
     "id": 267, 
-    "image": "images/deckofcards.png",
+    "image": "images/freecell.png",
     "title": "Freecell", 
     "description": "A classic card game", 
     "price": "0.00", 
-    "defaultCredits": "33"
+    "defaultCredits": "33", 
+    "gameformat": "app", 
+    "link": "https://www.amazon.com/HuongPham-FreeCell-Solitaire-card-game/dp/B071NHT9BW/ref=sr_1_3?dchild=1&keywords=free+cell+card+game+app&qid=1619764324&sr=8-3"
   
 
 },
 
 {
   "id": 213, 
-  "image": "images/deckofcards.png",
+  "image": "images/scum.jpg",
   "title": "Scum", 
   "description": "A classic card game", 
   "price": "120.00", 
-  "defaultCredits": "35"
+  "defaultCredits": "35", 
+  "gameformat": "Play Scum with Rook physical cards", 
+  "link": "https://www.amazon.com/Rook-Card-Game-by-Hasbro/dp/B001VIWAO4/ref=sr_1_6?dchild=1&keywords=rook+cards&qid=1619764917&sr=8-6"
 
 
 },
@@ -89,33 +105,39 @@
 
 {
   "id": 231, 
-  "image": "images/deckofcards.png",
-  "title": "Card Matching Game", 
+  "image": "images/catchamatch.jpg",
+  "title": "Catch a Match", 
   "description": "A classic card game", 
   "price": "56.75", 
-  "defaultCredits": "33"
+  "defaultCredits": "33", 
+  "gameformat": "Physical cards", 
+  "link": "https://www.amazon.com/Memory-Game-Matching-Educational-Learning/dp/B08C5L4YXG/ref=sr_1_47?dchild=1&keywords=card+matching+game&qid=1619765190&sr=8-47"
 
 
 },
 
 {
 "id": 225, 
-"image": "images/deckofcards.png",
+"image": "images/gofish.jpg",
 "title": "Go Fish", 
 "description": "A classic card game", 
 "price": "74.00", 
-"defaultCredits": "31"
+"defaultCredits": "31", 
+"gameformat": "Physical cards",
+"link": "https://www.amazon.com/Peaceable-Kingdom-Fish-Classic-Card/dp/B002BRSCJ6/ref=sr_1_5?dchild=1&keywords=go+fish&qid=1619765879&sr=8-5"
 
 
 },
 
 {
 "id": 240, 
-"image": "images/deckofcards.png",
+"image": "images/hearts.png",
 "title": "Hearts", 
 "description": "A classic card game", 
 "price": "15,000", 
-"defaultCredits": "31"
+"defaultCredits": "31", 
+"gameformat": "app", 
+"link": "https://www.amazon.com/KARMAN-Games-Hearts/dp/B00B8KRVHG/ref=sr_1_3?dchild=1&keywords=hearts+card+game&qid=1619766237&sr=8-3"
 
 
 },
@@ -123,33 +145,39 @@
 
 {
   "id": 2521, 
-  "image": "images/deckofcards.png",
+  "image": "images/solitaire.png",
   "title": "Solitaire", 
   "description": "A classic card game",
   "price": "79.00",  
-  "defaultCredits": "31"
-
+  "defaultCredits": "31", 
+  "gameformat": "app", 
+  "link": "https://www.amazon.com/jqdroid-com-Solitaire-Klondike/dp/B017EESK0G/ref=sr_1_10?dchild=1&keywords=solitaire&qid=1619764077&sr=8-10"
+      
 
 },
 
 {
 "id": 2312, 
-"image": "images/deckofcards.png",
+"image": "images/blackjack.jpg",
 "title": "Blackjack", 
 "description": "A classic card game", 
 "price": "180.00", 
-"defaultCredits": "38"
+"defaultCredits": "38", 
+"gameformat": "Blackjack electronic handheld game", 
+"link": "https://www.ebay.com/p/5024483018"
 
 
 },
 
 {
 "id": 2341, 
-"image": "images/deckofcards.png",
+"image": "images/phase10.jpg",
 "title": "Phase 10", 
 "description": "A classic card game", 
 "price": "550.00", 
-"defaultCredits": "31"
+"defaultCredits": "31", 
+"gameformat": "Physical card game", 
+"link": "https://www.amazon.com/Mattel-Uno-Phase-10/dp/B073WGNZWS/ref=sr_1_4?dchild=1&keywords=phase+10&qid=1619768107&sr=8-4"
 
 
 },
@@ -157,33 +185,40 @@
 
 {
   "id": 2309, 
-  "image": "images/deckofcards.png",
+  "image": "images/uno.jpg",
   "title": "Uno", 
   "description": "A classic card game", 
   "price": "88.00", 
-  "defaultCredits": "301"
+  "defaultCredits": "301", 
+  "gameformat": "Physical card game", 
+  "link": "https://www.amazon.com/Classic-Games-Children-Adults-Entertainment/dp/B08QS6D83V/ref=rtpb_3?pd_rd_w=n8qPC&pf_rd_p=be844577-fee7-4bbc-8dda-083e56cc6f0d&pf_rd_r=GA2X139TSNA3GX5AVMK8&pd_rd_r=eeddd74e-9439-40a0-b432-9e4d9f70c7c5&pd_rd_wg=A8XcO&pd_rd_i=B08QS6D83V&psc=1"
 
 
 },
 
 {
 "id": 2320, 
-"image": "images/deckofcards.png",
+"image": "images/gofish.jpg",
 "title": "Go Fish", 
 "description": "A classic card game", 
 "price": "99.95", 
-"defaultCredits": "31"
+"defaultCredits": "31", 
+"gameformat": "Physical cards",
+"link": "https://www.amazon.com/Peaceable-Kingdom-Fish-Classic-Card/dp/B002BRSCJ6/ref=sr_1_5?dchild=1&keywords=go+fish&qid=1619765879&sr=8-5"
+
 
 
 },
 
 {
 "id": 2149, 
-"image": "images/deckofcards.png",
+"image": "images/war.jpg",
 "title": "War", 
 "description": "A classic card game", 
 "price": "150,000,000.00", 
-"defaultCredits": "32"
+"defaultCredits": "32", 
+"gameformat": "Physical cards", 
+"link": "https://www.amazon.com/Fun-Ton-Card-Game-Kids/dp/B08C5LRQBT/ref=sr_1_2?dchild=1&keywords=War+card+game&qid=1619768709&s=toys-and-games&sr=1-2"
 
 
 },
@@ -191,33 +226,42 @@
 
 {
   "id": 2315, 
-  "image": "images/deckofcards.png",
+  "image": "images/freecell.png",
   "title": "Freecell", 
   "description": "A classic card game", 
   "price": "0.00", 
-  "defaultCredits": "38"
+  "defaultCredits": "38", 
+  "gameformat": "app", 
+  "link": "https://www.amazon.com/HuongPham-FreeCell-Solitaire-card-game/dp/B071NHT9BW/ref=sr_1_3?dchild=1&keywords=free+cell+card+game+app&qid=1619764324&sr=8-3"
+
 
 
 },
 
 {
 "id": 212, 
-"image": "images/deckofcards.png",
+"image": "images/texasholdem.png",
 "title": "Texas Holdem", 
 "description": "A classic card game", 
 "price": "175.00", 
-"defaultCredits": "31"
+"defaultCredits": "31", 
+"gameformat": "app", 
+"link": "https://www.amazon.com/TX-Poker-Texas-Holdem/dp/B00JRA10U8/ref=sr_1_1?dchild=1&keywords=texas+holdem+app&qid=1619764010&sr=8-1"
+
 
 
 },
 
 {
 "id": 2389, 
-"image": "images/deckofcards.png",
+"image": "images/scum.jpg",
 "title": "Scum", 
 "description": "A classic card game", 
 "price": "22.00", 
-"defaultCredits": "31"
+"defaultCredits": "31", 
+"gameformat": "Play Scum with Rook physical cards", 
+"link": "https://www.amazon.com/Rook-Card-Game-by-Hasbro/dp/B001VIWAO4/ref=sr_1_6?dchild=1&keywords=rook+cards&qid=1619764917&sr=8-6"
+
 
 
 },
@@ -226,33 +270,39 @@
 
 {
   "id": 2161, 
-  "image": "images/deckofcards.png",
+  "image": "images/unstableunicorns.jpg",
   "title": "Unstable Unicorns", 
   "description": "A classic card game", 
   "price": "73.00", 
-  "defaultCredits": "38"
+  "defaultCredits": "38", 
+  "gameformat": "Physical cards", 
+  "link": "https://www.amazon.com/Unstable-Unicorns-TEE3678UUBSG1-Base-Game/dp/B07BMLQBM1/ref=sr_1_3?dchild=1&keywords=Unstable+Unicorns&qid=1619768900&s=toys-and-games&sr=1-3"
 
 
 },
 
 {
 "id": 2123, 
-"image": "images/deckofcards.png",
+"image": "images/skipbo.jpg",
 "title": "Skipbo", 
 "description": "A classic card game", 
 "price": "85.00", 
-"defaultCredits": "39"
+"defaultCredits": "39", 
+"gameformat": "Physical card game", 
+"link": "https://www.amazon.com/Mattel-Games-1050-SKIP-Card/dp/B0000205XI/ref=sr_1_2?dchild=1&keywords=skip+bo&qid=1619769054&s=toys-and-games&sr=1-2"
 
 
 },
 
 {
 "id": 2091, 
-"image": "images/deckofcards.png",
+"image": "images/cardsagainsthumanity.jpg",
 "title": "Cards Against Humanity", 
 "description": "A classic card game", 
 "price": "199.00", 
-"defaultCredits": "338"
+"defaultCredits": "338", 
+"gameformat": "Physical card game", 
+"link": "https://www.amazon.com/Cards-Against-Humanity-LLC-CAHUS/dp/B004S8F7QM/ref=sr_1_22?dchild=1&keywords=scum+card+game&qid=1619764446&sr=8-22"
 
 
 },
@@ -261,33 +311,39 @@
 
 {
   "id": 2291,
-  "image": "images/deckofcards.png", 
+  "image": "images/whatdoyoumeme.jpg", 
   "title": "What do you Meme?", 
   "description": "A classic card game", 
   "price": "79.00", 
-  "defaultCredits": "31"
+  "defaultCredits": "31", 
+  "gameformat": "Physical card game", 
+  "link": "https://www.amazon.com/What-Do-You-Meme-Party/dp/B01MRG7T0D/ref=sr_1_1_sspa?dchild=1&keywords=what+do+you+meme&qid=1619769169&s=toys-and-games&sr=1-1-spons&psc=1&smid=A2SG141FI6XZPD&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzSzlGMkNSNTlJRDJKJmVuY3J5cHRlZElkPUEwNTk4MzkzMURNTUdZU0cyREFUVyZlbmNyeXB0ZWRBZElkPUEwMTE1NzY2MkoxMERIUVRXSlQyWiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU="
 
 
 },
 
 {
 "id": 2388, 
-"image": "images/deckofcards.png",
+"image": "images/truecolors.jpg",
 "title": "True Colors", 
 "description": "A classic card game", 
 "price": "11,550.00", 
-"defaultCredits": "34"
+"defaultCredits": "34", 
+"gameformat": "Pysical card game", 
+"link": "https://www.amazon.com/True-Colors-Friends-Really-Think/dp/B07FY37FZ9/ref=sr_1_1?dchild=1&keywords=true+colors+card+game&qid=1619769378&sr=8-1"
 
 
 },
 
 {
 "id": 2761, 
-"image": "images/deckofcards.png",
+"image": "images/capitalpunishment.jpg",
 "title": "Capital Punishment", 
 "description": "A classic card game",
 "price": "950.00",  
-"defaultCredits": "65"
+"defaultCredits": "65", 
+"gameformat": "Physical card game", 
+"link": "https://www.amazon.com/True-Colors-Friends-Really-Think/dp/B07FY37FZ9/ref=sr_1_1?dchild=1&keywords=true+colors+card+game&qid=1619769378&sr=8-1"
 
 
 }

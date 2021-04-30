@@ -139,6 +139,8 @@ const {
               description: args.data.description,
               image: args.data.image,
               price: args.data.price,
+              link: args.data.link, 
+              gameformat: args.data.gameformat
             },
           })
         },
@@ -189,6 +191,8 @@ const {
              defaultCredits: args.data.defaultCredits, 
              image: args.data.image, 
              price: args.data.price, 
+             link: args.data.link, 
+             gameformat: args.data.gameformat
             
             },
           })
@@ -241,6 +245,8 @@ const {
       t.string('defaultCredits')
       t.string('image')
       t.string('price')
+      t.string('gameformat') 
+      t.string('link')
       t.field('gamer', {
         type: 'Gamer',
         resolve: (parent, _, context) => {
@@ -285,6 +291,8 @@ const {
       t.string('defaultCredits')
       t.string('image')
       t.string('price')
+      t.string('link') 
+      t.string('gameformat')
     },
   })
 

@@ -11,9 +11,11 @@ type Game {
   createdAt: DateTime!
   defaultCredits: String
   description: String
+  gameformat: String
   gamer: Gamer
   id: Int!
   image: String
+  link: String
   price: String
   title: String!
   updatedAt: DateTime!
@@ -22,7 +24,9 @@ type Game {
 input GameCreateInput {
   defaultCredits: String
   description: String
+  gameformat: String
   image: String
+  link: String
   price: String
   title: String!
 }

@@ -16,6 +16,8 @@ return {
         description: gm.description, 
         defaultCredits: gm.defaultCredits,
         price: gm.price, 
+        gameformat: gm.gameformat, 
+        link: gm.link
 
     }
 }
