@@ -162,7 +162,7 @@ header {
 
 .game-container {
     display: inline-grid;  
-    width: 250px; 
+    width: 300px; 
     height: 450px; 
     margin: 20px; 
     box-shadow: 10px; 
@@ -170,6 +170,19 @@ header {
 
 .game-container:hover {
     transform: translate3D(0, -1px, 0) scale(1.05)
+}
+
+.getgameLink { 
+    padding: 10px; 
+    color: $primaryColor; 
+    font-weight: bold; 
+}
+
+.getgameLink:hover {
+    text-decoration: none; 
+    background-color: $primaryColor; 
+    color: white; 
+
 }
 
 
@@ -205,8 +218,9 @@ header {
 
 
         .CardMedia {
-        
-        width: 100%; 
+        display: block; 
+        margin: auto; 
+        width: 200px; 
         height: 200px; 
         
         }

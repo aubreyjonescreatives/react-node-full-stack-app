@@ -4,7 +4,7 @@ import _ from 'lodash'
 import {useQuery, useMutation, gql} from '@apollo/client'
 import {Card, IconButton, Typography, Container, 
     Dialog, Button, DialogTitle, DialogContent, DialogContentText, 
-    DialogActions, TextField, Box, CardMedia} from '@material-ui/core'
+    DialogActions, TextField, Box, CardMedia, Link} from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
@@ -246,6 +246,7 @@ return (
      <Typography className="gameInfo">{game.description}</Typography>
      <Typography className="gameInfoJP">Current Jackpot: ${game.price}</Typography>
     <div className="iconButtons">
+    <Link className="getgameLink" href={game.link}>GET  GAME</Link>
      <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
      <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({game})}><DeleteIcon/></IconButton>
      </div>
