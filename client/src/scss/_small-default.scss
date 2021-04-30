@@ -245,14 +245,18 @@ header {
 
 
 .popular-game-card {
-    width: 200px;
-    margin: 20px; 
+    width: 250px;
+    margin: 10px; 
    
   
     
 
     .GameMedia {
-        width: 100%; 
+        display: block; 
+        margin: auto; 
+        margin-top: 20px; 
+        width: 150px; 
+        height: 150px; 
        
     }
 
@@ -260,6 +264,7 @@ header {
     .gameName {
         color: green;
         text-align: center;  
+        font-size: 20px; 
     }
 
     .gamePrice {
