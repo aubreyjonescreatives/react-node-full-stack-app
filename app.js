@@ -12,6 +12,8 @@ import cors from 'cors'
 
 const helmet = require('helmet')
 const compression = require('compression')
+const path = require("path")
+
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 mongoose.set('useFindAndModify', false)
@@ -36,7 +38,7 @@ app.use(compression())
 
 
 
-app.use(express.static(path.resolve(__dirname, 'client/build')))
+app.use(express.static(path.join(__dirname, 'client/build')))
 
 app.use('/api', apiRouter)
 
@@ -52,6 +54,10 @@ const main = async () => {
         useNewUrlParser: true, 
         useUnifiedTopology: true,
     })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"))
+})
     
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

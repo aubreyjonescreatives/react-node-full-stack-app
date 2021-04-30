@@ -13,7 +13,7 @@
     "migrate": "cd graphql && npm run migrate",
     "seed": "node seed/loadAPI.js",
     "seed:game": "cd graphql && npm run seed:game",
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "build": "npm install && cd client && npm install && npm run build",
     "start-dev": "concurrently --kill-others \"nodemon app.js\" \"cd graphql && npm run dev\" \"cd client && npm run start\"",
     "buildDocker": "docker build .",
