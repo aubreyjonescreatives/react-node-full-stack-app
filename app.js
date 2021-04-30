@@ -20,7 +20,7 @@ mongoose.set('useFindAndModify', false)
 
 dotenv.config()
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 5050
 
 const app = express()
 
@@ -38,7 +38,7 @@ app.use(compression())
 
 
 
-app.use(express.static(path.join(__dirname, 'client/build')))
+//app.use(express.static(path.join(__dirname, 'client/build')))
 
 app.use('/api', apiRouter)
 
