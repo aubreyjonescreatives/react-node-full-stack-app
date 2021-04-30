@@ -10,6 +10,8 @@ import cors from 'cors'
 
 
 
+const helmet = require('helmet')
+const compression = require('compression')
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
 mongoose.set('useFindAndModify', false)
@@ -26,7 +28,9 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(express.json())
 
+app.use(helmet())
 
+app.use(compression())
 
 //app.use(express.static('public'))
 
