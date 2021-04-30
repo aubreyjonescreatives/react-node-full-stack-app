@@ -5,7 +5,7 @@ export const populargameRouter = Router()
 import { postaddGame, getAllGames, getGames, getGameById, putEditGame, deleteGame } from '../controllers/populargame.controller.js'
 
 
-populargameRouter.post('/', postaddGame)
+populargameRouter.post('/create', postaddGame)
 
 populargameRouter.get('/', getAllGames)
 

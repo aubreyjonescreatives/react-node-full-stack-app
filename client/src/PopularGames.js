@@ -7,7 +7,7 @@ import {Card, IconButton, CardMedia, Typography, Container,
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
-//import AddCircleIcon from '@material-ui/icons/Add';
+import AddCircleIcon from '@material-ui/icons/Add';
 //import LinkIcon from '@material-ui/icons/Link';
 //import LazyLoad from 'react-lazyload'
 import './css/cardStyles.css'
@@ -38,6 +38,7 @@ const PopularGames = () => {
 const [selectedGame, setSelectedGame] = useState( { name: ''})
 const [gameData, setGameData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
+const [createOpen, setCreateOpen] = useState(false)
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
 
@@ -69,6 +70,40 @@ const handleInput = (event) => {
 
 
 
+    
+    const handleClickCreateOpen = () => {
+        setCreateOpen(true)
+    }
+
+    const handleCloseCreate = () => {
+        setCreateOpen(false)
+    }
+
+
+
+    const handleCreate = async (values) => {
+        try {
+            const result = await axios.post(`http://localhost:${port}/populargame/create`, {
+                data: {
+                    gameId: values.id,
+                    name: values.name, 
+                    image_url: values.image_url, 
+                    description: values.description, 
+                    price: values.price,
+                },
+            })
+            if (result.status === 200) {
+                fetchGames()
+            }
+        } catch (err) {
+            console.error(err)
+        }
+        }
+
+    console.log(handleCreate())
+
+
+
 
 
     const handleClickEditOpen = (game) => {
@@ -85,7 +120,7 @@ const handleUpdate = async (values) => {
     try {
         const result = await axios.put(`http://localhost:${port}/populargame/update`, {
             data: {
-                gameId: values.id,
+                gameId: values.id, 
                 name: values.name, 
                 image_url: values.image_url, 
                 description: values.description, 
@@ -157,6 +192,11 @@ return (
     <div className="main-1">
      <h1 className="gamesHeader"> Popular Games</h1>
      <div className="gameparentSearch">
+     <IconButton aria-label='add' onClick={() => handleClickCreateOpen()} className="addButton">
+             Create Game <AddCircleIcon />
+             </IconButton>
+
+
      <form className="gamestatsSearch">
          <TextField placeholder='Search' onChange={handleInput} />
          <IconButton aria-label='search' onClick={handleSearch}>
@@ -196,24 +236,28 @@ return (
      <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
-    aria-labelledby='edit-dialog-name'
+    aria-labelledby='edit-dialog-id'
     >
     <Formik
     initialValues={{ 
+        gameId: selectedGame?._id,
         name: selectedGame?.name, 
         image_url: selectedGame?.image_url, 
         description: selectedGame?.description, 
         price: selectedGame?.price, 
-        id: selectedGame?._id,
+       
     }}
     validationSchema={Yup.object().shape({
+        gameId: Yup.string('Enter game ID').required(
+            'Game ID is required',
+        ),
         name: Yup.string('Enter game name').required(
             'Game name is required',
         ),
         image_url: Yup.string('Image URL'), 
         description: Yup.string('Game Description'), 
         price: Yup.string('Game Price'), 
-        id: Yup.string('ID').required('ID required.'), 
+        
     })}
     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
         try {
@@ -241,7 +285,7 @@ return (
         autoComplete='off' 
         onSubmit={handleSubmit}
         >
-         <DialogTitle id="edit-dialog-name">Edit Game Info</DialogTitle>   
+         <DialogTitle id="edit-dialog">Edit Game Info</DialogTitle>   
          <DialogContent>
              <DialogContentText>
                  Edit Information for this Game: 
@@ -346,6 +390,151 @@ return (
 
 
      </form>
+
+
+
+
+
+
+
+     <Dialog 
+    open={createOpen}
+    onClose={handleCloseCreate}
+    aria-labelledby='create-dialog-name'
+    >
+    <Formik
+    initialValues={{
+        gameId: selectedGame?._id, 
+        name: selectedGame?.name, 
+        image_url: selectedGame?.image_url, 
+        description: selectedGame?.description, 
+        price: selectedGame?.price, 
+      
+    }}
+    validationSchema={Yup.object().shape({
+        id: Yup.string('Enter game id').required(
+            'Game ID is required',
+        ),
+        name: Yup.string('Enter game name').required(
+            'Game name is required',
+        ),
+        image_url: Yup.string('Image URL'), 
+        description: Yup.string('Game Description'), 
+        price: Yup.string('Game Price'), 
+       
+    })}
+    onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
+        try {
+            await handleCreate(values) 
+            handleCloseCreate()
+        }   catch (err) {
+            console.error(err)
+            setStatus({ success: false })
+            setErrors({ submit: err.message })
+            setSubmitting(false)
+        }
+    }}
+    >
+    {({
+        values, 
+        errors, 
+        touched, 
+        handleChange, 
+        handleBlur, 
+        handleSubmit, 
+        isSubmitting,
+    }) => (
+        <form 
+        noValidate 
+        autoComplete='off' 
+        onSubmit={handleSubmit}
+        >
+         <DialogTitle id="create-dialog-name">Create Game Info</DialogTitle>   
+         <DialogContent>
+             <DialogContentText>
+                 Create a Game and Add it to the List: 
+             </DialogContentText>
+             <Box>
+            <TextField 
+            autoFocus 
+            id="name"
+            name="name"
+            label="Name"
+            type="text"
+            fullWidth
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.name && errors.name)} 
+            helperText={touched.name && errors.name} 
+            />
+            </Box>
+            <Box>
+                <TextField 
+            autoFocus 
+            id="image_url"
+            name="image_url"
+            label="Image URL"
+            type="text"
+            fullWidth
+            value={values.image_url}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.image_url && errors.image_url)} 
+            helperText={touched.image_url && errors.image_url} 
+                />
+            </Box>
+            <Box>
+                <TextField 
+            autoFocus 
+            id="description"
+            name="description"
+            label="Description"
+            type="text"
+            fullWidth
+            value={values.description}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.description && errors.description)} 
+            helperText={touched.description && errors.description} 
+
+
+                />
+            </Box>
+
+
+            <Box>
+                <TextField 
+            autoFocus 
+            id="price"
+            name="price"
+            label="Price"
+            type="text"
+            fullWidth
+            value={values.price}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.price && errors.price)} 
+            helperText={touched.price && errors.price} 
+                />
+            </Box>
+         </DialogContent>
+         <DialogActions>
+             <Button onClick={handleCloseCreate}>Cancel</Button>
+             <Button type='submit'>Save</Button>
+         </DialogActions>
+       
+        </form>
+    )}
+
+
+
+    </Formik>
+
+    </Dialog>
+
+
+
 
 
 

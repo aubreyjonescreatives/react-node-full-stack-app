@@ -14,7 +14,7 @@ const seedMongo = async () => {
 
     const options = {
         method: 'GET', 
-        url: 'https://www.boardgameatlas.com/api/search?order_by=popularity&ascending=false&pretty=true&client_id=JLBr5npPhV', 
+        url: 'https://www.boardgameatlas.com/api/search?order_by=trending&descending=false&pretty=true&client_id=JLBr5npPhV', 
       //  params: {}, 
       //  headers: {'access-token': process.env.SUPERHERO_API_KEY}
     } 

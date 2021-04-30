@@ -358,7 +358,7 @@ return (
             id="price"
             name="price"
             label="Current Game Jackpot"
-            type="int"
+            type="text"
             fullWidth
             value={values.price}
             onChange={handleChange}
@@ -514,7 +514,7 @@ return (
             id="price"
             name="price"
             label="Game Jackpot"
-            type="int"
+            type="text"
             fullWidth
             value={values.price}
             onChange={handleChange}
