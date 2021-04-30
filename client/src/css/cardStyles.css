@@ -199,6 +199,7 @@ body {
   .main-1 .CardMedia {
     display: block;
     margin: auto;
+    margin-top: 20px;
     width: 200px;
     height: 200px; }
   .main-1 .gameLink:hover {
