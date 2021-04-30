@@ -12,7 +12,7 @@ import cors from 'cors'
 
 const helmet = require('helmet')
 const compression = require('compression')
-const path = require("path")
+//const path = require("path")
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
@@ -55,9 +55,9 @@ const main = async () => {
         useUnifiedTopology: true,
     })
 
-app.get("*", (req, res) => {
+/* app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build", "index.html"))
-})
+}) */
     
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
