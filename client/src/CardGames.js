@@ -239,7 +239,7 @@ return (
      className="CardMedia"
      component="img"
      alt={'Card Game'}
-     image={`../graphql/prisma/seed/${game.image}`}
+     image={`./${game.image}`}
      card={game.game}
      />
      <Typography className="gameInfoTitle">{game.title}</Typography>
@@ -271,11 +271,17 @@ return (
     }}
     validationSchema={Yup.object().shape({
         title: Yup.string('Enter Game Title').required(
-            'Game Title is required', 
+            'Game title is required', 
         ),
-        description: Yup.string('Description'), 
-        image: Yup.string('Image'), 
-        price: Yup.string('Price'),
+        description: Yup.string('Description').required(
+            'Game description is required', 
+        ), 
+        image: Yup.string('Image').required(
+            'Game image is required', 
+        ), 
+        price: Yup.string('Price').required(
+            'Game jackpot is required', 
+        ),
         
     })}
     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
@@ -426,12 +432,18 @@ return (
     }}
     validationSchema={Yup.object().shape({
         title: Yup.string('Enter Game Title').required(
-            'Game Title is required', 
+            'Game title is required', 
         ),
         
-        description: Yup.string('Description'), 
-        image: Yup.string('image'),
-        price: Yup.string('price')
+        description: Yup.string('Description').required(
+            'Game description is required', 
+        ), 
+        image: Yup.string('image').required(
+            'Game image is required', 
+        ),
+        price: Yup.string('price').required(
+            'Game jackpot is required', 
+        ),
          
     })}
     onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
