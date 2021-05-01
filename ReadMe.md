@@ -77,7 +77,7 @@
 
 1. Check out my github main page to see all of my commits between February 19th and April 30th found with this link here: 
 
-[Githublink](https://github.com/aubreyjonescreatives)
+[Aubrey Jones Github commits](https://github.com/aubreyjonescreatives)
 
 ## Present a User Interface route or "page" that allows the user to: 
     1. Check out my MongoDB datastore User Interface route with the Popular Games link in the browser. Here is example code about how I route to my User Interfaces:
