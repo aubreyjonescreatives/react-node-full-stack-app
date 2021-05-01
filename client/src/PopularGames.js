@@ -81,32 +81,29 @@ const handleInput = (event) => {
         console.log(handleCreate())
     }
 
-    
 
 
-
-
-
-    const handleCreate = async (values) => {
+    const handleCreate = async () => {
         try {
             const result = await axios.post(`http://localhost:${port}/`, {
-                data: {
-                    gameId: values.id, 
-                    name: values.name, 
-                    image_url: values.image_url, 
-                    description: values.description, 
-                    price: values.price,
-                }
-        
+                    name: '',
+                    image_url: '', 
+                    description: '', 
+                    price: '',
+                
+               
+                
             })
+            
             if (result.status === 200) {
                 fetchGames()
-                console.log(fetchGames())
+                console.log(result.status)
             }
         } catch (err) {
             console.error(err)
         }
         fetchGames()
+       
         }
 
  
@@ -201,7 +198,7 @@ return (
      <h1 className="gamesHeader"> Popular Games</h1>
   
              <div className="actions">
-     <IconButton aria-label='add' onClick={() => handleClickCreateOpen()} className="addButton">
+     <IconButton aria-label='add' onClick={handleClickCreateOpen} className="addButton">
              Create Game <AddCircleIcon />
              </IconButton>
    
@@ -379,6 +376,7 @@ return (
             helperText={touched.price && errors.price} 
                 />
             </Box>
+
          </DialogContent>
          <DialogActions>
              <Button onClick={handleCloseEdit}>Cancel</Button>
@@ -417,164 +415,54 @@ return (
      </form>
 
 
+<Dialog open={createOpen} onClose={handleCloseCreate} aria-labelledby="create-dialog">
+    <DialogTitle id="create-dialog">Create a Game</DialogTitle>
+    <DialogContent>
+        <DialogContentText>All of these fields require text:</DialogContentText>
+        <TextField 
+        autoFocus
+        required
+        margin="dense"
+        id="name"
+        label="Game Name"
+        type="text"
+        fullWidth
+        />
+         <TextField 
+        autoFocus
+        required
+        margin="dense"
+        id="image_url"
+        label="Game Image"
+        type="text"
+        fullWidth
+        />
+ <TextField 
+        autoFocus
+        required
+        margin="dense"
+        id="description"
+        label="Description"
+        type="text"
+        fullWidth
+        />
 
+<TextField 
+        autoFocus
+        required
+        margin="dense"
+        id="price"
+        label="Price"
+        type="text"
+        fullWidth
+        />
 
-
-
-
-     <Dialog 
-    open={createOpen}
-    onClose={handleCloseCreate}
-    aria-labelledby='create-dialog-name'
-    >
-    <Formik
-    initialValues={{
-        gameId: selectedGame?._id, 
-        name: selectedGame?.name, 
-        image_url: selectedGame?.image_url, 
-        description: selectedGame?.description, 
-        price: selectedGame?.price, 
-      
-    }}
-    validationSchema={Yup.object().shape({
-        id: Yup.string('Enter game id').required(
-            'Game ID is required',
-        ),
-        name: Yup.string('Enter game name').required(
-            'Game name is required',
-        ),
-        image_url: Yup.string('Image URL'), 
-        description: Yup.string('Game Description'), 
-        price: Yup.string('Game Price'), 
-       
-    })}
-    onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
-        try {
-            await handleCreate(values) 
-            handleCloseCreate()
-        }   catch (err) {
-            console.error(err)
-            setStatus({ success: false })
-            setErrors({ submit: err.message })
-            setSubmitting(false)
-        }
-    }}
-    >
-    {({
-        values, 
-        errors, 
-        touched, 
-        handleChange, 
-        handleBlur, 
-        handleSubmit, 
-        isSubmitting,
-    }) => (
-        <form 
-        noValidate 
-        autoComplete='off' 
-        onSubmit={handleSubmit}
-        >
-         <DialogTitle id="create-dialog-name">Create Game Info</DialogTitle>   
-         <DialogContent>
-             <DialogContentText>
-                 Create a Game and Add it to the List: 
-             </DialogContentText>
-             <Box>
-            <TextField 
-            autoFocus 
-            id="GameId"
-            name="GameId"
-            label="Game ID"
-            type="text"
-            fullWidth
-            value={values._id}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched._id && errors._id)} 
-            helperText={touched._id && errors._id} 
-            />
-            </Box>
-             <Box>
-            <TextField 
-            autoFocus 
-            id="name"
-            name="name"
-            label="Name"
-            type="text"
-            fullWidth
-            value={values.name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.name && errors.name)} 
-            helperText={touched.name && errors.name} 
-            />
-            </Box>
-            <Box>
-                <TextField 
-            autoFocus 
-            id="image_url"
-            name="image_url"
-            label="Image URL"
-            type="text"
-            fullWidth
-            value={values.image_url}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.image_url && errors.image_url)} 
-            helperText={touched.image_url && errors.image_url} 
-                />
-            </Box>
-            <Box>
-                <TextField 
-            autoFocus 
-            id="description"
-            name="description"
-            label="Description"
-            type="text"
-            fullWidth
-            value={values.description}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.description && errors.description)} 
-            helperText={touched.description && errors.description} 
-
-
-                />
-            </Box>
-
-
-            <Box>
-                <TextField 
-            autoFocus 
-            id="price"
-            name="price"
-            label="Price"
-            type="text"
-            fullWidth
-            value={values.price}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.price && errors.price)} 
-            helperText={touched.price && errors.price} 
-                />
-            </Box>
-         </DialogContent>
-         <DialogActions>
-             <Button onClick={handleCloseCreate}>Cancel</Button>
-             <Button type='submit' onClick={handleCloseCreate}>Save</Button>
-         </DialogActions>
-       
-        </form>
-    )}
-
-
-
-    </Formik>
-
-    </Dialog>
-
-
-
+    </DialogContent>
+    <DialogActions>
+        <Button onClick={handleCloseCreate}>Cancel</Button>
+        <Button onClick={handleCloseCreate}>Create Game</Button>
+    </DialogActions>
+</Dialog>
 
 
 
