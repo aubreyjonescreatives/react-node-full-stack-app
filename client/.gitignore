@@ -24,3 +24,8 @@ yarn-error.log*
 
 #environment variables
 .env
+./graphql/ node_modules
+./graphql/ .env
+
+./ node_modules 
+./ .env
