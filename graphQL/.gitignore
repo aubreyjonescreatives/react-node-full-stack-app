@@ -1,5 +1,5 @@
 **/node_modules
 src/generated/
-*.env*
+**/.env
 *.db
-prisma/ .env
+**/build
