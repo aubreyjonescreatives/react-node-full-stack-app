@@ -19,8 +19,8 @@
 
 ## Additional Notes: 
 1. The Game API does not require an API Key 
-2. Popular Games page serves my mongodb datastore 
-3. Card Games page serves my graphql datastore
+2. Popular Games page serves my mongodb datastore with at least 25 items from the seed script
+3. Card Games page serves my graphql datastore with at least 25 items from the seed script
     3. You'll need to refresh your browser every time you send a request to Create, Read, Update, and Delete a card game
 
 
