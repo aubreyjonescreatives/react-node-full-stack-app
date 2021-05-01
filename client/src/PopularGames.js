@@ -18,7 +18,7 @@ import * as dotenv from 'dotenv'
 
 
 dotenv.config()
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 3000
 
 
 /* 
@@ -77,31 +77,39 @@ const handleInput = (event) => {
 
     const handleCloseCreate = () => {
         setCreateOpen(false)
+        handleCreate()
+        console.log(handleCreate())
     }
+
+    
+
+
 
 
 
     const handleCreate = async (values) => {
         try {
-            const result = await axios.post(`http://localhost:${port}/populargame/create`, {
+            const result = await axios.post(`http://localhost:${port}/`, {
                 data: {
-                    gameId: values.id,
+                    gameId: values.id, 
                     name: values.name, 
                     image_url: values.image_url, 
                     description: values.description, 
                     price: values.price,
-                },
+                }
+        
             })
             if (result.status === 200) {
                 fetchGames()
+                console.log(fetchGames())
             }
         } catch (err) {
             console.error(err)
         }
+        fetchGames()
         }
 
-    console.log(handleCreate())
-
+ 
 
 
 
@@ -295,6 +303,21 @@ return (
              <Box>
             <TextField 
             autoFocus 
+            id="gameId"
+            name="gameId"
+            label="Game Id"
+            type="text"
+            fullWidth
+            value={values.id}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.id && errors.id)} 
+            helperText={touched.id && errors.id} 
+            />
+            </Box>
+             <Box>
+            <TextField 
+            autoFocus 
             id="name"
             name="name"
             label="Name"
@@ -359,7 +382,7 @@ return (
          </DialogContent>
          <DialogActions>
              <Button onClick={handleCloseEdit}>Cancel</Button>
-             <Button type='submit'>Save</Button>
+             <Button type='submit' onClick={handleSubmit}>Save</Button>
          </DialogActions>
        
         </form>
@@ -459,6 +482,21 @@ return (
              <Box>
             <TextField 
             autoFocus 
+            id="GameId"
+            name="GameId"
+            label="Game ID"
+            type="text"
+            fullWidth
+            value={values._id}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched._id && errors._id)} 
+            helperText={touched._id && errors._id} 
+            />
+            </Box>
+             <Box>
+            <TextField 
+            autoFocus 
             id="name"
             name="name"
             label="Name"
@@ -523,7 +561,7 @@ return (
          </DialogContent>
          <DialogActions>
              <Button onClick={handleCloseCreate}>Cancel</Button>
-             <Button type='submit'>Save</Button>
+             <Button type='submit' onClick={handleCloseCreate}>Save</Button>
          </DialogActions>
        
         </form>

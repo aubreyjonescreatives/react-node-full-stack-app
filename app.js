@@ -10,9 +10,8 @@ import cors from 'cors'
 
 
 
-const helmet = require('helmet')
-const compression = require('compression')
-//const path = require("path")
+//const helmet = require('helmet')
+//const compression = require('compression')
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
@@ -20,7 +19,7 @@ mongoose.set('useFindAndModify', false)
 
 dotenv.config()
 
-const port = process.env.PORT || 5050
+const port = process.env.PORT || 8080
 
 const app = express()
 
@@ -30,15 +29,22 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(express.json())
 
-app.use(helmet())
+//app.use(helmet())
 
-app.use(compression())
+//app.use(compression())
 
 //app.use(express.static('public'))
 
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    res.header("Access-Control=Allow-Methods: PUT, DELETE, GET, POST")
+    next()
+})
 
-//app.use(express.static(path.join(__dirname, 'client/build')))
+
+//app.use(express.static(path.resolve(__dirname, 'client/build')))
 
 app.use('/api', apiRouter)
 
@@ -55,9 +61,7 @@ const main = async () => {
         useUnifiedTopology: true,
     })
 
-/* app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"))
-}) */
+
     
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
