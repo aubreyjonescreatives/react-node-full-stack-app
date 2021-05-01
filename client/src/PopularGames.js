@@ -86,10 +86,11 @@ const handleInput = (event) => {
     const handleCreate = async () => {
         try {
             const result = await axios.post(`http://localhost:${port}/`, {
-                    name: '',
-                    image_url: '', 
-                    description: '', 
-                    price: '',
+                    id: 'id',
+                    name: 'name',
+                    image_url: 'image_url', 
+                    description: 'description', 
+                    price: 'price',
                 
                
                 

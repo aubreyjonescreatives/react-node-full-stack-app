@@ -5,6 +5,7 @@ import { PopularGame } from '../models/populargame.js'
 export const postaddGame = ((req, res) => {
 
 const game = new PopularGame({
+    id: req.body.id,
     name: req.body.name, 
     image_url: req.body.image_url, 
     description: req.body.description, 
