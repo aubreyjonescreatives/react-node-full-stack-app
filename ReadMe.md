@@ -26,9 +26,9 @@
 
 
 
-1. Effectively use conditional logic, JavaScript array methods, and front-end framework elements to render large lists on the web client.
+## Effectively use conditional logic, JavaScript array methods, and front-end framework elements to render large lists on the web client.
 
-## This react-node full stack app operates the CRUD (Create-Read-Update-Delete) formula using a board games API and MongoDB and GraphQL servers to render large lists of data on the web client. Here is sample code from the react side to display how I render a large list: 
+1. This react-node full stack app operates the CRUD (Create-Read-Update-Delete) formula using a board games API and MongoDB and GraphQL servers to render large lists of data on the web client. Here is sample code from the react side to display how I render a large list: 
 
 ```<Container className="popular-game-container">
     {gameData.map((game) => {
@@ -60,27 +60,27 @@
 ```
 
 
-2. Work with the proper libraries (e.g. VueJS, React) to create and manage the front-end portion of your project using a real development toolset.
+## Work with the proper libraries (e.g. VueJS, React) to create and manage the front-end portion of your project using a real development toolset.
 
-## This app uses React.JS for its front-end framework
+1. This app uses React.JS for its front-end framework
 
-3. Work with NPM and NodeJS to create and manage the back-end portion of your project.
+## Work with NPM and NodeJS to create and manage the back-end portion of your project.
 
-## This app uses NPM and NodeJS to manage its back-end portion of the project
+1. This app uses NPM and NodeJS to manage its back-end portion of the project
 
-4. "Seed" script provides way to populate the datastore after the Docker install and launch.
+## "Seed" script provides way to populate the datastore after the Docker install and launch.
 
-## Run npm run seed in your terminal to add data to my mongoDB database
-## Run npm run seed:game in your terminal to add data to docker graphql container
+1. Run npm run seed in your terminal to add data to my mongoDB database
+2. Run npm run seed:game in your terminal to add data to docker graphql container
 
-5. Properly use Git for your source version control with an established record of at least 4 days of commits each week from February 19th through April 30th.
+## Properly use Git for your source version control with an established record of at least 4 days of commits each week from February 19th through April 30th.
 
-## Check out my github main page to see all of my commits between February 19th and April 30th found with this link here: 
+1. Check out my github main page to see all of my commits between February 19th and April 30th found with this link here: 
 
 [Githublink](https://github.com/aubreyjonescreatives)
 
-6. Present a User Interface route or "page" that allows the user to: 
-    6. Check out my MongoDB datastore User Interface route with the Popular Games link in the browser
+## Present a User Interface route or "page" that allows the user to: 
+    1. Check out my MongoDB datastore User Interface route with the Popular Games link in the browser. Here is example code about how I route to my User Interfaces:
    
 
 ```function App() {
@@ -101,7 +101,7 @@ export default App;
 ```
 
 
-## CREATE a meaningful (at least 5 data fields) resource through a REST endpoint that is stored in the datastore
+2. CREATE a meaningful (at least 5 data fields) resource through a REST endpoint that is stored in the datastore
 
 ```
 
@@ -125,7 +125,7 @@ res.json(game)
 ```
 
 
-## Read or GET meaningful data from 3 different REST endpoints
+3. Read or GET meaningful data from 3 different REST endpoints
 
 ```
 
@@ -165,7 +165,7 @@ export const getGameById = async (req, res) => {
 ```
 
 
-## UPDATE at least 1 portion of meaningful data through the appropriate endpoint
+4. UPDATE at least 1 portion of meaningful data through the appropriate endpoint
 
 ```
 
@@ -196,7 +196,7 @@ export const putEditGame = async (req, res) => {
 ```
 
 
-## DELETE some resource via the proper endpoint
+5. DELETE some resource via the proper endpoint
 
 
 ```
@@ -227,8 +227,8 @@ export const deleteGame = async (req, res) => {
 
 
 
-7. Present a separate User Interface route or "page" that allows the user to:
-    7. Check out my Graphql datastore User Interface route with the Card Games link in the browser
+## Present a separate User Interface route or "page" that allows the user to:
+1. Check out my Graphql datastore User Interface route with the Card Games link in the browser
 
 
 
@@ -287,7 +287,7 @@ const Mutation = objectType({
 ```
 
 
-## Read or GET meaningful data from with at least 3 different query options from the GraphQL endpoint.
+2. Read or GET meaningful data from with at least 3 different query options from the GraphQL endpoint.
 
 ```
 
@@ -348,7 +348,7 @@ query {
 
 
 
-## UPDATE at least 1 portion of meaningful data through an appropriate GraphQL mutation.
+3. UPDATE at least 1 portion of meaningful data through an appropriate GraphQL mutation.
 
 ```
 
@@ -411,7 +411,7 @@ mutation updateGame ($id: Int!, $title: String!, $description: String, $image: S
 
 
 
-## DELETE some resource using a proper GraphQL mutation.
+4. DELETE some resource using a proper GraphQL mutation.
 
 ```
 
@@ -455,7 +455,7 @@ mutation deleteGame ($id: Int!) {
 
 
 
-8. You will submit the GitHub URL for your project with a detailed ReadMe explaining how to install and run your server(s) on Docker or from your deployed sites.
+## You will submit the GitHub URL for your project with a detailed ReadMe explaining how to install and run your server(s) on Docker or from your deployed sites.
 
 
 ## Here are instructions to view this project in your local browser once you download it from GitHub:
