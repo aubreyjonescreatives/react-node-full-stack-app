@@ -1,1 +1,1 @@
-web: node client/build/index.html
+web: node app.js
