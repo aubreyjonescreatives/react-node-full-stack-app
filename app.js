@@ -33,7 +33,7 @@ app.use(express.json())
 
 //app.use(compression())
 
-//app.use(express.static('public'))
+app.use(express.static('public'))
 
 
 app.use((req, res, next) => {
