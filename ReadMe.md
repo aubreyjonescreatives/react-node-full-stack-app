@@ -79,7 +79,7 @@
 
 [Aubrey Jones Github Commits](https://github.com/aubreyjonescreatives)
 
-## Present a User Interface route or "page" that allows the user to: 
+## Present a User Interface route or "page" that allows the user to CRUD from a MongoDB Datastore: 
 1. Check out my MongoDB datastore User Interface route with the Popular Games link in the browser. Here is example code about how I route to my User Interfaces:
    
 
@@ -227,7 +227,7 @@ export const deleteGame = async (req, res) => {
 
 
 
-## Present a separate User Interface route or "page" that allows the user to:
+## Present a separate User Interface route or "page" that allows the user to CRUD from a Graphql datastore:
 1. Check out my Graphql datastore User Interface route with the Card Games link in the browser
 
 
