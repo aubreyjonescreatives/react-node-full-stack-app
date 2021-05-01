@@ -6,7 +6,7 @@
 1. Clone the repo
 
 
-### Run these package.json scripts in your terminal in this order: 
+### Run these package.json scripts in your terminal from the root folder in this order:
 
 2. npm install 
 3. npm run launch 
@@ -21,7 +21,7 @@
 1. The Game API does not require an API Key 
 2. Popular Games page serves my mongodb datastore with at least 25 items from the seed script
 3. Card Games page serves my graphql datastore with at least 25 items from the seed script
-    3. You'll need to refresh your browser every time you send a request to Create, Read, Update, and Delete a card game
+    * You'll need to refresh your browser every time you send a request to Create, Read, Update, and Delete a card game
 
 
 
@@ -233,9 +233,225 @@ export const deleteGame = async (req, res) => {
 
 
 ## CREATE a meaningful (at least 5 data fields) resource through a GraphQL endpoint that is stored in the datastore
+
+```
+
+const Mutation = objectType({
+    name: 'Mutation',
+    definition(t) {
+       t.nonNull.field('CreateGamer', {
+        type: 'Gamer',
+        args: {
+          data: nonNull(
+            arg({
+              type: 'GamerCreateInput',
+            }),
+          ),
+        },
+        resolve: (_, args, context) => {
+          return context.prisma.gamer.create({
+            data: {
+              gamer: args.data.gamer,
+              email: args.data.email,
+            },
+          })
+        },
+      }) 
+  
+      t.field('createGame', {
+        type: 'Game',
+        args: {
+          data: nonNull(
+            arg({
+              type: 'GameCreateInput',
+            }),
+          ),
+        },
+        resolve: (_, args, context) => {
+          return context.prisma.game.create({
+            data: {
+              title: args.data.title,
+              description: args.data.description,
+              image: args.data.image,
+              price: args.data.price,
+              link: args.data.link, 
+              gameformat: args.data.gameformat
+            },
+          })
+        },
+      })
+  
+
+
+
+```
+
+
 ## Read or GET meaningful data from with at least 3 different query options from the GraphQL endpoint.
+
+```
+
+const Query = objectType({
+    name: 'Query',
+    definition(t) {
+      t.nonNull.list.nonNull.field('allGamers', {
+        type: 'Gamer',
+        resolve: (_parent, _args, context) => {
+          return context.prisma.gamer.findMany()
+        },
+      })
+
+      t.nonNull.list.nonNull.field('allGames', {
+        type: 'Game',
+        resolve: (_parent, _args, context) => {
+          return context.prisma.game.findMany()
+        },
+      })
+  
+      t.nullable.field('gameById', {
+        type: 'Game',
+        args: {
+          id: intArg(),
+        },
+        resolve: (_parent, args, context) => {
+          return context.prisma.game.findUnique({
+            where: { id: args.id || undefined },
+          })
+        },
+      })
+
+
+
+
+```
+
+
+```
+
+
+const ALL_GAMES = gql`
+query {
+    allGames {
+        id 
+        title
+        description 
+        image
+        price
+      
+    }
+}
+`
+
+
+
+```
+
+
+
 ## UPDATE at least 1 portion of meaningful data through an appropriate GraphQL mutation.
+
+```
+
+
+   t.field('updateGame', {
+        type: 'Game',
+        args: {
+          id: nonNull(intArg()),
+          data: nonNull(
+            arg({
+              type: 'GameCreateInput',
+            }),
+          ),
+        },
+        resolve: (_, args, context) => {
+          return context.prisma.game.update({
+            where: { id: args.id || undefined },
+            data: {
+             title: args.data.title, 
+             description: args.data.description, 
+             defaultCredits: args.data.defaultCredits, 
+             image: args.data.image, 
+             price: args.data.price, 
+             link: args.data.link, 
+             gameformat: args.data.gameformat
+            
+            },
+          })
+        },
+      })
+   
+
+
+
+
+
+```
+
+
+```
+
+const UPDATE_GAME = gql`
+mutation updateGame ($id: Int!, $title: String!, $description: String, $image: String!, $price: String!) {
+    updateGame (id: $id, 
+        data: {
+            title: $title, 
+            description: $description
+            image: $image 
+            price: $price
+            
+        }) {
+            id
+           
+        }
+}
+`
+
+
+```
+
+
+
 ## DELETE some resource using a proper GraphQL mutation.
+
+```
+
+  t.field('deleteGame', {
+        type: 'Game',
+        args: {
+          id: nonNull(intArg()),
+        },
+        resolve: (_, args, context) => {
+          return context.prisma.game.delete({
+            where: { id: args.id },
+          })
+        },
+      })
+    },
+  })
+   
+
+
+
+```
+
+
+
+
+
+```
+
+const DELETE_GAME = gql`
+mutation deleteGame ($id: Int!) {
+    deleteGame (id: $id) {
+        id
+    }
+}
+`
+
+
+```
+
+
 
 
 
@@ -247,7 +463,7 @@ export const deleteGame = async (req, res) => {
 1. Clone the repo
 
 
-### Run these package.json scripts in your terminal in this order: 
+### Run these package.json scripts in your terminal from the root folder in this order: 
 
 2. npm install 
 3. npm run launch 
@@ -278,43 +494,4 @@ export const deleteGame = async (req, res) => {
 ![MongoDB datastore](images/mongodbpopulargames.PNG)
 
 
-## At least 3 endpoints to GET data from your server
 
-```
-
-populargameRouter.get('/populargames', getAllGames)
-
-populargameRouter.get('/async', getGames)
-
-populargameRouter.get('/populargames/id', getGameById)
-
-```
-
-
-## Your datastore will contain at least 25 items
-
-![Datastore](images/mongodbpopulargames.PNG)
-
-
-## Your app will be deployed to production using some service like Heroku, Digital Ocean, etc.
-
-## Here are instructions to view this project in your local browser once you download it from GitHub:
-
-1. Clone the repo
-
-
-### Run these package.json scripts in your terminal in this order: 
-
-2. npm install 
-3. npm run launch 
-4. npm run migrate 
-5. npm run seed
-6. npm run seed:game 
-7. npm run start-dev -> Will deploy react front end to localhost:5050, server to localhost:8080, and graphql playground to localhost:4000
-
-
-
-## Additional Notes: 
-1. The Game API does not require an API Key 
-2. Popular Games page serves my mongodb datastore 
-3. Card Games page serves my graphql datastore
