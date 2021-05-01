@@ -1,5 +1,7 @@
 import express from 'express'
 import path from 'path'
+import helmet from 'helmet'
+import compression from 'compression'
 //import bodyParser from 'body-parser'
 import { apiRouter} from './routes/api.route.js'
 //import { productRouter} from './routes/product.route.js'
@@ -9,9 +11,6 @@ import * as dotenv from 'dotenv'
 import cors from 'cors'
 
 
-
-//const helmet = require('helmet')
-//const compression = require('compression')
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
@@ -29,9 +28,9 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(express.json())
 
-//app.use(helmet())
+app.use(helmet())
 
-//app.use(compression())
+app.use(compression())
 
 app.use(express.static('public'))
 
