@@ -106,10 +106,7 @@ const handleUpdate = async (values) => {
 
 
 
-    
-
-
-
+   
 const handleClickDeleteOpen = (game) => {
     console.log('You clicked to delete')
     console.log(game._id)
@@ -120,6 +117,11 @@ const handleClickDeleteOpen = (game) => {
 const handleCloseDelete = () => {
     setDeleteOpen(false)
 }
+
+ 
+
+// Popular Games Delete Function
+
 
 const handleDelete = async () => {
     setDeleteOpen(false)
@@ -136,13 +138,35 @@ const handleDelete = async () => {
     }
 }
 
-const settings = {
-  focusOnSelect: true, 
-   infinite: true, 
-   speed: 500, 
-   slidesToShow: 4, 
-   slidesToScroll: 4
+
+// Crazy Games Delete Functiono 
+
+
+
+
+const handleDeleteCrazy = async () => {
+   setDeleteOpen(false)
+   console.log(selectedGame._id)
+   try {
+       await axios.delete(`http://localhost:${port}/crazygame/delete`, { 
+       data: {   
+       gameId: selectedGame._id
+       }
+   })
+   fetchCrazyGames()
+   } catch (err) {
+       console.error(err)
+   }
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -185,7 +209,7 @@ const fetchCrazyGames = async () => {
 return (
     <>
     <div className="main-1">
-     <h1 className="gamesHeader2"> Chaotic Neutral Games</h1>
+     <h1 className="thegamesHeader"> Chaotic Neutral Games</h1>
 
      <div className="actions">
              <form className="gamestatsSearch">
@@ -458,6 +482,25 @@ card={game.game}
 
 
 
+
+     <form>
+     <Container>
+        <Dialog open={deleteOpen} onClose={handleCloseDelete}>
+        <DialogTitle>Delete Game</DialogTitle>
+        <DialogContent>
+            <DialogContentText>
+                Are you sure you want to delete this game?
+            </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+            <Button onClick={handleCloseDelete}>Cancel</Button>
+            <Button onClick={handleDeleteCrazy}>Delete</Button>
+        </DialogActions>
+        </Dialog>
+     </Container>
+
+
+     </form>
 
 
 
