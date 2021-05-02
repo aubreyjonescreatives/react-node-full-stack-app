@@ -52,7 +52,7 @@ export const getCrazyGameById = async (req, res) => {
 }
 
 export const putEditCrazyGame = async (req, res) => {
-    const gameId = req.body.GameId
+    const gameId = req.body.data.gameId
     const updatedObj = {
         name: req.body.data.name,
         image_url: req.body.data.image_url, 

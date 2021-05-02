@@ -85,6 +85,10 @@ const handleInput = (event) => {
     }
     
 
+
+// Popular Game Update //
+
+
 const handleUpdate = async (values) => {
     try {
         const result = await axios.put(`http://localhost:${port}/populargame/update`, {
@@ -103,6 +107,32 @@ const handleUpdate = async (values) => {
         console.error(err)
     }
     }
+
+
+// Crazy Game Update //
+
+
+const handleCrazyUpdate = async (values) => {
+   try {
+       const result = await axios.put(`http://localhost:${port}/crazygame/update`, {
+           data: {
+               gameId: values.id, 
+               name: values.name, 
+               image_url: values.image_url, 
+               description: values.description, 
+               price: values.price,
+           },
+       })
+       if (result.status === 200) {
+           fetchCrazyGames()
+       }
+   } catch (err) {
+       console.error(err)
+   }
+   }
+
+
+
 
 
 
@@ -442,6 +472,169 @@ card={game.game}
     </Formik>
 
     </Dialog>
+
+
+
+
+
+
+
+
+
+    <Dialog 
+    open={editOpen}
+    onClose={handleCloseEdit}
+    aria-labelledby='edit-dialog--crazy-name'
+    >
+    <Formik
+    initialValues={{ 
+        id: selectedGame?._id,
+        name: selectedGame?.name, 
+        image_url: selectedGame?.image_url, 
+        description: selectedGame?.description, 
+        price: selectedGame?.price, 
+       
+    }}
+    validationSchema={Yup.object().shape({
+        id: Yup.string('Enter game ID').required(
+            'Game ID is required',
+        ),
+        name: Yup.string('Enter game name').required(
+            'Game name is required',
+        ),
+        image_url: Yup.string('Image URL'), 
+        description: Yup.string('Game Description'), 
+        price: Yup.string('Game Price'), 
+        
+    })}
+    onSubmit={async (values, {setErrors, setStatus, setSubmitting}) => {
+        try {
+            await handleCrazyUpdate(values) 
+            handleCloseEdit()
+        }   catch (err) {
+            console.error(err)
+            setStatus({ success: false })
+            setErrors({ submit: err.message })
+            setSubmitting(false)
+        }
+    }}
+    >
+    {({
+        values, 
+        errors, 
+        touched, 
+        handleChange, 
+        handleBlur, 
+        handleSubmit, 
+        isSubmitting,
+    }) => (
+        <form 
+        noValidate 
+        autoComplete='off' 
+        onSubmit={handleSubmit}
+        >
+         <DialogTitle id="edit-dialog-crazy-name">Edit Game Info</DialogTitle>   
+         <DialogContent>
+             <DialogContentText>
+                 Edit Information for this Game: 
+             </DialogContentText>
+             <Box>
+            <TextField 
+            autoFocus 
+            id="name"
+            name="name"
+            label="Name"
+            type="text"
+            fullWidth
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.name && errors.name)} 
+            helperText={touched.name && errors.name} 
+            />
+            </Box>
+            <Box>
+                <TextField 
+            autoFocus 
+            id="image_url"
+            name="image_url"
+            label="Image URL"
+            type="text"
+            fullWidth
+            value={values.image_url}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.image_url && errors.image_url)} 
+            helperText={touched.image_url && errors.image_url} 
+                />
+            </Box>
+            <Box>
+                <TextField 
+            autoFocus 
+            id="description"
+            name="description"
+            label="Description"
+            type="text"
+            fullWidth
+            value={values.description}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.description && errors.description)} 
+            helperText={touched.description && errors.description} 
+
+
+                />
+            </Box>
+
+
+            <Box>
+                <TextField 
+            autoFocus 
+            id="price"
+            name="price"
+            label="Price"
+            type="text"
+            fullWidth
+            value={values.price}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            error={Boolean(touched.price && errors.price)} 
+            helperText={touched.price && errors.price} 
+                />
+            </Box>
+
+         </DialogContent>
+         <DialogActions>
+             <Button onClick={handleCloseEdit}>Cancel</Button>
+             <Button type='submit'>Save</Button>
+         </DialogActions>
+       
+        </form>
+    )}
+
+
+
+    </Formik>
+
+    </Dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
