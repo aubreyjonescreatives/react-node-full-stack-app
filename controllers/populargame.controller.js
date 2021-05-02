@@ -52,7 +52,7 @@ export const getGameById = async (req, res) => {
 }
 
 export const putEditGame = async (req, res) => {
-    const gameId = req.body.GameId
+    const gameId = req.body.data.gameId
     const updatedObj = {
         name: req.body.data.name,
         image_url: req.body.data.image_url, 
@@ -61,7 +61,7 @@ export const putEditGame = async (req, res) => {
     } 
     try {
     const game = await PopularGame.findByIdAndUpdate(gameId, updatedObj, {new: true})
-    console.log(`Updated the product ${game}`)   
+    console.log(`Updated the game ${game}`)   
     res.status(200).json(game)
     } catch(err) {
         res.status(400).json({Message: `Could not update: ${err}`})

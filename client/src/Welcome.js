@@ -139,7 +139,7 @@ const handleDelete = async () => {
 }
 
 
-// Crazy Games Delete Functiono 
+// Crazy Games Delete Function 
 
 
 
@@ -309,11 +309,11 @@ card={game.game}
      <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
-    aria-labelledby='edit-dialog-id'
+    aria-labelledby='edit-dialog-name'
     >
     <Formik
     initialValues={{ 
-        gameId: selectedGame?._id,
+        id: selectedGame?._id,
         name: selectedGame?.name, 
         image_url: selectedGame?.image_url, 
         description: selectedGame?.description, 
@@ -321,7 +321,7 @@ card={game.game}
        
     }}
     validationSchema={Yup.object().shape({
-        gameId: Yup.string('Enter game ID').required(
+        id: Yup.string('Enter game ID').required(
             'Game ID is required',
         ),
         name: Yup.string('Enter game name').required(
@@ -358,26 +358,11 @@ card={game.game}
         autoComplete='off' 
         onSubmit={handleSubmit}
         >
-         <DialogTitle id="edit-dialog">Edit Game Info</DialogTitle>   
+         <DialogTitle id="edit-dialog-name">Edit Game Info</DialogTitle>   
          <DialogContent>
              <DialogContentText>
                  Edit Information for this Game: 
              </DialogContentText>
-             <Box>
-            <TextField 
-            autoFocus 
-            id="gameId"
-            name="gameId"
-            label="Game Id"
-            type="text"
-            fullWidth
-            value={values.id}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.id && errors.id)} 
-            helperText={touched.id && errors.id} 
-            />
-            </Box>
              <Box>
             <TextField 
             autoFocus 
@@ -446,7 +431,7 @@ card={game.game}
          </DialogContent>
          <DialogActions>
              <Button onClick={handleCloseEdit}>Cancel</Button>
-             <Button type='submit' onClick={handleSubmit}>Save</Button>
+             <Button type='submit'>Save</Button>
          </DialogActions>
        
         </form>
