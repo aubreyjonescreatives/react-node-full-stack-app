@@ -148,7 +148,8 @@ const handleCloseDelete = () => {
     setDeleteOpen(false)
 }
 
- 
+
+
 
 // Popular Games Delete Function
 
@@ -168,6 +169,7 @@ const handleDelete = async () => {
     }
 }
 
+ 
 
 // Crazy Games Delete Function 
 
@@ -481,6 +483,10 @@ card={game.game}
 
 
 
+
+
+
+
     <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
@@ -617,12 +623,6 @@ card={game.game}
     </Formik>
 
     </Dialog>
-
-
-
-
-
-
 
 
 

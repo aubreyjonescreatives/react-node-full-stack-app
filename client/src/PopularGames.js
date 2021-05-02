@@ -158,6 +158,7 @@ const handleCloseDelete = () => {
     setDeleteOpen(false)
 }
 
+
 const handleDelete = async () => {
     setDeleteOpen(false)
     console.log(selectedGame._id)
@@ -172,6 +173,8 @@ const handleDelete = async () => {
         console.error(err)
     }
 }
+
+
 
 
 
