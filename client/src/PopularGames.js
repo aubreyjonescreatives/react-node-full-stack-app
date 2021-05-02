@@ -244,11 +244,11 @@ return (
      <Dialog 
     open={editOpen}
     onClose={handleCloseEdit}
-    aria-labelledby='edit-dialog-id'
+    aria-labelledby='edit-dialog-name'
     >
     <Formik
     initialValues={{ 
-        gameId: selectedGame?._id,
+        id: selectedGame?._id,
         name: selectedGame?.name, 
         image_url: selectedGame?.image_url, 
         description: selectedGame?.description, 
@@ -256,7 +256,7 @@ return (
        
     }}
     validationSchema={Yup.object().shape({
-        gameId: Yup.string('Enter game ID').required(
+        id: Yup.string('Enter game ID').required(
             'Game ID is required',
         ),
         name: Yup.string('Enter game name').required(
@@ -298,21 +298,6 @@ return (
              <DialogContentText>
                  Edit Information for this Game: 
              </DialogContentText>
-             <Box>
-            <TextField 
-            autoFocus 
-            id="gameId"
-            name="gameId"
-            label="Game Id"
-            type="text"
-            fullWidth
-            value={values.id}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={Boolean(touched.id && errors.id)} 
-            helperText={touched.id && errors.id} 
-            />
-            </Box>
              <Box>
             <TextField 
             autoFocus 
