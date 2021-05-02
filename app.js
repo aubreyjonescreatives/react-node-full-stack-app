@@ -4,7 +4,7 @@ import helmet from 'helmet'
 import compression from 'compression'
 //import bodyParser from 'body-parser'
 import { apiRouter} from './routes/api.route.js'
-//import { productRouter} from './routes/product.route.js'
+import { crazygameRouter} from './routes/crazygame.route.js'
 import { populargameRouter } from './routes/populargame.route.js'
 import mongoose from 'mongoose'
 import * as dotenv from 'dotenv'
@@ -48,6 +48,8 @@ app.use((req, res, next) => {
 app.use('/api', apiRouter)
 
 app.use('/populargame', populargameRouter)
+
+app.use('/crazygame', crazygameRouter)
 
 app.use((req, res, next) => {
     res.status(404).send('<h1>Page Not Found</h1>')

@@ -273,6 +273,18 @@ header {
         font-size: 24px; 
     }
 
+    .gameLinkText {
+        color: $primaryColor; 
+    }
+
+    .gameLinkText:link {
+        color: $primaryColor; 
+    }
+
+    .gameLinkText:hover {
+        text-decoration: none; 
+    }
+
 
     .icons {
         text-align: center; 
@@ -288,6 +300,57 @@ header {
     transition: all .4s ease; 
 
 }
+
+
+
+
+.video-game-container {
+    display: flex; 
+    flex-wrap: wrap; 
+ 
+  
+
+
+
+.video-game-card {
+width: 250px;
+margin: 10px; 
+
+
+
+
+.VideoMedia {
+    display: block; 
+    margin: auto; 
+    margin-top: 20px; 
+    width: 150px; 
+    height: 150px; 
+   
+}
+
+
+.gameName {
+    color: green;
+    text-align: center;  
+    font-size: 20px; 
+}
+
+.gamePrice {
+    text-align: center; 
+    padding: 20px; 
+    font-size: 24px; 
+}
+
+
+.icons {
+    text-align: center; 
+}
+
+}
+
+}
+
+
 
 /* ------------------------TOPNAV----------------------------- */
 

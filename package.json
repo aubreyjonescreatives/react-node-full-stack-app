@@ -12,6 +12,7 @@
     "launch": "cd graphql && npm run launchDocker",
     "migrate": "cd graphql && npm run migrate",
     "seed": "node seed/loadAPI.js",
+    "seed:crazygames": "node seed/loadAPICrazy.js",
     "seed:game": "cd graphql && npm run seed:game",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "build": "npm install && cd client && npm install && npm run build",
@@ -45,6 +46,7 @@
     "path": "^0.12.7",
     "react-bootstrap": "^1.5.2",
     "react-router-dom": "^5.2.0",
+    "react-slick": "^0.28.1",
     "rimraf": "^2.2.8",
     "script": "file:graphql"
   },

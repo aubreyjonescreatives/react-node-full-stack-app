@@ -1,4 +1,5 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback, useRef} from 'react';
+import Slider from "react-slick"
 import axios from 'axios'
 import _ from 'lodash'
 import {Card, IconButton, CardMedia, Typography, Container, 
@@ -33,12 +34,12 @@ const Loading = () => (
 
  */
 
-const Welcome = () => {
+const Welcome = (props) => {
 
 const [selectedGame, setSelectedGame] = useState( { name: ''})
 const [gameData, setGameData] = useState([])
+const [crazygameData, setcrazyGameData] = useState([])
 const [debouncedName, setDebouncedName] = useState('')
-const [createOpen, setCreateOpen] = useState(false)
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
 
@@ -63,51 +64,13 @@ const handleInput = (event) => {
     const handleSearch = () => {
         if (debouncedName) {
             setGameData(gameData.filter(game => game.name.includes(debouncedName)))
+            setcrazyGameData(crazygameData.filter(game => game.name.includes(debouncedName)))
         } else {
             fetchGames()
+            fetchCrazyGames()
         }
     }
 
-
-
-    
-    const handleClickCreateOpen = () => {
-        setCreateOpen(true)
-    }
-
-    const handleCloseCreate = () => {
-        setCreateOpen(false)
-        handleCreate()
-        console.log(handleCreate())
-    }
-
-
-
-    const handleCreate = async () => {
-        try {
-            const result = await axios.post(`http://localhost:${port}/`, {
-                    id: 'id',
-                    name: 'name',
-                    image_url: 'image_url', 
-                    description: 'description', 
-                    price: 'price',
-                
-               
-                
-            })
-            
-            if (result.status === 200) {
-                fetchGames()
-                console.log(result.status)
-            }
-        } catch (err) {
-            console.error(err)
-        }
-        fetchGames()
-       
-        }
-
- 
 
 
 
@@ -173,6 +136,13 @@ const handleDelete = async () => {
     }
 }
 
+const settings = {
+  focusOnSelect: true, 
+   infinite: true, 
+   speed: 500, 
+   slidesToShow: 4, 
+   slidesToScroll: 4
+}
 
 
 
@@ -193,16 +163,33 @@ const fetchGames = async () => {
     }, [])
 
 
+
+    
+const fetchCrazyGames = async () => {
+   try {
+   const populargamesInfo = await axios.get(`http://localhost:${port}/crazygame`)
+   setcrazyGameData(populargamesInfo.data)
+   console.log(populargamesInfo.data)
+   } catch (err) {
+       console.log(err)
+   }
+   }
+   
+   
+   useEffect(() => {
+       fetchCrazyGames()
+      
+   }, [])
+
+
 return (
     <>
     <div className="main-1">
      <h1 className="gamesHeader2"> Chaotic Neutral Games</h1>
 
-     <h1 className="gamesHeader2"> Classic Games</h1>
-  
-             <div className="actions">
+     <div className="actions">
              <form className="gamestatsSearch">
-         <TextField placeholder='Search for Classic Game' onChange={handleInput} />
+         <TextField placeholder='Search for Game' onChange={handleInput} />
          <IconButton aria-label='search' onClick={handleSearch}>
              <SearchIcon />
              </IconButton>
@@ -210,12 +197,17 @@ return (
      </div>
 
 
+     <h1 className="gamesHeader2"> Classic Games</h1>
+  
+
+
 
 
     <Container className="popular-game-container">
     {gameData.map((game) => {
      return (
-    <Card className="popular-game-card" key={game._id}>
+    
+   <Card className="popular-game-card" key={game._id}>
     <Link href={game.url} className="gameLink">
      <CardMedia 
      className="GameMedia"
@@ -235,50 +227,44 @@ return (
      </Link>
      </Card>
     
+   
     )
     
      })}
+
      </Container>
+   
+    
 
 
 
-
-
-     <h1 className="gamesHeader2"> Board Games</h1>
+     <h1 className="gamesHeader2">Crazy Games</h1>
   
-  <div className="actions">
-  <form className="gamestatsSearch">
-<TextField placeholder='Search Popular Game' onChange={handleInput} />
-<IconButton aria-label='search' onClick={handleSearch}>
-  <SearchIcon />
-  </IconButton>
-</form>
-</div>
 
 
 
 
 <Container className="popular-game-container">
-{gameData.map((game) => {
+{crazygameData.map((game) => {
 return (
 <Card className="popular-game-card" key={game._id}>
-<Link href={game.url} className="gameLink">
 <CardMedia 
 className="GameMedia"
 component="img"
-alt={'Board Game'}
+alt={'Game List'}
 image={game.image_url}
 card={game.game}
 />
 <CardContent>
 <Typography className="gameName">{game.name}</Typography>
-<Typography className="gamePrice">${game.price}</Typography>
+<Typography className="gamePrice">$ {game.price}</Typography>
+<Typography className="gamePrice">{game.type}</Typography>
 <div className="icons">
+<Link href={game.url} className="gameLink">FIND GAME</Link>
 <IconButton className="gameIcon" aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
 <IconButton className="gameIcon" aria-label='delete' onClick={() => handleClickDeleteOpen({ game })}><DeleteIcon/></IconButton>
 </div>
 </CardContent>
-</Link>
 </Card>
 
 )
@@ -469,56 +455,6 @@ card={game.game}
 
 
      </form>
-
-
-<Dialog open={createOpen} onClose={handleCloseCreate} aria-labelledby="create-dialog">
-    <DialogTitle id="create-dialog">Create a Game</DialogTitle>
-    <DialogContent>
-        <DialogContentText>All of these fields require text:</DialogContentText>
-        <TextField 
-        autoFocus
-        required
-        margin="dense"
-        id="name"
-        label="Game Name"
-        type="text"
-        fullWidth
-        />
-         <TextField 
-        autoFocus
-        required
-        margin="dense"
-        id="image_url"
-        label="Game Image"
-        type="text"
-        fullWidth
-        />
- <TextField 
-        autoFocus
-        required
-        margin="dense"
-        id="description"
-        label="Description"
-        type="text"
-        fullWidth
-        />
-
-<TextField 
-        autoFocus
-        required
-        margin="dense"
-        id="price"
-        label="Price"
-        type="text"
-        fullWidth
-        />
-
-    </DialogContent>
-    <DialogActions>
-        <Button onClick={handleCloseCreate}>Cancel</Button>
-        <Button onClick={handleCloseCreate}>Create Game</Button>
-    </DialogActions>
-</Dialog>
 
 
 
