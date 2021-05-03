@@ -22,6 +22,7 @@ import * as dotenv from 'dotenv'
 
 
 
+
 dotenv.config()
 const port = process.env.PORT || 3000
 
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const PopularGames = (props) => {
+const PopularGames = () => {
     const classes = useStyles();
 
 const [selectedGame, setSelectedGame] = useState( { name: ''})
@@ -67,7 +68,7 @@ const [createOpen, setCreateOpen] = useState(false)
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
 const [createData, setCreateData] = useState({
-    id: null, 
+    id: '', 
     name: '', 
     image_url: '',
     description: '', 
@@ -137,16 +138,15 @@ const handleInput = (event) => {
 
 const addGame = (e) => {
     setCreateData({
-        ...createData,
-    id: null, 
-    name: '',
-    image_url: '', 
-    description: '', 
-    price: ''
+        ...createData, 
+    id: e.target.id, 
+    name: e.target.name, 
+    image_url: e.target.image_url, 
+    description: e.target.description,
+    price: e.target.price,
      
-    })
-}
-
+})}
+ 
 
 
     const handleCreate = async () => {
@@ -485,7 +485,9 @@ return (
             All fields are required with text to create a game and add it to the list:
           </DialogContentText>
           <TextField
+          required
             autoFocus
+            autoComplete="off"
             margin="dense"
             id="id"
             label="Game ID"
@@ -495,7 +497,9 @@ return (
            
           />
           <TextField
+          required
             autoFocus
+            autoComplete="off"
             margin="dense"
             id="name"
             label="Game Name"
@@ -504,7 +508,9 @@ return (
             onChange={addGame}
           />
             <TextField
+            required
             autoFocus
+            autoComplete="off"
             margin="dense"
             id="image_url"
             label="Game Image URL"
@@ -513,7 +519,9 @@ return (
             onChange={addGame}
           />
             <TextField
+            required
             autoFocus
+            autoComplete="off"
             margin="dense"
             id="description"
             label="Game Description"
@@ -522,7 +530,9 @@ return (
             onChange={addGame}
           />
             <TextField
+            required
             autoFocus
+            autoComplete="off"
             margin="dense"
             id="price"
             label="Game Price"

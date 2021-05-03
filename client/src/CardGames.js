@@ -240,6 +240,7 @@ return (
      <Typography className="gameInfo">{game.description}</Typography>
      <Typography className="gameInfoJP">Current Jackpot: ${game.price}</Typography>
     <div className="iconButtons">
+    <Link href={game.link} className="gameLink">FIND GAME</Link>
      <IconButton aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
      <IconButton aria-label='delete' onClick={() => handleClickDeleteOpen({game})}><DeleteIcon/></IconButton>
      </div>

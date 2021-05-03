@@ -7,11 +7,11 @@ const Schema = mongoose.Schema
 const populargameSchema = new Schema({
     name: {
         type: String, 
-        required: true
+        required: false
     }, 
     image_url: {
         type: String, 
-        required: true
+        required: false
     }, 
     description: {
         type: String, 
@@ -19,11 +19,11 @@ const populargameSchema = new Schema({
     }, 
     price: {
         type: String, 
-        required: true 
+        required: false 
     },
     id: {
         type: String, 
-        required: true
+        required: false
     }
 })
 

@@ -178,13 +178,14 @@ header {
     transform: translate3D(0, -1px, 0) scale(1.05)
 }
 
-.getgameLink { 
+.gameLink { 
     padding: 10px; 
     color: $primaryColor; 
     font-weight: bold; 
 }
 
-.getgameLink:hover {
+
+.gameLink:hover {
     text-decoration: none; 
     background-color: $primaryColor; 
     color: white; 
