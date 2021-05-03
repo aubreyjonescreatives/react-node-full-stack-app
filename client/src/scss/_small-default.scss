@@ -106,7 +106,12 @@ header {
             font-size: 28px; 
         }
         
-
+.a-border {
+    border: none; 
+    box-shadow: none; 
+    margin: 20px; 
+    font-size: 20px; 
+}
 
 
 .actions {
@@ -246,7 +251,7 @@ header {
 
 
 .popular-game-card {
-    width: 250px;
+    width: 350px;
     margin: 10px; 
    
   
@@ -256,8 +261,8 @@ header {
         display: block; 
         margin: auto; 
         margin-top: 20px; 
-        width: 150px; 
-        height: 150px; 
+        width: 100%; 
+        height: 200px; 
        
     }
 
@@ -268,10 +273,18 @@ header {
         font-size: 20px; 
     }
 
+    .gameDescription {
+        text-align: center; 
+        color: darkgreen; 
+        font-size: 18px; 
+        margin: 10px 0px; 
+    }
+
     .gamePrice {
         text-align: center; 
-        padding: 20px; 
-        font-size: 24px; 
+        padding: 5px; 
+        font-size: 20px; 
+        color: darkblue; 
     }
 
     .gameLinkText {

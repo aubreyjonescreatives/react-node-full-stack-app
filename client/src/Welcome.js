@@ -253,7 +253,7 @@ return (
      </div>
 
 
-     <h1 className="gamesHeader2"> Classic Games</h1>
+     <h1 className="gamesHeader2"> Popular Games</h1>
   
 
 
@@ -294,7 +294,7 @@ return (
 
 
 
-     <h1 className="gamesHeader2">Crazy Games</h1>
+     <h1 className="gamesHeader2">Games on Discount</h1>
   
 
 

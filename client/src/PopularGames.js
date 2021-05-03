@@ -4,6 +4,11 @@ import _ from 'lodash'
 import {Card, IconButton, CardMedia, Typography, Container, 
     Dialog, Button, DialogTitle, DialogContent, DialogContentText, 
     DialogActions, TextField, Box, CardContent, Link} from '@material-ui/core'
+    import { makeStyles } from '@material-ui/core/styles';
+    import Accordion from '@material-ui/core/Accordion';
+    import AccordionSummary from '@material-ui/core/AccordionSummary';
+    import AccordionDetails from '@material-ui/core/AccordionDetails';
+    import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
@@ -33,7 +38,27 @@ const Loading = () => (
 
  */
 
-const PopularGames = () => {
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      border: 'none',
+      margin: '20px',
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      fontWeight: theme.typography.fontWeightRegular,
+    },
+  }));
+  
+
+
+
+
+
+
+const PopularGames = (props) => {
+    const classes = useStyles();
 
 const [selectedGame, setSelectedGame] = useState( { name: ''})
 const [gameData, setGameData] = useState([])
@@ -41,8 +66,35 @@ const [debouncedName, setDebouncedName] = useState('')
 const [createOpen, setCreateOpen] = useState(false)
 const [editOpen, setEditOpen] = useState(false)
 const [deleteOpen, setDeleteOpen] = useState(false)
+const [createData, setCreateData] = useState({
+    id: null, 
+    name: '', 
+    image_url: '',
+    description: '', 
+    price: ''
+
+})
 
 
+
+// Description Accordion 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Search Function
 
 
 const handleInput = (event) => {
@@ -68,6 +120,7 @@ const handleInput = (event) => {
         }
     }
 
+// Create Function
 
 
     
@@ -78,38 +131,44 @@ const handleInput = (event) => {
     const handleCloseCreate = () => {
         setCreateOpen(false)
         handleCreate()
-        console.log(handleCreate())
+        console.log('Game Added successfully to database.')
     }
+
+
+const addGame = (e) => {
+    setCreateData({
+        ...createData,
+    id: null, 
+    name: '',
+    image_url: '', 
+    description: '', 
+    price: ''
+     
+    })
+}
 
 
 
     const handleCreate = async () => {
         try {
-            const result = await axios.post(`http://localhost:${port}/`, {
-                    id: 'id',
-                    name: 'name',
-                    image_url: 'image_url', 
-                    description: 'description', 
-                    price: 'price',
-                
-               
-                
+            await axios.post(`http://localhost:${port}/populargame`, {
+                id: createData.id, 
+                name: createData.name, 
+                image_url: createData.image_url, 
+                description: createData.description, 
+                price: createData.price,
             })
-            
-            if (result.status === 200) {
-                fetchGames()
-                console.log(result.status)
-            }
         } catch (err) {
             console.error(err)
         }
         fetchGames()
-       
         }
 
- 
 
 
+
+
+// Edit Function
 
 
     const handleClickEditOpen = (game) => {
@@ -144,7 +203,7 @@ const handleUpdate = async (values) => {
 
 
     
-
+// Delete Function
 
 
 const handleClickDeleteOpen = (game) => {
@@ -176,7 +235,7 @@ const handleDelete = async () => {
 
 
 
-
+// Fetch API 
 
 
 const fetchGames = async () => {
@@ -202,10 +261,8 @@ return (
      <h1 className="gamesHeader"> Popular Games</h1>
   
              <div className="actions">
-     <IconButton aria-label='add' onClick={handleClickCreateOpen} className="addButton">
-             Create Game <AddCircleIcon />
-             </IconButton>
-   
+             <IconButton aria-label='add' onClick={handleClickCreateOpen} className="addButton">Create Game <AddCircleIcon /></IconButton>
+
              <form className="gamestatsSearch">
          <TextField placeholder='Search' onChange={handleInput} />
          <IconButton aria-label='search' onClick={handleSearch}>
@@ -231,6 +288,19 @@ return (
      />
      <CardContent>
      <Typography className="gameName">{game.name}</Typography>
+     
+     <Accordion>
+        <AccordionSummary className="a-border"
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes.heading}>{game.name} Description</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Typography className="gameDescription">{game.description}</Typography>
+        </AccordionDetails>
+      </Accordion>
      <Typography className="gamePrice">${game.price}</Typography>
     <div className="icons">
      <IconButton className="gameIcon" aria-label='edit' onClick={() => handleClickEditOpen({ game })}> <EditIcon/></IconButton>
@@ -296,7 +366,7 @@ return (
         autoComplete='off' 
         onSubmit={handleSubmit}
         >
-         <DialogTitle id="edit-dialog">Edit Game Info</DialogTitle>   
+         <DialogTitle id="edit-dialog-name">Edit Game Info</DialogTitle>   
          <DialogContent>
              <DialogContentText>
                  Edit Information for this Game: 
@@ -404,54 +474,76 @@ return (
      </form>
 
 
-<Dialog open={createOpen} onClose={handleCloseCreate} aria-labelledby="create-dialog">
-    <DialogTitle id="create-dialog">Create a Game</DialogTitle>
-    <DialogContent>
-        <DialogContentText>All of these fields require text:</DialogContentText>
-        <TextField 
-        autoFocus
-        required
-        margin="dense"
-        id="name"
-        label="Game Name"
-        type="text"
-        fullWidth
-        />
-         <TextField 
-        autoFocus
-        required
-        margin="dense"
-        id="image_url"
-        label="Game Image"
-        type="text"
-        fullWidth
-        />
- <TextField 
-        autoFocus
-        required
-        margin="dense"
-        id="description"
-        label="Description"
-        type="text"
-        fullWidth
-        />
 
-<TextField 
-        autoFocus
-        required
-        margin="dense"
-        id="price"
-        label="Price"
-        type="text"
-        fullWidth
-        />
 
-    </DialogContent>
-    <DialogActions>
-        <Button onClick={handleCloseCreate}>Cancel</Button>
-        <Button onClick={handleCloseCreate}>Create Game</Button>
-    </DialogActions>
-</Dialog>
+
+
+     <Dialog open={createOpen} onClose={handleCloseCreate} aria-labelledby="create-dialog-name">
+        <DialogTitle id="create-dialog-name">Create a Game</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            All fields are required with text to create a game and add it to the list:
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="id"
+            label="Game ID"
+            type="text"
+            fullWidth
+            onChange={addGame}
+           
+          />
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Game Name"
+            type="text"
+            fullWidth
+            onChange={addGame}
+          />
+            <TextField
+            autoFocus
+            margin="dense"
+            id="image_url"
+            label="Game Image URL"
+            type="text"
+            fullWidth
+            onChange={addGame}
+          />
+            <TextField
+            autoFocus
+            margin="dense"
+            id="description"
+            label="Game Description"
+            type="text"
+            fullWidth
+            onChange={addGame}
+          />
+            <TextField
+            autoFocus
+            margin="dense"
+            id="price"
+            label="Game Price"
+            type="text"
+            fullWidth
+            onChange={addGame}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseCreate} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleCloseCreate} color="primary">
+            Create Game
+          </Button>
+        </DialogActions>
+      </Dialog>
+  
+
+
+
 
 
 
