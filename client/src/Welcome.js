@@ -241,7 +241,7 @@ const fetchCrazyGames = async () => {
 return (
     <>
     <div className="main-1">
-     <h1 className="thegamesHeader"> Chaotic Neutral Games</h1>
+     <h1 className="thegamesHeader"> Game Quest Games</h1>
 
      <div className="actions">
              <form className="gamestatsSearch">

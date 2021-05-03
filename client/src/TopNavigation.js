@@ -20,7 +20,7 @@ return (
    
    <Container className="nav-container">
   <Navbar expand="lg" variant="light" bg="light" className="navBar">
-  <NavLink activeClassName="activeLink" to ='/' className="navLink">Chaotic Neutral Games</NavLink>
+  <NavLink activeClassName="activeLink" to ='/' className="navLink">Game Quest Games</NavLink>
   <NavLink activeClassName="activeLink" to="/populargame" className="navLink">Popular Games</NavLink>
       <NavLink activeClassName="activeLink" to="/cardgames" className="navLink">Card Games</NavLink>
   </Navbar>
